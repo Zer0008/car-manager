@@ -10,4 +10,4 @@
 
 ## to lauch Mock-server use " node app.js "
 
-### for the Mock-Server there are one route " /api " 
+### for the Mock-Server there is one route " /api " 
