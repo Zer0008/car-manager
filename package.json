@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": " cd Frontend && ng build && node ../Backend/server.js && node ../Mock-Server/app.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -23,14 +23,15 @@
     "bootstrap": "^4.2.1",
     "core-js": "^2.5.4",
     "cors": "latest",
-    "express": "latest",
+    "express": "^4.16.4",
     "express-list-endpoints": "^4.0.0",
     "jquery": "^3.3.1",
     "mysql": "^2.16.0",
     "popper": "^1.0.1",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",
-    "zone.js": "~0.8.26"
+    "zone.js": "~0.8.26",
+    "debug": "latest"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.13.0",
