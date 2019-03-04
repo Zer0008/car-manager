@@ -1,11 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { PubComponent } from './pub/pub.component';
 import { AnnoncesVenteListComponent } from './annonces-vente-list/annonces-vente-list.component';
+import { ListInterventionComponent } from './list-intervention/list-intervention.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { InscriptionComponent } from './inscription/inscription.component';
 import { NotificationComponent } from './notification/notification.component';
@@ -24,6 +24,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     InscriptionComponent,
     NotificationComponent,
     AnnoncesInterventionListComponent,
+    ListInterventionComponent,
     CarSearchComponent,
     TechnicalSetViewComponent,
     NavbarComponent
