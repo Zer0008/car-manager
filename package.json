@@ -3,12 +3,12 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": " cd Backend && node",
+    "start": " node Backend/server.js && node Mock-Server/app.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "heroku-postbuild": "echo Skip build on Heroku"
+   "postinstall": "cd Frontend && ng build --prod",  "heroku-postbuild": "echo Skip build on Heroku"
   },
   "private": true,
   "dependencies": {
