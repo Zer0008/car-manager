@@ -20,7 +20,7 @@ export class AuthentificationService {
   /** POST: user in the server */
   createUser(user: User): Observable<User> {
     return this.http
-      .post<User>(this.apiUrl + '/register', user, httpOptions)
+      .post<User>(this.apiUrl + '/auth/register', user, httpOptions)
       .pipe(
         tap((newUser: User) =>
           {
@@ -35,7 +35,7 @@ export class AuthentificationService {
     console.log(emailValue);
     const userConnection = { 'email': emailValue, 'password': passwordValue, 'statut': statutValue };
     console.log(userConnection);
-    return this.http.post<User>(this.apiUrl + '/signin', userConnection, httpOptions).pipe(
+    return this.http.post<User>(this.apiUrl + '/auth/signin', userConnection, httpOptions).pipe(
       tap(
         (registerUser: User) => {
           if (registerUser.email == null) {
