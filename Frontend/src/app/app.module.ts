@@ -1,7 +1,9 @@
+import { MatListModule } from '@angular/material/list';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { PubComponent } from './pub/pub.component';
@@ -13,6 +15,10 @@ import { AnnoncesInterventionListComponent } from './annonces-intervention-list/
 import { CarSearchComponent } from './car-search/car-search.component';
 import { TechnicalSetViewComponent } from './technical-set-view/technical-set-view.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { CarInterventionsComponent } from './car-interventions/car-interventions.component';
+import { CarListComponent } from './car-list/car-list.component';
+import { CarCreationComponent } from './car-creation/car-creation.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -26,11 +32,19 @@ import { NavbarComponent } from './navbar/navbar.component';
     AnnoncesInterventionListComponent,
     CarSearchComponent,
     TechnicalSetViewComponent,
-    NavbarComponent
+    NavbarComponent,
+    CarInterventionsComponent,
+    CarListComponent,
+    CarCreationComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatListModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

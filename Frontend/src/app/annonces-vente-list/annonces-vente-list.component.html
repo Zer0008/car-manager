@@ -1,3 +1,51 @@
-<p>
-  annonces-vente-list works!
-</p>
+<br/><div id="filtre">
+  <form>
+    <div class="form-row">
+      <div class="col">
+        <label for="marque">Marque </label>
+        <select #marque class="custom-select" name="marque" id="marque">
+          <option selected>Indifferent</option>
+          <option value="Peugeot">Peugeot</option>
+          <option value="Mercedes">Mercedes</option>
+          <option value="Citroen">Citroen</option>
+          <option value="Renault">Renault</option>
+        </select>
+      </div>
+      <div class="col">
+        <label for="modele">Modèle </label>
+        <select #modele class="custom-select" name="modele" id="modele">
+          <option selected>Indifferent</option>
+          <option value="SUV">SUV</option>
+          <option value="Citadine">Citadine</option>
+          <option value="4x4">4x4</option>
+        </select>
+      </div>
+      <div class="col">
+        <label for="carburant">Carburant</label>
+        <select #carburant class="custom-select"  name="carburant" id="carburant">
+          <option selected>Indifferent</option>
+          <option value="Diesel">Diesel</option>
+          <option value="Essence">Essence</option>
+          <option value="Gasual">Gasual</option>
+        </select>
+      </div>
+    </div><br/>
+  </form>
+  <button type="button" class="btn btn-primary" (click)="onSearch(modele.value, marque.value, carburant.value)"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Rechercher </button>
+</div><br/>
+
+<div class="row">
+  <div class="col-md-12 listing-block">
+      <div class="media" *ngFor="let voiture of AnnonceCurrent">
+            <img class="d-flex align-self-start" src="{{voiture.photo}}" alt="Generic placeholder image">
+            <div class="media-body pl-3">
+              <div class="price">{{voiture.prix}}€<small>{{voiture.ville}}</small></div>
+              <div class="stats">
+              <span>{{voiture.transmission}} {{voiture.moteur}}</span>
+               <span>{{voiture.marqueVoiture}} {{voiture.carburant}}</span>
+              </div>
+              <div class="address">{{voiture.finition}}</div>
+            </div>
+          </div>
+</div>
+</div>
