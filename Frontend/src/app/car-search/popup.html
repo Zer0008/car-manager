@@ -1,0 +1,15 @@
+<h2 mat-dialog-title>Seletioner la finition</h2>
+<mat-dialog-content class="mat-typography">
+  <h3>{{data.modele}}</h3>
+        <mat-radio-group [(ngModel)] = "data.fini">
+        <mat-radio-button *ngFor="let f of data.finition"
+        [value]="f">
+         {{f}}</mat-radio-button>
+      </mat-radio-group >
+      <div class = "tp-selected-value">
+            selection: {{data.fini}}
+         </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+        <button mat-button [mat-dialog-close]="data.fini" class="btn btn-primary">Valider</button>
+</mat-dialog-actions>
