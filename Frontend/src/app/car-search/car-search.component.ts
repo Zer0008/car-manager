@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CarService} from '../services/car-search.service';
-import {Car} from "../models/car";
-import {NgForm} from "@angular/forms";
+import {vehicule} from '../models/Voiture';
+import {NgForm} from '@angular/forms';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { JsonPipe } from '@angular/common';
 import {MatDialog} from '@angular/material';

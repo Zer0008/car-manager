@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {CarSearchComponent} from './car-search/car-search.component';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
