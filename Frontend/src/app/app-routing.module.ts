@@ -9,9 +9,10 @@ import { NotificationComponent } from './notification/notification.component';
 import { CarCreationComponent } from './car-creation/car-creation.component';
 import { CarInterventionsComponent } from './car-interventions/car-interventions.component';
 import { AnnoncesInterventionListComponent } from './annonces-intervention-list/annonces-intervention-list.component';
+import {CarSearchComponent} from './car-search/car-search.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '', redirectTo: '/carsearch', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'annonces-vente', component: AnnoncesVenteListComponent },
   { path: 'annonces-intervention', component: AnnoncesInterventionListComponent},
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'notification', component: NotificationComponent },
   { path:  'vehicules', component: CarListComponent },
   { path: 'vehicules/new', component: CarCreationComponent},
+  { path: 'carsearch', component: CarSearchComponent },
   {path: 'vehicule/:id', children : [
     { path: 'interventions', component: CarInterventionsComponent}
   ]}
