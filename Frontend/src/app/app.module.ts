@@ -19,7 +19,6 @@ import { CarInterventionsComponent } from './car-interventions/car-interventions
 import { CarListComponent } from './car-list/car-list.component';
 import { CarCreationComponent } from './car-creation/car-creation.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { MatDialogModule, MatRadioModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -36,8 +35,7 @@ import { MatDialogModule, MatRadioModule } from '@angular/material';
     NavbarComponent,
     CarInterventionsComponent,
     CarListComponent,
-    CarCreationComponent
-
+    CarCreationComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,8 +45,6 @@ import { MatDialogModule, MatRadioModule } from '@angular/material';
     HttpClientModule,
     BrowserAnimationsModule,
     MatListModule,
-    MatDialogModule,
-    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent]

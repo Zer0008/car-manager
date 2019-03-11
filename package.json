@@ -7,7 +7,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+   "postinstall": "cd Frontend && ng build --prod",  "heroku-postbuild": "echo Skip build on Heroku"
   },
   "private": true,
   "dependencies": {
