@@ -9,12 +9,13 @@ import { AuthentificationService } from "../services/authentification.service";
 })
 export class NavbarComponent implements OnInit {
   user: any;
-  userStorage: User;
   nom: string;
+  statut: string;
   constructor(private authentificationservice: AuthentificationService) {
     if (localStorage.getItem('user')) {
-    this.userStorage = JSON.parse(localStorage.getItem('user'));
-    this.nom = this.userStorage.nom ;
+    this.user = JSON.parse(localStorage.getItem('user'));
+    this.nom = this.user.nom ;
+    this.statut = this.user.statut;
     } else {
       this.login();
     }
@@ -26,6 +27,7 @@ export class NavbarComponent implements OnInit {
 
   logout(): void {
     this.user = undefined;
+    this.statut = undefined ;
     localStorage.clear();
   }
 
@@ -35,7 +37,8 @@ export class NavbarComponent implements OnInit {
         if (userRegistered != null) {
           this.user = userRegistered;
           this.nom = this.user.nom ;
-          console.log('utilisateur connecte ' + this.user.idUser);
+          this.statut = this.user.statut ;
+          console.log('utilisateur connecte ' + this.user.statut);
         }
       },
       err => {

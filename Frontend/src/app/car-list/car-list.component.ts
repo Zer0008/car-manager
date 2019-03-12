@@ -79,4 +79,8 @@ export class CarListComponent implements OnInit {
     this.route.navigateByUrl('/vehicules/new');
   }
 
+  deleteCar(vehicule: any): void {
+      this.vehicules.splice(this.vehicules.indexOf(vehicule), 1);
+  }
+
 }

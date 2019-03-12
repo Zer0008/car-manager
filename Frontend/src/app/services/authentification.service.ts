@@ -23,21 +23,25 @@ export class AuthentificationService {
       .post<User>(this.apiUrl + '/auth/register', user, httpOptions)
       .pipe(
         tap((newUser: User) =>
-          {
-            console.log(`added hero w/ id=${newUser.idUser}`),
-            this.setUser(newUser);
+          { 
+            if (newUser.email != null) {
+              console.log(`added hero w/ id=${newUser.idUser}`),
+              this.setUser(newUser);
+            } else {
+              console.log('utilisateur existant');
+            }
           }
         )
       );
   }
 
-  registerUser(emailValue: string, passwordValue: string, statutValue: string ): Observable<User> {
+  registerUser(emailValue: string, passwordValue: string, statutValue: string ): Observable<any> {
     console.log(emailValue);
     const userConnection = { 'email': emailValue, 'password': passwordValue, 'statut': statutValue };
     console.log(userConnection);
-    return this.http.post<User>(this.apiUrl + '/auth/signin', userConnection, httpOptions).pipe(
+    return this.http.post<any>(this.apiUrl + '/auth/signin', userConnection, httpOptions).pipe(
       tap(
-        (registerUser: User) => {
+        (registerUser: any) => {
           if (registerUser.email == null) {
             console.log('identifiants incorrects');
           } else {

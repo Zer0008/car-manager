@@ -1,3 +1,123 @@
-<p>
-  car-search works!
-</p>
+<br/>
+<div class="jumbotron">
+    <h2>CarLife vous accompagne...</h2>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                  <div class="row">
+                    
+                        <div class="col-lg-6">
+                            <form [formGroup]="matriculeform" (ngSubmit)=" OnSearchbymatricule()" [ngClass]="{ 'is-invalid': submittedm && m.matricule.errors}">
+                                
+                                <div class="form-group">
+                                  <label>Immatriculation</label>
+                                  <input placeholder="xx-yyy-zz" type="text" class="form-control" formControlName="matricule" [ngClass]="{ 'is-invalid': submittedm && m.matricule.errors  }"/>
+                                </div>
+                                <div class="form-group">
+                                    <button [disabled]="m.matricule.errors" class="btn btn-primary" data-toggle="modal" data-target="#ModalMatricule">Rechercher</button>
+                                </div>
+                            </form>
+
+                        </div>
+                        <div class="col-lg-6">
+                                <form [formGroup]="carform" (ngSubmit)="OnSearchbymarque()" novalidate>
+                                    <div class="form-group">
+                                        <label>Marque</label>
+                                        <select class="form-control" formControlName="marque" >
+                                            <option value="">selectionné une marque</option>
+                                          <option *ngFor="let m of marques"
+                                                  [value]="m">
+                                                  {{m}}
+                                          </option>
+                                        </select>
+                                     </div>
+                                     <div class="form-group">
+                                        <label>Modèle</label>
+                                        <select class="form-control" formControlName="modele" >
+                                          <option value="">selectionné le modèle</option>
+                                          <option *ngFor="let mo of modeles"
+                                                  [value]="mo">
+                                                  {{mo}}
+                                          </option>
+                                        </select>
+                                      </div>
+                                      <div class="form-group">
+                                          <label>Année</label>
+                                          <select class="form-control" formControlName="annee" >
+                                            <option value="">selectionné l'année</option>
+                                            <option *ngFor="let a of annee"
+                                                    [value]="a">
+                                                    {{a}}
+                                            </option>
+                                          </select>
+                                        </div>
+                                       <div class="form-group">
+                                        <button [disabled]="loading"   class="btn btn-primary" data-toggle="modal" data-target="#ModalMarque">Rechercher</button>
+                                       </div>
+                                </form>
+                         </div>
+
+                    
+  <!-- Modal matricule -->
+  <div class="modal fade" id="ModalMatricule" tabindex="-1" role="dialog" aria-labelledby="ModalMatriculeTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="ModifierCenterTitle">{{modele}}</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+              <mat-dialog-content class="mat-typography">
+                  <h3>Seletioner la finition</h3>
+                        <mat-radio-group [(ngModel)] = "fini" class = "tp-radio-button">
+                        <mat-radio-button *ngFor="let f of finition"
+                        [value]="f" class = "tp-radio-button">
+                         {{f}}</mat-radio-button>
+                      </mat-radio-group >
+                </mat-dialog-content>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+            <button type="button" class="btn btn-primary" (click)="Onsavematricule()" data-dismiss="modal">Enregistrer</button>
+          </div>
+        </div>
+      </div>
+    </div>
+                
+        </div>
+    </div>
+  
+     <!-- Modal marque -->
+  <div class="modal fade" id="ModalMarque" tabindex="-1" role="dialog" aria-labelledby="ModalMarqueTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="ModifierCenterTitle">{{modele}}</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+              <mat-dialog-content class="mat-typography">
+                  <h3>Seletionnez la finition</h3>
+                        <mat-radio-group [(ngModel)] = "fini" class = "tp-radio-button">
+                        <mat-radio-button *ngFor="let f of finition"
+                        [value]="f" class = "tp-radio-button">
+                         {{f}}</mat-radio-button>
+                      </mat-radio-group >
+                </mat-dialog-content>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+            <button type="button" class="btn btn-primary" (click)="Onsavemarque()" data-dismiss="modal">Enregistrer</button>
+          </div>
+        </div>
+       </div>
+      </div>
+                
+     </div>
+    </div>
+  
+</div> 

@@ -1,11 +1,11 @@
 import { MatListModule } from '@angular/material/list';
+import { MatDialogModule, MatRadioModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
 import { PubComponent } from './pub/pub.component';
 import { AnnoncesVenteListComponent } from './annonces-vente-list/annonces-vente-list.component';
 import { ConnexionComponent } from './connexion/connexion.component';
@@ -19,11 +19,11 @@ import { CarInterventionsComponent } from './car-interventions/car-interventions
 import { CarListComponent } from './car-list/car-list.component';
 import { CarCreationComponent } from './car-creation/car-creation.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { CarViewComponent } from './car-view/car-view.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
     PubComponent,
     AnnoncesVenteListComponent,
     ConnexionComponent,
@@ -36,6 +36,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     CarInterventionsComponent,
     CarListComponent,
     CarCreationComponent,
+    CarViewComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,6 +46,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     HttpClientModule,
     BrowserAnimationsModule,
     MatListModule,
+    MatDialogModule,
+    MatRadioModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
