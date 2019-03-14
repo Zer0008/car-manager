@@ -27,7 +27,7 @@ var User = {
         libelleRue = user.libelleRue;
         codePostal = user.codePostal;
         ville = user.ville;
-        nom = user.name;
+        nom = user.nom;
         let req = '';
         console.log('Utilisateur de type ' + user.statut);
         if(user.statut === 'Particulier') {

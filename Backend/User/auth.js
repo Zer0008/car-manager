@@ -17,8 +17,9 @@ router.post('/register', function (req,res) {
     console.log(req.body);
     User.createUser(req.body,function(err,count){
         count = JSON.parse(JSON.stringify(count));
-        count = Object.keys(count)[0];
-        console.log(count);
+        key = Object.keys(count[0])[0];
+        console.log(count[0][key]);
+        count = count[0][key];
         if(count != 0){
             res.json(req.body);
         } else {
