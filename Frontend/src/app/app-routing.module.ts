@@ -21,9 +21,8 @@ const routes: Routes = [
   { path: 'notification', component: NotificationComponent },
   { path:  'vehicules', component: CarListComponent },
   { path: 'vehicules/new', component: CarCreationComponent},
-  {path: 'vehicule/:id', component: CarViewComponent, children : [
-    { path: 'interventions', component: CarInterventionsComponent}
-  ]}
+  {path: 'vehicule/:id', component: CarViewComponent },
+  { path: 'vehicule/:id/interventions', component: CarInterventionsComponent}  
 ];
 
 @NgModule({
