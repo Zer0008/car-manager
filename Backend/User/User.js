@@ -34,6 +34,22 @@ var User = {
             req = "select createParticulier(?,?,?,?,?,?,?,?)";
         }
         return db.query(req,[email, password, telephone, numeroRue, libelleRue, codePostal, ville, nom],callback);
+    },
+    updateUser: function(user, email, callback){
+        console.log('update user');
+        console.log(user);
+        idUser = user.idUser ;
+        new_email = user.email ;
+        password = user.password;
+        telephone = user.telephone;
+        numeroRue = user.numeroRue;
+        libelleRue = user.libelleRue;
+        codePostal = user.codePostal;
+        ville = user.ville;
+        nom = user.nom;
+        let req = '';
+        req = "select updateUser(?,?,?,?,?,?,?,?,?)";
+        return db.query(req,[email,new_email, password, nom, telephone, numeroRue, libelleRue, codePostal, ville],callback);
     }
 };
 
