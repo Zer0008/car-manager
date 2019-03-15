@@ -1,0 +1,10 @@
+#item {
+    cursor: pointer;
+    position: relative;
+    left: 0;
+    background-color: rgb(12, 131, 111);
+    margin: .5em;
+    padding: .3em 0;
+    height: 2.6em;
+    border-radius: 4px;
+}

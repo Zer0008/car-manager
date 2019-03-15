@@ -1,4 +1,6 @@
 export class Intervention {
-    id: number;
-    nom: string;
+    idIntervention: number;
+    libelleIntervention: string;
+    justificatifIntervention: string;
+    dateFinIntervention: Date;
 }
