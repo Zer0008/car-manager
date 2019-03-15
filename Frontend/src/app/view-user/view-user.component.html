@@ -1,0 +1,69 @@
+<div>
+  <br>
+  <h2>Profil</h2> <hr>
+  <div class="container">
+    <section class="row">
+      <div class="col-12 col-sm-6 col-lg-4">
+          <img name="profil" src="../../assets/images/profil.png" alt="..." class="img-fluid rounded-circle" width="120" height="120"><br>
+          <br>
+      </div>
+      <div class="col-12 col-sm-6 col-lg-4 offset-4">
+          <button type="submit" class="btn btn-success" role="button" (click)="valider()" [hidden]="disabled">Valider vos informations</button><br>
+          <br> <button type="reset" class="btn btn-warning" (click)= "annuler()" [hidden]="disabled">Annuler</button><br>
+          <br> <button  class="btn btn-primary" (click)="onmodifier()" [hidden]="actif">Modifier vos informations</button>
+      </div>
+    </section>
+  </div>
+
+  <br>
+  <h4>Informations Générales</h4><hr>
+    <div class="jumbotron">
+      <div class="container-fluid">
+        <!--<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">-->
+          <label>Nom</label>
+          <div class="form-group mx-sm-3 mb-2">
+            <input type="text" class="form-control" id="nom" placeholder="nom" value="{{user.nom}}" [(ngModel)]="user.nom"  [disabled]="disabled">
+          </div>
+          <br>
+          <label>Email </label>
+          <div class="form-group mx-sm-3 mb-2">
+            <input type="email" class="form-control" id="email" placeholder="email" value="{{user.email}}" [(ngModel)]="user.email"   [disabled]="disabled">
+          </div>
+          <br>
+          <label>Numéro de téléphone </label>
+          <div class="form-group mx-sm-3 mb-2">
+            <input type="tel" class="form-control" id="telephone" placeholder="telephone" value="{{user.telephone}}" [(ngModel)]="user.telephone"  [disabled]="disabled">
+          </div>
+          <br>
+          <label>Adresse </label>
+          <form>
+            <div class="row">
+              <div class="col-5 mx-sm-auto mb-2">
+                <label>Numéro de la rue: </label>
+                <input type="number" class="form-control" id="numeroRue" value="{{user.numeroRue}}" [(ngModel)]="user.numeroRue"  name="Numéro de la rue:"  placeholder="numeroRue" [disabled]="disabled">
+              </div>
+              <div class="col-5 mx-auto mb-auto">
+                <label>Libelle de le rue: </label>
+                <input type="text" class="form-control" id="libelleRue" placeholder="libelleRue" value="{{user.libelleRue}}" [(ngModel)]="user.libelleRue"  name="Libelle de la rue" [disabled]="disabled">
+              </div>
+            </div>
+          </form>
+          <br>
+          <label>Ville </label>
+          <div class="form-group mx-sm-3 mb-2">
+            <input type="text" class="form-control" id="ville" placeholder="ville" value="{{user.ville}}" [(ngModel)]="user.ville" [disabled]="disabled">
+          </div>
+          <br>
+          <label>Code Postal </label>
+          <div class="form-group mx-sm-3 mb-2">
+            <input type="number" class="form-control" id="codePostal" placeholder="codePostal" value="{{user.codePostal}}"  [disabled]="disabled">
+          </div>
+         <br>
+          <label>Statut </label>
+          <div class="form-group mx-sm-3 mb-2">
+            <input type="text" class="form-control" id="statut" placeholder="statut" value="{{user.statut}}" disabled>
+          </div>
+        <!--</form>-->
+    </div>
+  </div>
+</div>

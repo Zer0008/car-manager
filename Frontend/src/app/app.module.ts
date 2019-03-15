@@ -20,6 +20,7 @@ import { CarListComponent } from './car-list/car-list.component';
 import { CarCreationComponent } from './car-creation/car-creation.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { CarViewComponent } from './car-view/car-view.component';
+import { ViewUserComponent } from './view-user/view-user.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { CarViewComponent } from './car-view/car-view.component';
     CarListComponent,
     CarCreationComponent,
     CarViewComponent,
+    ViewUserComponent,
   ],
   imports: [
     BrowserModule,

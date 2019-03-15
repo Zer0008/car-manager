@@ -1,4 +1,3 @@
-import { Router } from '@angular/router';
 import { User } from "./../models/User";
 import { Component, OnInit } from "@angular/core";
 import { AuthentificationService } from "../services/authentification.service";
@@ -12,7 +11,7 @@ export class NavbarComponent implements OnInit {
   user: any;
   nom: string;
   statut: string;
-  constructor(private authentificationservice: AuthentificationService, private router: Router) {
+  constructor(private authentificationservice: AuthentificationService) {
     if (localStorage.getItem('user')) {
     this.user = JSON.parse(localStorage.getItem('user'));
     this.nom = this.user.nom ;
@@ -30,7 +29,6 @@ export class NavbarComponent implements OnInit {
     this.user = undefined;
     this.statut = undefined ;
     localStorage.clear();
-    this.router.navigateByUrl('/connexion');
   }
 
   login(): void {
