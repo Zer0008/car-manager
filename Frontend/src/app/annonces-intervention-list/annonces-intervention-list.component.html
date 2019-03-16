@@ -17,7 +17,7 @@
       </div>
       <div class="col">
         <label for="lieu">Ou</label>
-        <input #lieu type="text" class="form-control" id="lieu" name="lieu" value=" " placeholder="Ville, code postal, ...">
+        <input #lieu type="text" class="form-control" id="lieu" name="lieu"  placeholder="Ville, code postal, ...">
       </div>
       <div class="col">
         <label for="modele">Modèle </label>
@@ -39,12 +39,37 @@
     <div class="col-md-8 ">
       <h4>{{ pannes.marqueVoiture }} {{ pannes.modeleVoiture }}</h4>
       <p>{{ pannes .finition }}</p>
+      <p>{{pannes.datePublication}}</p>
       <h6>{{ pannes.ville }} ({{pannes.codePostale}})</h6>
     </div>
     <div class="col-md-4">
-      <a class="btn btn-primary btn-sm btn-block" href="#" role="button">Consulter coordonnées</a>
-      <a class="btn btn-success btn-sm btn-block" href="#" role="button">Voir la demande</a>
+      <button class="btn btn-primary btn-sm btn-block"  role="button">Consulter coordonnées</button><br/>
+      <button type="button" class="btn btn-success btn-sm btn-block "  data-toggle="modal" data-target="#myModal">Voir la demande</button>
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <div class="row">
+                <div class="col-md-12 ">
+                <h5 class="modal-title" id="exampleModalLongTitle">{{pannes.libelleAnnonce}}</h5>
+              </div>
+              </div>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p> {{pannes.descriptifAnnonce}}</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-  <br/><br/><br/>
+
 </div>
+
+
