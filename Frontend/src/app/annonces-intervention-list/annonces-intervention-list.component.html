@@ -1,0 +1,50 @@
+<h2>Annonces d'occasion</h2>
+<p>Vous pouvez ici rechercher toutes les demandes d'intervention ent filtrant ou non les recherches
+  Vous avez notamment la possibilité de consulter les coordonnées du propriétaire afin de lui proposer un devis</p><br/>
+<div id="filtre">
+  <h4>Filtres</h4>
+  <form>
+    <div class="form-row">
+      <div class="col">
+        <label for="marque">Marque </label>
+        <select #marque class="custom-select" name="marque" id="marque">
+          <option selected>Indifferent</option>
+          <option value="Peugeot">Peugeot</option>
+          <option value="Mercedes">Mercedes</option>
+          <option value="Citroen">Citroen</option>
+          <option value="Renault">Renault</option>
+        </select>
+      </div>
+      <div class="col">
+        <label for="lieu">Ou</label>
+        <input #lieu type="text" class="form-control" id="lieu" name="lieu" value=" " placeholder="Ville, code postal, ...">
+      </div>
+      <div class="col">
+        <label for="modele">Modèle </label>
+        <select #modele class="custom-select" name="modele" id="modele">
+          <option selected>Indifferent</option>
+          <option value="SUV">SUV</option>
+          <option value="Citadine">Citadine</option>
+          <option value="4x4">4x4</option>
+        </select>
+      </div>
+    </div><br/>
+  </form>
+  <button type="button" class="btn btn-primary" (click)="onSearch(marque.value, modele.value,lieu.value)"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Rechercher </button>
+</div><br/>
+
+<div class="contenu" *ngFor="let pannes of Intervention">
+  <div class="row">
+
+    <div class="col-md-8 ">
+      <h4>{{ pannes.marqueVoiture }} {{ pannes.modeleVoiture }}</h4>
+      <p>{{ pannes .finition }}</p>
+      <h6>{{ pannes.ville }} ({{pannes.codePostale}})</h6>
+    </div>
+    <div class="col-md-4">
+      <a class="btn btn-primary btn-sm btn-block" href="#" role="button">Consulter coordonnées</a>
+      <a class="btn btn-success btn-sm btn-block" href="#" role="button">Voir la demande</a>
+    </div>
+  </div>
+  <br/><br/><br/>
+</div>
