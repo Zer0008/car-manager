@@ -61,6 +61,6 @@ export class ConnexionComponent implements OnInit {
     }
   }
   gotoRegister() {
-    this.router.navigateByUrl("/inscription");
+    this.router.navigateByUrl('/inscription');
   }
 }

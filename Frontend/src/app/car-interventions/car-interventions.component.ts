@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { InterventionService } from './../services/intervention.service';
 import { interventions } from '../mock-intervention';
 import { AncienInterventions } from '../mock-intervention';
+import { ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-car-interventions',
@@ -12,14 +13,29 @@ import { AncienInterventions } from '../mock-intervention';
 export class CarInterventionsComponent implements OnInit {
   inter: Intervention[];
   AncienInter: Intervention[];
+  immatriculation: string;
+  date: Date =  new Date();
+  name = 'intervention';
   // tslint:disable-next-line:no-inferrable-types
   pdfSrc: string = '/assets/RIB.pdf';
-  constructor(private interventionService: InterventionService) { }
+  constructor(private interventionService: InterventionService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.getAncienListIntervention();
     this.getListIntervention();
+   /* this.immatriculation = this.route.snapshot.paramMap.get('id');
+    this.getInterventions(this.immatriculation);*/
   }
+
+ /* getInterventions(immatriculation: string): void {
+    this.interventionService.getInterventions(immatriculation)
+      .subscribe(
+        (inter) => {
+          this.inter = inter ;
+          console.log(inter);
+         }
+      );
+  }*/
 
   getListIntervention(): void {
     this.interventionService.getListIntervention()
@@ -28,6 +44,13 @@ export class CarInterventionsComponent implements OnInit {
   getAncienListIntervention(): void {
     this.interventionService.getAncienListIntervention()
       .subscribe(AncienInter => this.AncienInter = AncienInter);
+  }
+
+  addIntervention(): void {
+      this.inter.push({idIntervention: 4,
+      libelleIntervention: this.name,
+      justificatifIntervention: '',
+      dateFinIntervention: this.date});
   }
 
   deleteIntervention(interv: any): void {

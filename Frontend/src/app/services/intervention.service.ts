@@ -16,32 +16,22 @@ const httpOptions = {
 })
 export class InterventionService {
   private apiUrl =  environment.apiUrl;
-  private listIntervention = new Subject<Intervention>();
   constructor(private http: HttpClient) {}
 
-  /** POST: intervention in the server */
-  createIntervention(intervention: Intervention): Observable<Intervention> {
+  /** GET: intervention in the server */
+  getInterventions(immatriculation: string): Observable<Intervention[]> {
+    console.log('Je suis dans le service intervention ' + immatriculation);
     return this.http
-      .post<Intervention>(this.apiUrl + '/path', intervention, httpOptions)
+      .get<Intervention[]>(this.apiUrl + '/api-car/car/' + immatriculation + '/interventions', httpOptions)
       .pipe(
-        tap((newIntervention: Intervention) =>
+        tap(( interventions: Intervention[]) =>
           {
-            console.log(`added intervention w/ id=${newIntervention.idIntervention}`),
-            this.setIntervention(newIntervention);
+            console.log('intervention recus ' + interventions.length );
           }
         )
       );
   }
-
-  setIntervention(intervention: any): void {
-    localStorage.setItem('intervention', JSON.stringify(intervention));
-    this.listIntervention.next(intervention);
-  }
-
-  getIntervention(): Observable<any> {
-    return this.listIntervention.asObservable();
-  }
-  
+ 
   //Mock-server
   getListIntervention(): Observable<Intervention[]> {
     return of(interventions);
