@@ -8,8 +8,7 @@
                   <div class="row">
                     
                         <div class="col-lg-6">
-                            <form [formGroup]="matriculeform" (ngSubmit)=" OnSearchbymatricule()" [ngClass]="{ 'is-invalid': submittedm && m.matricule.errors}">
-                                
+                            <form [formGroup]="matriculeform" (ngSubmit)=" OnSearchbymatricule()" [ngClass]="{ 'is-invalid': submittedm && m.matricule.errors}">   
                                 <div class="form-group">
                                   <label>Immatriculation</label>
                                   <input placeholder="xx-yyy-zz" type="text" class="form-control" formControlName="matricule" [ngClass]="{ 'is-invalid': submittedm && m.matricule.errors  }"/>
