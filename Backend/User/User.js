@@ -43,11 +43,12 @@ var User = {
         numeroRue = user.numeroRue;
         libelleRue = user.libelleRue;
         codePostal = user.codePostal;
+        password = "Test@12345" ;
         ville = user.ville;
         nom = user.nom;
         let req = '';
-        req = "select updateUser(?,?,?,?,?,?,?,?)";
-        return db.query(req,[email, new_email, nom, telephone, numeroRue, libelleRue, codePostal, ville],callback);
+        req = "select updateUser(?,?,?,?,?,?,?,?,?)";
+        return db.query(req,[email, new_email, password, nom, telephone, numeroRue, libelleRue, codePostal, ville],callback);
     }
 };
 
