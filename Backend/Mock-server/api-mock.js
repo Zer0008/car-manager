@@ -43,27 +43,20 @@ router.get('/', function(req, res, next) {
             "Longueur":3.785,
             "Type": "Berline",
             "Energie": "Diesel",
-            "Puissance_reelle": "66KW(90)",
+            "Puissance": "66KW(90)",
             "Boite_vitesse": "Boite manuelle",
             "Portes_Places": "5 portes / 5 places",
-            "Vitesse maximale": "175Km/h",
+            "Vitesse_maximale": "175Km/h",
             "Cons_moyenne": "4.1 litre /100km",
             "Emission_CO2": "109g/km",
-            "Caracteristiques_principales": {
-               "Moteur":{
-                   "Type": "4 cylindres",
-                   "Cylindree": "1364 cm3",
-                   "Emission": "109g/km",
-               },
-                "Transmission":{
-                   "Type": "Traction avant",
-                    "Nombre_rapport": 6,
-                    "Pneumatiques": "185/60 R15"
-                }
-            }
+            "Moteur": "4 cylindres /1364 cm/ 109g/km",
+            "Transmission":"Traction avant /185/60 R15"
+                
         };
         res.json(fiche);
     }
+
+
 
     if( (modele!==undefined && marque!==undefined && annee!==undefined) && finition!==undefined){
         let fiche = {
@@ -73,28 +66,19 @@ router.get('/', function(req, res, next) {
              "Longueur":3.785,
              "Type": "Berline",
              "Energie": "Diesel",
-             "Puissance_reelle": "66KW(90)",
+             "Puissance": "66KW(90)",
              "Boite_vitesse": "Boite manuelle",
              "Portes_Places": "5 portes / 5 places",
-             "Vitesse maximale": "175Km/h",
+             "Vitesse_maximale": "175Km/h",
              "Cons_moyenne": "4.1 litre /100km",
              "Emission_CO2": "109g/km",
-             "Caracteristiques_principales": {
-                "Moteur":{
-                    "Type": "4 cylindres",
-                    "Cylindree": "1364 cm3",
-                    "Emission": "109g/km",
-                },
-                 "Transmission":{
-                    "Type": "Traction avant",
-                     "Nombre_rapport": 6,
-                     "Pneumatiques": "185/60 R15"
-                 }
-             }
+             "Moteur": "4 cylindres /1364 cm/ 109g/km",
+             "Transmission":"Traction avant /185/60 R15"
          };
          res.json(fiche);
-    }
+    
+
+}
 
 });
-
 module.exports = router;

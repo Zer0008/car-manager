@@ -16,7 +16,7 @@ router.get('/cars',function (req,res) {
     })
 });
 
-router.get('/car/:immatriculation',function (req,res) {
+router.get('/car/:immatriculation/interventions',function (req,res) {
     let immatriculation = req.params.immatriculation ;
     console.log('controller ' + immatriculation);
      Car.getInterventions(immatriculation, function (err,rows) {

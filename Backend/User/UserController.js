@@ -6,6 +6,7 @@ router.put('/',function (req,res) {
    let email = req.query.email;
    console.log(email);
      User.updateUser(req.body, email, function(err,count){
+         console.log(count);
         console.log('update ' + email);
         count = JSON.parse(JSON.stringify(count));
         key = Object.keys(count[0])[0];

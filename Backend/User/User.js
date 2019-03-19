@@ -38,7 +38,6 @@ var User = {
     updateUser: function(user, email, callback){
         console.log('update user');
         console.log(user);
-        idUser = user.idUser ;
         new_email = user.email ;
         telephone = user.telephone;
         numeroRue = user.numeroRue;
@@ -47,8 +46,8 @@ var User = {
         ville = user.ville;
         nom = user.nom;
         let req = '';
-        req = "select updateUser(?,?,?,?,?,?,?,?,?)";
-        return db.query(req,[email,new_email, nom, telephone, numeroRue, libelleRue, codePostal, ville],callback);
+        req = "select updateUser(?,?,?,?,?,?,?,?)";
+        return db.query(req,[email, new_email, nom, telephone, numeroRue, libelleRue, codePostal, ville],callback);
     }
 };
 

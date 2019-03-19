@@ -10,6 +10,7 @@ import { NotificationComponent } from './notification/notification.component';
 import { CarCreationComponent } from './car-creation/car-creation.component';
 import { CarInterventionsComponent } from './car-interventions/car-interventions.component';
 import { AnnoncesInterventionListComponent } from './annonces-intervention-list/annonces-intervention-list.component';
+import {ViewUserComponent} from './view-user/view-user.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -22,7 +23,8 @@ const routes: Routes = [
   { path:  'vehicules', component: CarListComponent },
   { path: 'vehicules/new', component: CarCreationComponent},
   {path: 'vehicule/:id', component: CarViewComponent },
-  { path: 'vehicule/:id/interventions', component: CarInterventionsComponent}  
+  {path: 'profile', component: ViewUserComponent} ,
+  { path: 'vehicule/:id/interventions', component: CarInterventionsComponent}
 ];
 
 @NgModule({
