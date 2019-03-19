@@ -7,7 +7,7 @@ import * as _ from "lodash";
   styleUrls: ["./annonces-intervention-list.component.css"]
 })
 export class AnnoncesInterventionListComponent implements OnInit {
-  Intervention: any;
+  Intervention: any[];
   panne = [
     {
       idVehicule: "1",

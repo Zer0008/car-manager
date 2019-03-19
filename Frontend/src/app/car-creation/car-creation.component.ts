@@ -84,9 +84,9 @@ this.modele = this.car.modele;
 }
 
 Onsavematricule() {
-console.log(this.fini);
+console.log("recuperation");
 this.Carservice.getcarview(this.matriculeform.value.matricule, this.fini).subscribe(res => {
- //this.voiture = res;
+ this.voiture = res;
 });
 }
 
