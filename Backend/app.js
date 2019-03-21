@@ -4,6 +4,7 @@ var UserController = require('./User/UserController');
 var AuthController = require('./User/AuthController');
 var mockController = require('./Mock-server/api-mock');
 var CarController  = require ('./Car/CarController');
+var AnnnonceController = require('./Annonces/AnnoncesController');
 var bodyParser = require('body-parser');
 var path = require('path');
 var cors = require('cors');
@@ -25,6 +26,7 @@ app.use('/api/user', UserController);
 app.use('/auth', AuthController);
 app.use('/api-mock',mockController);
 app.use('/api-car',CarController);
+app.use('/api-annonces', AnnnonceController);
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '/dist/Frontend/index.html'));
@@ -71,10 +73,6 @@ callback(null,name )
 })
 
 let upload = multer({storage: storage});
-
-app.get('/api/upload', function (req, res) {
-res.end('file catcher example');
-});
 
 app.post('/api/upload',upload.single('photo'), function (req, res) {
   if (!req.file) {
