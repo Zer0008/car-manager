@@ -3,7 +3,6 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { environment } from "../../environments/environment";
 import { tap } from "rxjs/operators";
 import { User } from "../models/User";
-import { AuthentificationService } from "./authentification.service";
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -20,7 +19,6 @@ export class UserService {
 
   constructor(
     private http: HttpClient,
-    private authentificationservice: AuthentificationService
   ) {}
 
   updateUser(email: string, user: any): any {
@@ -28,10 +26,9 @@ export class UserService {
     return this.http
       .put<any>(this.apiUrl + "/api/user?email=" + email, user, httpOptions)
       .pipe(
-        tap((newUser: User) => {
-          if (newUser.email != null) {
-            console.log(`Update User w/ id=${newUser.idUser}`);
-            this.authentificationservice.setUser(newUser);
+        tap((state: number) => {
+          if (state !== 0) {
+            console.log(`Update User w/ name=${user.name}`);
           } else {
             console.log("impossible de faire la mise a jour");
           }

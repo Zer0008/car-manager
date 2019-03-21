@@ -19,7 +19,8 @@ const httpOptions = {
 })
 export class AuthentificationService {
   private apiUrl =  environment.apiUrl;
-  private userAuth = new Subject<User>();
+  private userAuth = new Subject<any>();
+  currentUser = this.userAuth.asObservable();
   constructor(private http: HttpClient) {}
 
   /** POST: user in the server */
@@ -61,9 +62,7 @@ export class AuthentificationService {
   setUser(user: any): void {
     localStorage.setItem('user', JSON.stringify(user));
     this.userAuth.next(user);
+    console.log('setUser is called');
   }
 
-  getUser(): Observable<any> {
-    return this.userAuth.asObservable();
-  }
 }
