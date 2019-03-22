@@ -42,7 +42,8 @@ export class CarSearchComponent implements OnInit {
   displaymodal= false;
   fini: string;
   res: any;
-  constructor(public Carservice: CarSearchService, public dialog: MatDialog) {}
+  constructor(public Carservice: CarSearchService, public dialog: MatDialog) {
+  }
 
   ngOnInit() {
     this.matriculeform = new FormGroup({
