@@ -1,5 +1,9 @@
+import { AuthentificationService } from './../services/authentification.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { UserService } from "../services/user.service";
+import {vehicule} from "../models/Voiture";
+
 
 @Component({
   selector: 'app-car-list',
@@ -8,10 +12,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CarListComponent implements OnInit {
   vehicules: any[];
-  constructor(private route: Router) { }
+  user: any;
+
+  private router: any;
+  private statut: any;
+  constructor(private route: Router, private userservice: UserService, private authentificationService: AuthentificationService)
+  {
+    this.user = JSON.parse(localStorage.getItem("user"));
+  }
 
   ngOnInit() {
-    this.vehicules = [
+    this.userservice
+        .getCar(this.user.email, this.user.statut).subscribe(res => {
+          console.log(res);
+      this.vehicules = res;
+    });
+
+
+/*    this.vehicules = [
 
       {
         idVehicule: '1',
@@ -72,7 +90,7 @@ export class CarListComponent implements OnInit {
         isActive: '0',
         ville: 'Limoges (87000)'
       }
-    ];
+    ];*/
   }
   
   addCar(): void {

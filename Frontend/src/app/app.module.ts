@@ -20,7 +20,9 @@ import { CarListComponent } from './car-list/car-list.component';
 import { CarCreationComponent } from './car-creation/car-creation.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { CarViewComponent } from './car-view/car-view.component';
+import { FileSelectDirective } from 'ng2-file-upload';
 import { ViewUserComponent } from './view-user/view-user.component';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,7 @@ import { ViewUserComponent } from './view-user/view-user.component';
     CarListComponent,
     CarCreationComponent,
     CarViewComponent,
+    FileSelectDirective,
     ViewUserComponent,
   ],
   imports: [
@@ -50,6 +53,7 @@ import { ViewUserComponent } from './view-user/view-user.component';
     MatListModule,
     MatDialogModule,
     MatRadioModule,
+    PdfViewerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
