@@ -86,21 +86,21 @@ export class AnnoncesVenteListComponent implements OnInit {
     this.AnnonceCurrent = this.Annoncesvehicule;
    }
 
-   onSearch(modele: string, marque: string, carburant: string) {
-    if (marque === 'Indifferent' || modele === 'Indifferent' || carburant === 'Indifferent') {
-      this.AnnonceCurrent = this.Annoncesvehicule;
-    }
-    if (marque !== 'Indifferent') {
-      this.AnnonceCurrent = _.filter(this.AnnonceCurrent, ['marqueVoiture', marque]);
-    }
-    if (modele !== 'Indifferent') {
-     this.AnnonceCurrent = _.filter(this.AnnonceCurrent, ['modeleVoiture', modele]);
-    }
-    if (carburant !== 'Indifferent') {
-     this.AnnonceCurrent = _.filter(this.AnnonceCurrent, ['carburant', carburant]);
-    }
-    console.log(this.AnnonceCurrent);
-}
+  onSearch(modele: string, marque: string, carburant: string) {
+      if (marque === 'Indifferent' || modele === 'Indifferent' || carburant === 'Indifferent') {
+        this.AnnonceCurrent = this.Annoncesvehicule;
+      }
+      if (marque !== 'Indifferent') {
+        this.AnnonceCurrent = _.filter(this.AnnonceCurrent, ['marqueVoiture', marque]);
+      }
+      if (modele !== 'Indifferent') {
+       this.AnnonceCurrent = _.filter(this.AnnonceCurrent, ['modeleVoiture', modele]);
+      }
+      if (carburant !== 'Indifferent') {
+       this.AnnonceCurrent = _.filter(this.AnnonceCurrent, ['carburant', carburant]);
+      }
+      console.log(this.AnnonceCurrent);
+  }
 
   ngOnInit() {
   }

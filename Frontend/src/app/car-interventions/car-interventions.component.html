@@ -1,10 +1,10 @@
-<h3>Entretiens</h3>
-  <h5>Voiture cedric 3 - Toyota Yaris (AA-XXX-BB)</h5>
-
+<h3>Entretiens</h3> 
+  <h4 *ngFor="let c of car"> {{c.libelleVoiture}} </h4> 
+  <h5>Immatriculation: <b>{{immatriculation}}</b></h5>
   <div class="container">
   <div class="row">
   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AjouterModalCenter"><i class="fas fa-plus-square"></i> Ajouter entretien</button>
-  
+
   <table class="table">
     <thead class="thead-dark">
       <tr>
@@ -27,7 +27,7 @@
       </tr>
     </tbody>
   </table>
-  
+
   <table class="table">
     <thead class="thead-light">
       <tr>
@@ -36,21 +36,21 @@
         <th scope="col">Ancien propriétaire</th>
       </tr>
     </thead>
-    <tbody *ngFor="let int of AncienInter">
+    <tbody>
       <tr>
-        <th scope="row">{{ int.idIntervention }}</th>
-        <td>{{ int.dateFinIntervention | date:'d/MM/yy' }}</td>
-        <td>{{ int.libelleIntervention }}</td>
+        <th scope="row"></th>
+        <td></td>
+        <td></td>
         <td width="300">
           <a class="btn btn-secondary" data-toggle="modal" data-target="#JustificatifCenter"><i class="fas fa-eye"></i> Justificatif</a>&nbsp;
           <a class="btn btn-danger" data-toggle="modal" data-target="#SupprimerAncienCenter"><i class="fas fa-trash-alt"></i> Supprimer</a></td>
       </tr> 
     </tbody>
   </table>
-  
-  
-  
-  
+
+
+
+
   <!-- Modal ajouter-->
   <div class="modal fade" id="AjouterModalCenter" tabindex="-1" role="dialog" aria-labelledby="AjouterModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -62,33 +62,44 @@
           </button>
         </div>
         <div class="modal-body">
-          <form>
+          <form (ngSubmit)="onSubmit(f)" #f="ngForm">
             <div class="form-group">
-              <label for="name" class="col-form-label">Nom:</label>
-              <input type="text" class="form-control">
+              <label class="col-form-label">Nom de l'intervention</label>
+              <input placeholder="Ex: Amortisseur avant gauche réparé" type="text" class="form-control" id="nomIntervention" name="nomIntervention" ngModel required>
             </div>
-            <div class="input-group date" data-provide="datepicker">
-                <label for="name" class="col-form-label">Date:</label>
-                <input type="date">
-                <div class="input-group-addon">
-                  <span class="glyphicon glyphicon-th"></span>
-                </div>
-            </div>
+
             <div class="form-group">
-              <label for="message-text" class="col-form-label">Justificatif:</label>&nbsp;&nbsp;
-              <input (change)="onFileSelected()" type="file" id="file"> 
+                <label for="exampleFormControlSelect1">Type de panne</label>
+                <select class="form-control" id="panne" name="panne">
+                  <option *ngFor="let i of inter">{{i.libelleTypePanne}}</option>
+                </select>
+              </div>
+
+            <div class="input-group date">
+                <label class="col-form-label">Date de debut</label>&nbsp;&nbsp;<br/><br/>
+                <input type="date" class="form-control" id="dateDebut" name="dateDebut" ngModel>
+            </div>
+
+            <div class="input-group date">
+                <label class="col-form-label">Date de fin</label>&nbsp;&nbsp;<br/><br/>
+                <input type="date" class="form-control" id="dateFin" name="dateFin" ngModel>
+            </div>
+
+            <div class="form-group">
+              <label class="col-form-label">Justificatif</label><br/>
+              <input class="btn btn-info" role="button" type="file" name="photo" ng2FileSelect [uploader]="uploader"  />
             </div>
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-          <button type="button" class="btn btn-primary" (click)="addIntervention()" data-dismiss="modal">Enregistrer</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+          <button type="submit" class="btn btn-primary" data-dismiss="modal">Enregistrer</button>
         </div>
       </div>
     </div>
   </div>
-  
-  
+
+
   <!-- Modal modifier -->
   <div class="modal fade" id="ModifierCenter" tabindex="-1" role="dialog" aria-labelledby="ModifierCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -114,7 +125,7 @@
             </div>
             <div class="form-group">
               <label for="message-text" class="col-form-label">Justificatif:</label>&nbsp;&nbsp;
-              <input (change)="onFileSelected()" type="file" id="file">  
+              <input type="file" name="photo" ng2FileSelect [uploader]="uploader" />  
             </div>
           </form>
         </div>
@@ -125,7 +136,7 @@
       </div>
     </div>
   </div>
-  
+
   <!-- Modal supprimer -->
   <div class="modal fade" id="SupprimerCenter" tabindex="-1" role="dialog" aria-labelledby="SupprimerCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -147,28 +158,9 @@
     </div>
   </div>
 
-  <!-- Modal supprimer Ancien -->
-  <div class="modal fade" id="SupprimerAncienCenter" tabindex="-1" role="dialog" aria-labelledby="SupprimerAncienCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="SupprimerAncienCenterTitle">Interventions</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <p>Êtes vous sûr de vouloir supprimer ?</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
-          <button type="button" class="btn btn-success" (click)="deleteAncienIntervention(interv)" data-dismiss="modal">Confirmer</button>
-        </div>
-      </div>
-    </div>
-  </div>
   
-  
+
+
 <!-- Modal justificatif -->
 <div class="modal fade" id="JustificatifCenter" tabindex="-1" role="dialog" aria-labelledby="JustificatifCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -184,11 +176,10 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-          <button type="button" class="btn btn-success">Telecharger</button>
         </div>
       </div>
     </div>
   </div>
 
   </div>
-  </div>
+  </div> 

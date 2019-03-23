@@ -18,9 +18,14 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { CarInterventionsComponent } from './car-interventions/car-interventions.component';
 import { CarListComponent } from './car-list/car-list.component';
 import { CarCreationComponent } from './car-creation/car-creation.component';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { CarViewComponent } from './car-view/car-view.component';
+import { FileSelectDirective } from 'ng2-file-upload';
+import { ViewUserComponent } from './view-user/view-user.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { CarRequestInterventionsComponent } from './car-request-interventions/car-request-interventions.component';
+import { ParametreVenteComponent } from './parametre-vente/parametre-vente.component';
+import { VenteVehiculeComponent } from './vente-vehicule/vente-vehicule.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +43,11 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
     CarListComponent,
     CarCreationComponent,
     CarViewComponent,
+    FileSelectDirective,
+    ViewUserComponent,
+    CarRequestInterventionsComponent,
+    ParametreVenteComponent,
+    VenteVehiculeComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,7 +59,7 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
     MatListModule,
     MatDialogModule,
     MatRadioModule,
-    PdfViewerModule
+    PdfViewerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

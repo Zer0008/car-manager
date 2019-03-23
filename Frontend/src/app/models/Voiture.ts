@@ -9,7 +9,7 @@ export class vehicule  {
     justificatif: string;
     photo: string;
     moteur: string;
-    carburant: string;
+    carburant:string;
     transmisssion: string;
     mesure: string;
     boiteVitesse: string;

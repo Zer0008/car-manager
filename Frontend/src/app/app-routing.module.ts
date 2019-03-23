@@ -10,6 +10,10 @@ import { NotificationComponent } from './notification/notification.component';
 import { CarCreationComponent } from './car-creation/car-creation.component';
 import { CarInterventionsComponent } from './car-interventions/car-interventions.component';
 import { AnnoncesInterventionListComponent } from './annonces-intervention-list/annonces-intervention-list.component';
+import { ViewUserComponent} from './view-user/view-user.component';
+import { CarRequestInterventionsComponent } from './car-request-interventions/car-request-interventions.component';
+import { ParametreVenteComponent } from './parametre-vente/parametre-vente.component';
+import { VenteVehiculeComponent } from './vente-vehicule/vente-vehicule.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -19,10 +23,14 @@ const routes: Routes = [
   { path: 'connexion', component: ConnexionComponent },
   { path: 'inscription', component: InscriptionComponent },
   { path: 'notification', component: NotificationComponent },
-  { path:  'vehicules', component: CarListComponent },
+  { path: 'vehicules', component: CarListComponent },
   { path: 'vehicules/new', component: CarCreationComponent},
-  {path: 'vehicule/:id', component: CarViewComponent },
-  { path: 'vehicule/:id/interventions', component: CarInterventionsComponent}
+  { path: 'vehicule/:id', component: CarViewComponent },
+  { path: 'profile', component: ViewUserComponent},
+  { path: 'vehicule/:id/interventions', component: CarInterventionsComponent},
+  { path: 'vehicule/:id/requestInterventions', component: CarRequestInterventionsComponent},
+  { path: 'vehicule/:id/parametre-vente', component: ParametreVenteComponent},
+  { path: 'vehicule/:id/vente-vehicule', component: VenteVehiculeComponent}
 ];
 
 @NgModule({

@@ -1,116 +1,73 @@
-<section class="container">
+<h2>Annonces d'occasion</h2>
+<p>Vous pouvez ici rechercher toutes les demandes d'intervention ent filtrant ou non les recherches
+  Vous avez notamment la possibilité de consulter les coordonnées du propriétaire afin de lui proposer un devis</p><br/>
+<div id="filtre">
+  <h4>Filtres</h4>
+  <form>
+    <div class="form-row">
+      <div class="col">
+        <label for="marque">Marque </label>
+        <select #marque class="custom-select" name="marque" id="marque">
+          <option selected>Indifferent</option>
+          <option value="Peugeot">Peugeot</option>
+          <option value="Mercedes">Mercedes</option>
+          <option value="Citroen">Citroen</option>
+          <option value="Renault">Renault</option>
+        </select>
+      </div>
+      <div class="col">
+        <label for="lieu">Ou</label>
+        <input #lieu type="text" class="form-control" id="lieu" name="lieu"  placeholder="Ville, code postal, ...">
+      </div>
+      <div class="col">
+        <label for="modele">Modèle </label>
+        <select #modele class="custom-select" name="modele" id="modele">
+          <option selected>Indifferent</option>
+          <option value="SUV">SUV</option>
+          <option value="Citadine">Citadine</option>
+          <option value="4x4">4x4</option>
+        </select>
+      </div>
+    </div><br/>
+  </form>
+  <button type="button" class="btn btn-primary" (click)="onSearch(marque.value, modele.value,lieu.value)"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Rechercher </button>
+</div><br/>
 
-  <div class="row well">
-    <div class="col-sm-6"> <h5> Filtres</h5></div>
-    <br>
-    <div class="row">
-      <div class="col-sm-4">
-        <div class="input-group">
-          <label class="col-sm-5 col-form-label">Marque: </label>
-          <input type="text" class="form-control" placeholder="Marques">
-          <div class="input-group-append">
-            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" ></a>
-              <a class="dropdown-item" >ACTION</a>
-              <a class="dropdown-item" >action2</a>
+<div class="contenu" *ngFor="let pannes of Intervention">
+  <div class="row">
+
+    <div class="col-md-8 ">
+      <h4>{{ pannes.marqueVoiture }} {{ pannes.modeleVoiture }}</h4>
+      <p>{{ pannes .finition }}</p>
+      <p>{{pannes.datePublication}}</p>
+      <h6>{{ pannes.ville }} ({{pannes.codePostale}})</h6>
+    </div>
+    <div class="col-md-4">
+      <button class="btn btn-primary btn-sm btn-block"  role="button">Consulter coordonnées</button><br/>
+      <button type="button" class="btn btn-success btn-sm btn-block "  data-toggle="modal" data-target="#myModal">Voir la demande</button>
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <div class="row">
+                <div class="col-md-12 ">
+                <h5 class="modal-title" id="exampleModalLongTitle">{{pannes.libelleAnnonce}}</h5>
+              </div>
+              </div>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p> {{pannes.descriptifAnnonce}}</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
           </div>
         </div>
-
       </div>
-
-
-      <div class="col-sm-4">
-        <div class="input-group">
-          <label  class="col-sm-3 col-form-label">Ou: </label>
-          <input type="text" class="form-control" placeholder="ville, N°dpt" aria-label="Text input with dropdown button">
-          <div class="input-group-append">
-            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="#"></a>
-              <a class="dropdown-item" href="#">ACTION</a>
-              <a class="dropdown-item" href="#">action2</a>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-
-      <div class="col-sm-4">
-        <div class="input-group">
-          <label  class="col-sm-5 col-form-label">Modèle: </label>
-          <input type="text" class="form-control" placeholder="Modèle">
-          <div class="input-group-append">
-            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="#"></a>
-              <a class="dropdown-item" href="#">ACTION</a>
-              <a class="dropdown-item" href="#">action2</a>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-    <div class="col-sm-6 ">
-      <p class="text-right">
-        <a href="#">
-          <span class="d-none d-sm-inline"> + de critères </span>
-        </a>
-      </p>
-    </div>
-    <br>
-
-      <div class="col-sm-10">
-        <button type="submit" class="btn btn-primary btn-sm btn-block">Rechercher</button>
-      </div>
-    </div>
-
-  <br>
-  <br>
-  <div class="row well">
-
-    <div class="col-sm-12">
-
-
-      <div class="row">
-        <div class="col-6"><h5>Peugeot 3008</h5></div>
-      </div>
-      <h6> 1.6 HDi 110 ch fap</h6>
-      <b><p>Limoges (87000) </p></b>
-      <div class="row">
-        <div class="col-8"><p> peugeot 3008.....</p></div>
-        <div class="col-4"> <a class="btn btn-primary btn-sm btn-block" href="#" role="button">Consulter coordonnées</a> </div>
-      </div>
-      <div class="row">
-        <div class="col-8"><p> </p></div>
-        <div class="col-4"> <a class="btn btn-success btn-sm btn-block" href="#" role="button">Voir la demande</a>  </div>
-      </div>
-
     </div>
   </div>
 
-  <div class="row well">
-
-    <div class="col-sm-12">
-
-
-      <div class="row">
-        <div class="col-6"><h5>Peugeot 3008</h5></div>
-      </div>
-      <h6> 1.6 HDi 110 ch fap</h6>
-      <b><p>Limoges (87000) </p></b>
-      <div class="row">
-        <div class="col-8"><p> peugeot 3008.....</p></div>
-        <div class="col-4"> <a class="btn btn-primary btn-sm btn-block" href="#" role="button">Consulter coordonnées</a> </div>
-      </div>
-      <div class="row">
-        <div class="col-8"><p> </p></div>
-        <div class="col-4"> <a class="btn btn-success btn-sm btn-block" href="#" role="button">Voir la demande</a>  </div>
-      </div>
-
-    </div>
-  </div>
-</section>
+</div>
