@@ -11,6 +11,7 @@ import { CarCreationComponent } from './car-creation/car-creation.component';
 import { CarInterventionsComponent } from './car-interventions/car-interventions.component';
 import { AnnoncesInterventionListComponent } from './annonces-intervention-list/annonces-intervention-list.component';
 import {ViewUserComponent} from './view-user/view-user.component';
+import {VenteVehiculeComponent} from "./vente-vehicule/vente-vehicule.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -24,7 +25,8 @@ const routes: Routes = [
   { path: 'vehicules/new', component: CarCreationComponent},
   {path: 'vehicule/:id', component: CarViewComponent },
   {path: 'profile', component: ViewUserComponent} ,
-  { path: 'vehicule/:id/interventions', component: CarInterventionsComponent}
+  { path: 'vehicule/:id/interventions', component: CarInterventionsComponent},
+  { path: 'vente-vehicule', component: VenteVehiculeComponent }
 ];
 
 @NgModule({

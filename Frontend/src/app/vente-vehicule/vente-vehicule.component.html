@@ -1,0 +1,44 @@
+<br>
+<h2>Vente d'un véhicule</h2>
+<br>
+<div class="row">
+  <div class="col-md-9">
+    <h4>Libellé Voiture 1 - Toyota Yaris (AA-XXX-BB)</h4>
+  </div>
+  <div class="col-md-3">
+    <button type="button" class="btn btn-danger">Annuler</button>
+  </div>
+</div>
+<hr><br>
+<div>
+  <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <div class="form-group row">
+      <label for="complementInfos" class="col-md-4" col-form-label>Complément d'informations au nouveau propriétaire</label>
+      <div class="col-md-8">
+        <textarea class="form-control" name="complementInfos" id="complementInfos" rows="3" ngModel></textarea>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="price" class="col-md-4 col-form-label">Prix</label>
+      <div class="col-md-8">
+        <input type="text" id="price" name="price" ngModel required>&nbsp; €
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="mailNewProp" class="col-md-4 col-form-label">Email du noueau propriétaire</label>
+      <div class="col-md-8">
+        <input type="email" id="mailNewProp" name="mailNewProp" ngModel required>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="justificatifVente" class="col-md-4 col-form-label">Justificatif de vente</label>
+      <div class="col-md-8">
+        <input type="file" (change)="onSelect()" id="justificatifVente" name="justificatifVente" ngModel>&emsp;
+        <button class="btn btn-primary btn-sm" type="button">Ajouter</button>
+      </div>
+    </div>
+    <div class="form-group row">
+      <button type="submit" class="btn btn-success">Valider la vente</button>
+    </div>
+  </form>
+</div>

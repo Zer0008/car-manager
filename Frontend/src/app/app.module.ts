@@ -23,6 +23,7 @@ import { CarViewComponent } from './car-view/car-view.component';
 import { FileSelectDirective } from 'ng2-file-upload';
 import { ViewUserComponent } from './view-user/view-user.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { VenteVehiculeComponent } from './vente-vehicule/vente-vehicule.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
     CarViewComponent,
     FileSelectDirective,
     ViewUserComponent,
+    VenteVehiculeComponent,
   ],
   imports: [
     BrowserModule,
