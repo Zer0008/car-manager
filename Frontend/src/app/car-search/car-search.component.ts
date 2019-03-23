@@ -42,9 +42,38 @@ export class CarSearchComponent implements OnInit {
   displaymodal= false;
   fini: string;
   res: any;
+  voiture: any;
+
   constructor(public Carservice: CarSearchService, public dialog: MatDialog) {}
 
   ngOnInit() {
+    this.voiture = {
+      immatriculation: '',
+      libelleVoiture: '',
+      marqueVoiture: '',
+      modeleVoiture: '',
+      anneeCirculation: '',
+      finition: '',
+      justificatif: '',
+      photo: '',
+      carburant: '',
+      boiteVitesse: '',
+      moteur_type: '',
+      moteur_cylindree: '',
+      moteur_emissionC02: '',
+      transmission_type: '',
+      transmission_nbRapports: '',
+      transmission_pneumatique: '',
+      mesures_0a100: '',
+      mesures_masseAVide: '',
+      mesures_capaciteNomCoffre: '',
+      mesures_capaciteMaxCoffre: '',
+      consommation_urbaine: '',
+      consommation_extraUrbaine: '',
+      statut: 'en vente',
+      visibilite: '',
+      isActive: true
+    }
     this.matriculeform = new FormGroup({
       matricule: new FormControl('', [Validators.required, Validators.minLength(9), Validators.maxLength(9)]),
     });
@@ -89,19 +118,34 @@ export class CarSearchComponent implements OnInit {
   Onsavematricule(){
    console.log(this.fini);
    this.Carservice.getcarview(this.matriculeform.value.matricule, this.fini).subscribe(res => {
-     console.log (res);
+    this.voiture.marqueVoiture = res.marqueVoiture;
+    this.voiture.modeleVoiture = res.modeleVoiture;
+    this.voiture.anneeCirculation = res.anneeCirculation;
+    this.voiture.carburant = res.carburant;
+    this.voiture.boiteVitesse = res.boitevitesse;
+    this.voiture.moteur_type = res.moteur_type;
+    this.voiture.transmission_type = res.transmission_type;
+     console.log (this.voiture);
    });
  }
  Onsavemarque() {
   console.log(this.fini);
   this.Carservice.getcarviewmarque(this.carform.value.marque, this.carform.value.modele, this.carform.value.annee, this.fini)
   .subscribe(res => {
-    console.log (res);
+    this.voiture.marqueVoiture = res.marqueVoiture;
+    this.voiture.modeleVoiture = res.modeleVoiture;
+    this.voiture.anneeCirculation = res.anneeCirculation;
+    this.voiture.carburant = res.carburant;
+    this.voiture.boiteVitesse = res.boitevitesse;
+    this.voiture.moteur_type = res.moteur_type;
+    this.voiture.transmission_type = res.transmission_type;
+    console.log (this.voiture);
   });
 }
   openviewcar(matricule: string, finition: string){
     this.Carservice.getcarview(matricule, finition).subscribe(res => {
       console.log(res);
+
   });
 }
 
