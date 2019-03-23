@@ -1,32 +1,38 @@
 var express = require('express');
 var router = express.Router();
-var bodyParser = require('body-parser');
-router.use(bodyParser.json());
 var User = require('./User');
 
-router.get('/:id',function (req,res) {
-    id = req.params['id'];
-    User.getUser(id, function (err,rows) {
-        if(err) {
-            res.status(400).json(err);
-        }
-        else
-        {
-            res.json(rows);
-        }
-    })
-});
-
-router.post('/', function (req,res) {
-    User.createUser(req.body,function(err,count){
-        if(err)
-        {
-            res.status(400).json(err);
-        }
-        else{
+router.put('/',function (req,res) {
+   let email = req.query.email;
+   console.log(email);
+     User.updateUser(req.body, email, function(err,count){
+         if (err){
+             console.log(err);
+             res.status(400).json(err);
+         }
+         console.log(count);
+        console.log('update ' + email);
+        count = JSON.parse(JSON.stringify(count));
+        key = Object.keys(count[0])[0];
+        console.log(count[0][key]);
+        count = count[0][key];
+        if(count != 0){
             res.json(req.body);
+        } else {
+            res.json({
+                    "idUser": null,
+                    "email": null,
+                    "telephone":  null,
+                    "numeroRue": null,
+                    "libelleRue": null,
+                    "codePostal": null,
+                    "ville": null,
+                    "nom": null,
+                    "statut": null
+            });
         }
     });
 });
+
 
 module.exports = router;

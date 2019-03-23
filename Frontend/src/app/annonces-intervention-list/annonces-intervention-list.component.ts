@@ -10,7 +10,7 @@ export class AnnoncesInterventionListComponent implements OnInit {
     Intervention: any;
    panne = [
     {
-      idVehicule: '1',
+      idVehicule: 'toto',
       marqueVoiture: 'Peugeot',
       modeleVoiture: 'SUV',
       finition: '1.6 HDi 110ch FAP Business Pack',
@@ -22,7 +22,7 @@ export class AnnoncesInterventionListComponent implements OnInit {
     },
 
     {
-      idVehicule: '2',
+      idVehicule: 'tata',
       marqueVoiture: 'Mercedes',
       modeleVoiture: '4x4',
       finition: '1.6 HDi 110ch FAP Business Pack',
