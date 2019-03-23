@@ -16,7 +16,25 @@ const test  = {
 router.post('/register', function (req,res) {
     console.log(req.body);
     User.createUser(req.body,function(err,count){
-        res.json(req.body);
+        count = JSON.parse(JSON.stringify(count));
+        key = Object.keys(count[0])[0];
+        console.log(count[0][key]);
+        count = count[0][key];
+        if(count != 0){
+            res.json(req.body);
+        } else {
+            res.json({
+                "idUser": null,
+                    "email": null,
+                    "telephone":  null,
+                    "numeroRue": null,
+                    "libelleRue": null,
+                    "codePostal": null,
+                    "ville": null,
+                    "nom": null,
+                    "statut": null
+            });
+        }
     });
 });
 
@@ -34,13 +52,13 @@ router.post('/signin', function(req, res) {
                 {
                     "idUser": result[0][0].idUser,
                     "email": result[0][0].email,
-                    "password": result[0][0].password,
                     "telephone":  result[0][0].telephone,
                     "numeroRue": result[0][0].numeroRue,
                     "libelleRue": result[0][0].libelleRue,
                     "codePostal": result[0][0].codePostal,
                     "ville": result[0][0].ville,
-                    "nom": result[0][0].nom
+                    "nom": result[0][0].nom,
+                    "statut": req.body.statut
                 } 
             );
          }

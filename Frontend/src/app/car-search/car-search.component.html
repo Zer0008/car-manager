@@ -1,4 +1,3 @@
-
 <br/>
 <div class="jumbotron">
     <h2>CarLife vous accompagne...</h2>
@@ -8,7 +7,8 @@
                   <div class="row">
                     
                         <div class="col-lg-6">
-                            <form [formGroup]="matriculeform" (ngSubmit)=" OnSearchbymatricule()" [ngClass]="{ 'is-invalid': submittedm && m.matricule.errors}">   
+                            <form [formGroup]="matriculeform" (ngSubmit)=" OnSearchbymatricule()" [ngClass]="{ 'is-invalid': submittedm && m.matricule.errors}">
+                                
                                 <div class="form-group">
                                   <label>Immatriculation</label>
                                   <input placeholder="xx-yyy-zz" type="text" class="form-control" formControlName="matricule" [ngClass]="{ 'is-invalid': submittedm && m.matricule.errors  }"/>
@@ -52,7 +52,7 @@
                                           </select>
                                         </div>
                                        <div class="form-group">
-                                        <button [disabled]="loading"   class="btn btn-primary" data-toggle="modal" data-target="#ModalMarque">Rechercher</button>
+                                        <button  class="btn btn-primary" data-toggle="modal" data-target="#ModalMarque">Rechercher</button>
                                        </div>
                                 </form>
                          </div>
@@ -121,6 +121,3 @@
     </div>
   
 </div> 
- 
-
-                           

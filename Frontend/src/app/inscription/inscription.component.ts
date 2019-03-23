@@ -13,6 +13,7 @@ export class InscriptionComponent implements OnInit {
   registerForm: FormGroup;
   submitted = false;
   currentUser: User;
+  message: string;
 
   constructor(
      private formBuilder: FormBuilder,
@@ -65,8 +66,14 @@ export class InscriptionComponent implements OnInit {
       console.log(user);
       this.authentificationservice.createUser(user).subscribe(
         createdUser => {
-          console.log(createdUser.nom + ' is connected');
-          this.router.navigateByUrl('/home');
+           if (createdUser.email != null ) {
+            console.log(createdUser.nom + ' is connected');
+            this.message = undefined ;
+            this.router.navigateByUrl('/home');
+           } else {
+             this.message = 'Il existe deja un utilisateur avec ce mail';
+             window.scrollTo(0, 0);
+           }
         },
         err => console.log(err),
       );

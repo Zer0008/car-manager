@@ -45,6 +45,7 @@ export class ConnexionComponent implements OnInit {
         (user) => {
           if (user.email != null) {
             this.auth = true;
+            this.authentificationservice.setUser(user);
             this.router.navigateByUrl('/home');
           } else {
             this.auth = false;
@@ -61,6 +62,6 @@ export class ConnexionComponent implements OnInit {
     }
   }
   gotoRegister() {
-    this.router.navigateByUrl("/inscription");
+    this.router.navigateByUrl('/inscription');
   }
 }

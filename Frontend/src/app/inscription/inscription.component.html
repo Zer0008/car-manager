@@ -1,5 +1,11 @@
 <br/>
 <div class="jumbotron">
+        <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="message">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <strong>{{message}}</strong> 
+              </div>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -10,7 +16,7 @@
                             <label>Name</label>
                             <input type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
                             <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
-                                <div *ngIf="f.firstName.errors.required">First Name is required</div>
+                                <div *ngIf="f.firstName.errors.required">Npm requis</div>
                             </div>
                         </div>
                     </div>
@@ -19,8 +25,8 @@
                             <label>Email</label>
                             <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
                             <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-                                <div *ngIf="f.email.errors.required">Email is required</div>
-                                <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                                <div *ngIf="f.email.errors.required">email requis</div>
+                                <div *ngIf="f.email.errors.email">email non valide </div>
                             </div>
                         </div>
                     </div>
@@ -29,8 +35,8 @@
                             <label>Password</label>
                             <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
                             <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                                <div *ngIf="f.password.errors.required">Password is required</div>
-                                <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+                                <div *ngIf="f.password.errors.required">mot de passe requis</div>
+                                <div *ngIf="f.password.errors.minlength">mot de passe avec 6 caracteres minimum</div>
                             </div>
                         </div>
                     </div>
@@ -39,7 +45,7 @@
                             <label>Telphone</label>
                             <input type="text" formControlName="telephone" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.telephone.errors }" />
                             <div *ngIf="submitted && f.telephone.errors" class="invalid-feedback">
-                                <div *ngIf="f.telephone.errors.required">First Telephone is required</div>
+                                <div *ngIf="f.telephone.errors.required">Numero de telephone requis</div>
                             </div>
                         </div>
                     </div>
@@ -48,7 +54,7 @@
                             <label>Numero rue</label>
                             <input type="text" formControlName="numeroRue" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.numeroRue.errors }" />
                             <div *ngIf="submitted && f.numeroRue.errors" class="invalid-feedback">
-                                <div *ngIf="f.numeroRue.errors.required">First street number is required</div>
+                                <div *ngIf="f.numeroRue.errors.required">Numero de rue requis</div>
                             </div>
                         </div>
                     </div>
@@ -57,7 +63,7 @@
                             <label>Libelle Rue</label>
                             <input type="text" formControlName="libelleRue" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.libelleRue.errors }" />
                             <div *ngIf="submitted && f.libelleRue.errors" class="invalid-feedback">
-                                <div *ngIf="f.libelleRue.errors.required">Street name is required</div>
+                                <div *ngIf="f.libelleRue.errors.required">Nom de rue requis</div>
                             </div>
                         </div>
                     </div>
@@ -66,7 +72,7 @@
                             <label>Code Postal</label>
                             <input type="text" formControlName="codePostal" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.codePostal.errors }" />
                             <div *ngIf="submitted && f.codePostal.errors" class="invalid-feedback">
-                                <div *ngIf="f.codePostal.errors.required">codePostal is required</div>
+                                <div *ngIf="f.codePostal.errors.required">code Postal requis</div>
                             </div>
                         </div>
                     </div>
@@ -75,7 +81,7 @@
                             <label>Ville</label>
                             <input type="text" formControlName="ville" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.ville.errors }" />
                             <div *ngIf="submitted && f.ville.errors" class="invalid-feedback">
-                                <div *ngIf="f.ville.errors.required">town is required</div>
+                                <div *ngIf="f.ville.errors.required">ville requise</div>
                             </div>
                         </div>
                     </div>
@@ -87,7 +93,7 @@
                                         <option>Garage</option>
                                 </select>
                                 <div *ngIf="submitted && f.statut.errors" class="invalid-feedback">
-                                        <div *ngIf="f.statut.errors.required">statut  is required</div>
+                                        <div *ngIf="f.statut.errors.required">Etes vous Particulier ou Garagiste ?</div>
                                 </div>
                             </div>
                         </div>

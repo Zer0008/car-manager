@@ -1,33 +1,34 @@
-
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Subject } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { Observable, throwError } from 'rxjs';
-import { Car } from '../models/car';
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { environment } from '../../environments/environment';
 
-@Injectable({ providedIn: 'root' })
+const httpOptions = {
+  headers: new HttpHeaders(
+    {
+      'Content-Type': 'application/json' ,
+      'Access-Control-Allow-Origin': '*',
+    }
+  )
+};
 
-export class CarService {
-    private Cars: Car[] = [];
-    private CarsUpdated = new Subject<Car[]>();
+@Injectable({
+  providedIn: 'root'
+})
+export class CarSearchService {
+  private apiUrl =  environment.apiUrl;
+  constructor(private http: HttpClient) { }
 
-    constructor(private http: HttpClient) {}
+  getCarMatricule(matricule: string): any {
 
-
-    private productUrl = 'http://localhost:8080/api/';
-getCarMatricule(matricule: string){
-
-    return this.http.get('http://localhost:8080/api/?matricule=' + matricule);
+    return this.http.get(this.apiUrl + '/api-mock?matricule=' + matricule, httpOptions);
 }
-getCarMarque(marque: string,modele: string, annee: string){
-    return this.http.get('http://localhost:8080/api/?marque=' + marque + '&modele=' + modele + '&annee=' + annee);
+getCarMarque(marque: string, modele: string, annee: string): any {
+    return this.http.get(this.apiUrl + '/api-mock?marque=' + marque + '&modele=' + modele + '&annee=' + annee, httpOptions);
 }
-getcarview(matricule:string ,finition:string){
-    return this.http.get('http://localhost:8080/api/?matricule=' + matricule + '&finition=' + finition);
+getcarview(matricule: string, finition: string): any {
+    return this.http.get(this.apiUrl + '/api-mock?matricule=' + matricule + '&finition=' + finition, httpOptions);
 }
-getcarviewmarque(marque: string,modele: string, annee: string, finition: string) {
-    return this.http.get('http://localhost:8080/api/?marque=' + marque + '&modele=' + modele + '&annee=' + annee + '&finition=' + finition);
+getcarviewmarque(marque: string, modele: string, annee: string, finition: string): any {
+    return this.http.get(this.apiUrl + '/api-mock?marque=' + marque + '&modele=' + modele + '&annee=' + annee + '&finition=' + finition, httpOptions);
 }
-
 }

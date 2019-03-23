@@ -1,11 +1,11 @@
 import { MatListModule } from '@angular/material/list';
+import { MatDialogModule, MatRadioModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
 import { PubComponent } from './pub/pub.component';
 import { AnnoncesVenteListComponent } from './annonces-vente-list/annonces-vente-list.component';
 import { ConnexionComponent } from './connexion/connexion.component';
@@ -19,13 +19,14 @@ import { CarInterventionsComponent } from './car-interventions/car-interventions
 import { CarListComponent } from './car-list/car-list.component';
 import { CarCreationComponent } from './car-creation/car-creation.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { MatDialogModule, MatRadioModule } from '@angular/material';
+import { CarViewComponent } from './car-view/car-view.component';
 import { FileSelectDirective } from 'ng2-file-upload';
+import { ViewUserComponent } from './view-user/view-user.component';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
     PubComponent,
     AnnoncesVenteListComponent,
     ConnexionComponent,
@@ -38,8 +39,9 @@ import { FileSelectDirective } from 'ng2-file-upload';
     CarInterventionsComponent,
     CarListComponent,
     CarCreationComponent,
-    FileSelectDirective
-
+    CarViewComponent,
+    FileSelectDirective,
+    ViewUserComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,7 +52,8 @@ import { FileSelectDirective } from 'ng2-file-upload';
     BrowserAnimationsModule,
     MatListModule,
     MatDialogModule,
-    MatRadioModule
+    MatRadioModule,
+    PdfViewerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

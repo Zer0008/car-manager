@@ -7,7 +7,7 @@
             <div class="col-md-12">
                   <div class="row">
                         <div class="col-lg-4">
-                            <form [formGroup]="matriculeform" (ngSubmit)=" OnSearchbymatricule()" [ngClass]="{ 'is-invalid': submittedm && m.matricule.errors}"> 
+                          <form [formGroup]="matriculeform" (ngSubmit)=" OnSearchbymatricule()" [ngClass]="{ 'is-invalid': submittedm && m.matricule.errors}">   
                                 <div class="form-group">
                                   <label>Immatriculation</label>
                                   <input placeholder="xx-yyy-zz" type="text" class="form-control" formControlName="matricule" [ngClass]="{ 'is-invalid': submittedm && m.matricule.errors  }"/>
@@ -36,39 +36,39 @@
                 <table class="table">
                         <thead class="thead-dark">
                           <tr>
-                            
+
                             <th scope="col">Caractéristique</th>
                             <th scope="col">Valeur</th>
                           </tr>
                         </thead>
                         <tbody >
                           <tr>
-                            
+
                             <th scope="row">modèle</th>
                             <td>{{voiture.modele}}</td>
                           </tr>
                           <tr>
-                               
+
                                 <th scope="row">type</th>
                                 <td>{{voiture.Type}}</td>
                               </tr>
                            <tr>
-                                
+
                                 <th scope="row">Energie</th>
                                 <td>{{voiture.Energie}}</td>
                             </tr>
                             <tr>
-                                    
+
                                     <th scope="row">Puissance</th>
                                     <td>{{voiture.Puissance}}</td>
                             </tr>
                             <tr>
-                                    
+
                                     <th scope="row">Boite de vitesse</th>
                                     <td>{{voiture.Boite_vitesse}}</td>
                             </tr>
                             <tr>
-                                    
+
                                     <th scope="row">Vitesse maximale</th>
                                     <td>{{voiture.Vitesse_maximale}}</td>
                             </tr>
@@ -99,7 +99,7 @@
                         </div>
                  </form>
 
-                          
+
          </div>
     </div>
 </div>
@@ -130,4 +130,4 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> 

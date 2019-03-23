@@ -87,9 +87,18 @@ export class AnnoncesVenteListComponent implements OnInit {
    }
 
   onSearch(modele: string, marque: string, carburant: string) {
-      console.log(modele + ' ' + marque + ' ' + carburant);
-      console.log('la marque est : ' + marque);
-      this.AnnonceCurrent = _.filter(this.Annoncesvehicule, ['marqueVoiture', marque]);
+      if (marque === 'Indifferent' || modele === 'Indifferent' || carburant === 'Indifferent') {
+        this.AnnonceCurrent = this.Annoncesvehicule;
+      }
+      if (marque !== 'Indifferent') {
+        this.AnnonceCurrent = _.filter(this.AnnonceCurrent, ['marqueVoiture', marque]);
+      }
+      if (modele !== 'Indifferent') {
+       this.AnnonceCurrent = _.filter(this.AnnonceCurrent, ['modeleVoiture', modele]);
+      }
+      if (carburant !== 'Indifferent') {
+       this.AnnonceCurrent = _.filter(this.AnnonceCurrent, ['carburant', carburant]);
+      }
       console.log(this.AnnonceCurrent);
   }
 

@@ -1,9 +1,6 @@
+import { CarSearchService } from './../services/car-search.service';
 import { Component, OnInit } from '@angular/core';
-import { CarService} from '../services/car-search.service';
-import {vehicule} from '../models/Voiture';
-import {NgForm} from '@angular/forms';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { JsonPipe } from '@angular/common';
 import {MatDialog} from '@angular/material';
 
 
@@ -13,6 +10,7 @@ import {MatDialog} from '@angular/material';
   styleUrls: ['./car-search.component.css']
 })
 export class CarSearchComponent implements OnInit {
+
   marques: string[] = [
     'Renault',
     'Toyota',
@@ -44,7 +42,7 @@ export class CarSearchComponent implements OnInit {
   displaymodal= false;
   fini: string;
   res: any;
-  constructor(public Carservice: CarService,public dialog: MatDialog) {}
+  constructor(public Carservice: CarSearchService, public dialog: MatDialog) {}
 
   ngOnInit() {
     this.matriculeform = new FormGroup({
@@ -107,8 +105,4 @@ export class CarSearchComponent implements OnInit {
   });
 }
 
-
 }
-
-
-
