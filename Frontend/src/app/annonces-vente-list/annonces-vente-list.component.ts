@@ -1,15 +1,82 @@
-import { Component, OnInit } from '@angular/core';
+import { PagerService } from "./../services/pager.service";
+import { AnnoncesService } from "./../services/annonces.service";
+import { vehicule } from "./../models/Voiture";
+import { Component, OnInit } from "@angular/core";
+import * as _ from "lodash";
 
 @Component({
-  selector: 'app-annonces-vente-list',
-  templateUrl: './annonces-vente-list.component.html',
-  styleUrls: ['./annonces-vente-list.component.css']
+  selector: "app-annonces-vente-list",
+  templateUrl: "./annonces-vente-list.component.html",
+  styleUrls: ["./annonces-vente-list.component.css"]
 })
 export class AnnoncesVenteListComponent implements OnInit {
+  private allItems: any[];
 
-  constructor() { }
+  currentAllItems: any[];
 
-  ngOnInit() {
+  // pager object
+  pager: any = {};
+
+  // paged items
+  pagedItems: any[];
+
+  constructor(
+    private annoncesService: AnnoncesService,
+    private pagerService: PagerService
+  ) {}
+
+  onSearch(modele: string, marque: string, carburant: string) {
+    if (
+      marque === "Indifferent" ||
+      modele === "Indifferent" ||
+      carburant === "Indifferent"
+    ) {
+      this.currentAllItems = this.allItems;
+    }
+    if (marque !== "Indifferent") {
+      this.currentAllItems = _.filter(this.currentAllItems, [
+        "marqueVoiture",
+        marque
+      ]);
+    }
+    if (modele !== "Indifferent") {
+      this.currentAllItems = _.filter(this.currentAllItems, [
+        "modeleVoiture",
+        modele
+      ]);
+    }
+    if (carburant !== "Indifferent") {
+      this.currentAllItems = _.filter(this.currentAllItems, [
+        "carburant",
+        carburant
+      ]);
+    }
+    this.setPage(1);
+    //console.log(this.currentAllItems);
   }
 
+  ngOnInit() {
+    this.getAnnoncesVente();
+  }
+
+  getAnnoncesVente(): void {
+    this.annoncesService.getAnnoncesVente().subscribe(annoncesVente => {
+      this.allItems = annoncesVente;
+      this.currentAllItems = this.allItems;
+      console.log("annonces recuperees");
+      this.setPage(1);
+    });
+  }
+
+  setPage(page: number) {
+    // get pager object from service
+    this.pager = this.pagerService.getPager(this.currentAllItems.length, page);
+    console.log(this.pager);
+
+    // get current page of items
+    this.pagedItems = this.currentAllItems.slice(
+      this.pager.startIndex,
+      this.pager.endIndex + 1
+    );
+  }
 }

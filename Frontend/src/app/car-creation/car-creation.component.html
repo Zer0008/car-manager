@@ -1,0 +1,133 @@
+<br/>
+<div class="jumbotron">
+    <h2>Ajout voiture</h2>
+    <br/>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                  <div class="row">
+                        <div class="col-lg-4">
+                          <form [formGroup]="matriculeform" (ngSubmit)=" OnSearchbymatricule()" [ngClass]="{ 'is-invalid': submittedm && m.matricule.errors}">   
+                                <div class="form-group">
+                                  <label>Immatriculation</label>
+                                  <input placeholder="xx-yyy-zz" type="text" class="form-control" formControlName="matricule" [ngClass]="{ 'is-invalid': submittedm && m.matricule.errors  }"/>
+                                </div>
+                                <div class="form-group">
+                                    <button  class="btn btn-primary" data-toggle="modal" data-target="#ModalMatricule">Rechercher</button>
+                                </div>
+                            </form>
+
+                        </div>
+
+                         <div class="col-lg-6">  
+                                <label>Justificatif</label>
+                                <br/>
+                                <input type="file" name="photo" ng2FileSelect [uploader]="uploader" />
+                                <br/> <br/>
+                              <button type="button" class="btn btn-primary btn-s" 
+                                (click)="uploader.uploadAll()" 
+                                [disabled]="!uploader.getNotUploadedItems().length" >
+                                    Telecharger l'image
+                              </button>
+                        </div>
+                    </div>
+                </div>
+                <br/> <br/> <br/> 
+                <table class="table">
+                        <thead class="thead-dark">
+                          <tr>
+
+                            <th scope="col">Caractéristique</th>
+                            <th scope="col">Valeur</th>
+                          </tr>
+                        </thead>
+                        <tbody >
+                          <tr>
+
+                            <th scope="row">modèle</th>
+                            <td>{{voiture.modele}}</td>
+                          </tr>
+                          <tr>
+
+                                <th scope="row">type</th>
+                                <td>{{voiture.Type}}</td>
+                              </tr>
+                           <tr>
+
+                                <th scope="row">Energie</th>
+                                <td>{{voiture.Energie}}</td>
+                            </tr>
+                            <tr>
+
+                                    <th scope="row">Puissance</th>
+                                    <td>{{voiture.Puissance}}</td>
+                            </tr>
+                            <tr>
+
+                                    <th scope="row">Boite de vitesse</th>
+                                    <td>{{voiture.Boite_vitesse}}</td>
+                            </tr>
+                            <tr>
+
+                                    <th scope="row">Vitesse maximale</th>
+                                    <td>{{voiture.Vitesse_maximale}}</td>
+                            </tr>
+                            <tr>                                   
+                                    <th scope="row">Cons_moyenne</th>
+                                    <td>{{voiture.Cons_moyenne}}</td>
+                            </tr>  
+                            <tr>       
+                                    <th scope="row">Moteur</th>
+                                    <td>{{voiture.Moteur}}</td>
+                            </tr> 
+                            <tr>    
+                                    <th scope="row">Transmission</th>
+                                    <td >{{voiture.Transmission}}</td>
+                            </tr>  
+                        </tbody>
+                 </table>
+                 <br/> 
+                 <br/>
+                 <br/>
+                 <form [formGroup]="libelleform" (ngSubmit)=" Onregister()" [ngClass]="{ 'is-invalid': submittedm && m.matricule.errors}"> 
+                        <div class="form-group">
+                          <label>Libellé</label>
+                          <input placeholder="Voiture de Joel" type="text" class="form-control" formControlName="libelle" />
+                        </div>
+                        <div class="form-group">
+                            <button type="button" class="btn btn-success btn-s" >Enregistrer</button>
+                        </div>
+                 </form>
+
+
+         </div>
+    </div>
+</div>
+
+<!-- Modal matricule -->
+<div class="modal fade" id="ModalMatricule" tabindex="-1" role="dialog" aria-labelledby="ModalMatriculeTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="ModifierCenterTitle">{{modele}}</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <mat-dialog-content class="mat-typography">
+                    <h3>Seletioner la finition</h3>
+                          <mat-radio-group [(ngModel)] = "fini" class = "tp-radio-button">
+                          <mat-radio-button *ngFor="let f of finition"
+                          [value]="f" class = "tp-radio-button">
+                           {{f}}</mat-radio-button>
+                        </mat-radio-group >
+                  </mat-dialog-content>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+              <button type="button" class="btn btn-primary" (click)="Onsavematricule()" data-dismiss="modal">Enregistrer</button>
+            </div>
+          </div>
+        </div>
+      </div> 

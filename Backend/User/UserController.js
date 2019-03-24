@@ -34,5 +34,17 @@ router.put('/',function (req,res) {
     });
 });
 
+router.put('/restPassword',function(req, res){
+    let email = req.query.email;
+    let password = req.body.password; 
+    User.setPasswordUser(email, password, function(err, count){
+        if (err){
+            res.status(404).json(err);
+        } else {
+            res.json(req.body);
+        }
+    });
+});
+
 
 module.exports = router;

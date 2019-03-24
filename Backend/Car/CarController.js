@@ -16,6 +16,19 @@ router.get('/cars',function (req,res) {
     })
 });
 
+router.get('/car/:immatriculation',function (req,res) {
+    let immatriculation = req.params.immatriculation ;
+     Car.getVehicule(immatriculation, function (err,rows) {
+         if(err) {
+             res.status(400).json(err);
+         }
+         else
+         {
+             res.json(rows[0]);
+         }
+     })
+ });
+
 router.post('/cars',function(req,res){
     let email = req.query.email;
     Car.createCar(email, req.body, function(err,count){

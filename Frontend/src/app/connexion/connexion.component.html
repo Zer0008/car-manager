@@ -1,3 +1,34 @@
-<p>
-  Connexion works
-</p>
+<div id="logreg-forms">
+  <form class="form-signin" [formGroup]="registerForm" *ngIf="state == true" (ngSubmit)="onSubmit(inputEmail.value, inputPassword.value, inputStatut.value)"  >
+      <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Connexion - Espace client </h1>
+      <input type="email" #inputEmail id="inputEmail" class="form-control" placeholder="addresse mail" formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+      <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+        <div *ngIf="f.email.errors.required">login requis</div>
+      </div>
+      <br/><input type="password" #inputPassword  id="inputPassword" class="form-control" placeholder="Mot de passe" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+      <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+        <div *ngIf="f.password.errors.required">Mot de passe requis</div>
+      </div>
+      <br/><select #inputStatut id="inputStatut" class="form-control" required="">
+              <option>Particulier</option>
+              <option>Garage</option>
+      </select>
+      <div *ngIf="submitted && auth === false">
+        <div><span style="color: rgb(236, 112, 112)">Erreur login ou mot de passe</span></div>
+      </div>
+      <button class="btn btn-success btn-block" type="submit"><i class="fas fa-sign-in-alt"></i>Valider</button>
+      <button class="btn btn-danger btn-block" (click)="changeState()"  type="button">Mot de passe oublié ?</button>
+      <hr>
+      <!-- <p>Don't have an account!</p>  -->
+      <button class="btn btn-primary btn-block" (click)="gotoRegister()"  type="button" id="btn-signup"><i class="fas fa-user-plus"></i> Nouvel utilisateur ?</button>
+  </form>
+
+  <form action="/reset-password" *ngIf= "state == false">
+      <input type="email" id="resetEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+      <button class="btn btn-primary btn-block" type="submit">Reinitialiser le mot de passe</button>
+      <a (click)="changeState()" ><i class="fas fa-angle-left"></i> Back</a>
+  </form>
+    
+      <br>
+</div>
+      
