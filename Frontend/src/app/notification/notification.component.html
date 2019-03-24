@@ -1,3 +1,36 @@
-<p>
-  notification works!
-</p>
+<br/>
+<div *ngFor="let item of notifications" >
+  <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="item.statut == 'Important'">
+      <div class="row">
+          <div class="col-lg-7">
+              {{item.libelleNotification}} 
+          </div>
+          <div class="col-lg-3">
+              {{toDate(item.dateNotification)}}
+            </div>
+            <div class="col-lg-1 offset-lg-1">
+                <button type="button" class="btn btn-primary btn-sm">
+                    supprimer
+                  </button>
+            </div>
+        </div>
+  </div>
+  <div class="alert alert-warning alert-dismissible fade show" role="alert" *ngIf="item.statut == 'Warning'">
+    <div class="row">
+      <div class="col-lg-7">
+          {{item.libelleNotification}} 
+      </div>
+      <div class="col-lg-3">
+          {{toDate(item.dateNotification)}}
+        </div>
+        <div class="col-lg-1 offset-lg-1">
+            <button type="button" class="btn btn-primary btn-sm">
+                supprimer
+              </button>
+        </div>
+    </div>
+  </div>
+  <div *ngIf="notifications.length <=0" >
+    <h4>Aucune notification !</h4>
+  </div>
+</div>

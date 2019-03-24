@@ -1,3 +1,4 @@
+import { UserService } from './../services/user.service';
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { AuthentificationService } from "../services/authentification.service";
@@ -10,15 +11,20 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 })
 export class ConnexionComponent implements OnInit {
   state: boolean;
+  changePassword: boolean ;
   registerForm: FormGroup;
   submitted = false;
+  submittedReset = false ;
+  confirm = false ;
   auth: boolean;
   constructor(
     private router: Router,
     private authentificationservice: AuthentificationService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private userservice: UserService,
   ) {
     this.state = true;
+    this.changePassword = false ;
   }
 
   ngOnInit() {
@@ -61,7 +67,23 @@ export class ConnexionComponent implements OnInit {
       this.state = true;
     }
   }
+
   gotoRegister() {
     this.router.navigateByUrl('/inscription');
   }
+  
+  resetPassword(password: string, passwordReset: string, email: string) {
+    this.submittedReset = true;
+    if (password === passwordReset && password !== '') {
+      this.confirm = true ;
+      this.userservice.setPasswordUser(email, password).subscribe(
+        () => {
+          console.log('update User');
+          this.state = true;
+          this.changePassword = true ;
+        }
+      );
+    }
+  }
+
 }

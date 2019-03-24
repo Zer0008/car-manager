@@ -1,6 +1,7 @@
+import { environment } from './../../environments/environment';
 import { PagerService } from "./../services/pager.service";
 import { AnnoncesService } from "./../services/annonces.service";
-import { vehicule } from "./../models/Voiture";
+import { Vehicule } from "./../models/Voiture";
 import { Component, OnInit } from "@angular/core";
 import * as _ from "lodash";
 
@@ -23,7 +24,9 @@ export class AnnoncesVenteListComponent implements OnInit {
   constructor(
     private annoncesService: AnnoncesService,
     private pagerService: PagerService
-  ) {}
+  ) {
+    this.getAnnoncesVente();
+  }
 
   onSearch(modele: string, marque: string, carburant: string) {
     if (
@@ -56,7 +59,7 @@ export class AnnoncesVenteListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getAnnoncesVente();
+    
   }
 
   getAnnoncesVente(): void {
@@ -66,6 +69,14 @@ export class AnnoncesVenteListComponent implements OnInit {
       console.log("annonces recuperees");
       this.setPage(1);
     });
+  }
+
+  getImage(file: string): string {
+    if (file !== '') {
+      return environment.apiUrl + file;
+    } else {
+      return environment.apiUrl + '/uploads/photo/inconnu.jpg';
+    }
   }
 
   setPage(page: number) {
