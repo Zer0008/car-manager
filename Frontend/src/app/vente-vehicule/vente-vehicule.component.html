@@ -5,8 +5,8 @@
   <div class="col-md-9">
     <h4>Libellé Voiture 1 - Toyota Yaris (AA-XXX-BB)</h4>
   </div>
-  <div class="col-md-3">
-    <button type="button" class="btn btn-danger">Annuler</button>
+  <div class="col-md-1 offset-md-2">
+
   </div>
 </div>
 <hr><br>
@@ -34,11 +34,12 @@
       <label for="justificatifVente" class="col-md-4 col-form-label">Justificatif de vente</label>
       <div class="col-md-8">
         <input type="file" (change)="onSelect()" id="justificatifVente" name="justificatifVente" ngModel>&emsp;
-        <button class="btn btn-primary btn-sm" type="button">Ajouter</button>
       </div>
     </div>
+    <br>
     <div class="form-group row">
-      <button type="submit" class="btn btn-success">Valider la vente</button>
+      <button type="submit" class="btn btn-success" style="margin-left: 15px;">Valider la vente</button>
+      <button type="button" class="btn btn-danger" style="margin-left: 10px;">Annuler</button>
     </div>
   </form>
 </div>

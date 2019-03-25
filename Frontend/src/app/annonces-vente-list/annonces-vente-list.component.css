@@ -36,3 +36,4 @@ a {
 .media .stats span i{margin-right:7px; color:#4765AB;}
 .media .address{float:left; width:100%;font-size:14px; margin-top:5px; color:#888;}
 .media .fav-box{position:absolute; right:10px; font-size:20px; top:4px; color:#E74C3C;}
+.media .fav-box{cursor: pointer;}
