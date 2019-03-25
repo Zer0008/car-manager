@@ -83,11 +83,11 @@ var Car = {
             statut, visibilite, isActive],callback);
     },
 
-    transfertCar : function(idAcheteur, idReceveur, idVehicule, dateAcquisition, callback){
-        var sql = "select cessionVehicule(?,?,?,?)" ;
+    transfertCar : function(idAcheteur, idReceveur, idVehicule, dateAcquisition, justificatifVente, callback){
+        var sql = "select cessionVehicule(?,?,?,?,?)" ;
         console.log("vente de " + idAcheteur + " vers "+ idReceveur + " du vehicule "+ idVehicule);
        console.log("requete " + sql + " Envoyée !!! ");
-       return db.query(sql, [idAcheteur, idReceveur, idVehicule, dateAcquisition], callback);
+       return db.query(sql, [idAcheteur, idReceveur, idVehicule, dateAcquisition, justificatifVente], callback);
     }
     
 };

@@ -20,7 +20,7 @@ router.put('/transfertVehicule', function(req, res){
 let idAcheteur = Number(req.query.idAcheteur);
 let idVendeur = Number(req.query.idVendeur) ;
 let idVehicule = Number(req.query.idVehicule);
-    Car.transfertCar(idAcheteur, idVendeur, idVehicule, new Date(), function(err, count){
+    Car.transfertCar(idAcheteur, idVendeur, idVehicule, new Date(), req.body.justificatifVente, function(err, count){
         if (err){
             console.log(err);
             res.status(400).json(err);
@@ -29,7 +29,7 @@ let idVehicule = Number(req.query.idVehicule);
         key = Object.keys(count[0])[0];
         count = count[0][key];
         if(count === 1){
-            res.json({'response': idAcheteur});
+            res.json({'response': idAcheteur, 'justificatifVente': justificatifVente});
         } else {
             res.json({
                 "response": count
