@@ -23,12 +23,9 @@ import { CarViewComponent } from './car-view/car-view.component';
 import { FileSelectDirective } from 'ng2-file-upload';
 import { ViewUserComponent } from './view-user/view-user.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
-<<<<<<< HEAD
 import { VenteVehiculeComponent } from './vente-vehicule/vente-vehicule.component';
-=======
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { AnnonceVenteCreationComponent } from './annonce-vente-creation/annonce-vente-creation.component';
->>>>>>> 3d76a926cb8bd101e859699fbad6a1fa8fa5fa93
 
 @NgModule({
   declarations: [
@@ -48,11 +45,8 @@ import { AnnonceVenteCreationComponent } from './annonce-vente-creation/annonce-
     CarViewComponent,
     FileSelectDirective,
     ViewUserComponent,
-<<<<<<< HEAD
     VenteVehiculeComponent,
-=======
     AnnonceVenteCreationComponent,
->>>>>>> 3d76a926cb8bd101e859699fbad6a1fa8fa5fa93
   ],
   imports: [
     BrowserModule,

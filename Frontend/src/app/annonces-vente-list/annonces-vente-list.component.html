@@ -1,83 +1,53 @@
 <br/><div id="filtre">
-  <form>
-    <div class="form-row">
-      <div class="col">
-        <label for="marque">Marque </label>
-        <select #marque class="custom-select" name="marque" id="marque">
-          <option selected>Indifferent</option>
-          <option value="Peugeot">Peugeot</option>
-          <option value="Mercedes">Mercedes</option>
-          <option value="Citroen">Citroen</option>
-          <option value="Renault">Renault</option>
-        </select>
-      </div>
-      <div class="col">
-        <label for="modele">Modèle </label>
-        <select #modele class="custom-select" name="modele" id="modele">
-          <option selected>Indifferent</option>
-          <option value="SUV">SUV</option>
-          <option value="Citadine">Citadine</option>
-          <option value="4x4">4x4</option>
-        </select>
-      </div>
-      <div class="col">
-        <label for="carburant">Carburant</label>
-        <select #carburant class="custom-select"  name="carburant" id="carburant">
-          <option selected>Indifferent</option>
-          <option value="Diesel">Diesel</option>
-          <option value="Essence">Essence</option>
-          <option value="Gasual">Gasual</option>
-        </select>
-      </div>
-    </div><br/>
-  </form>
-  <button type="button" class="btn btn-primary" (click)="onSearch(modele.value, marque.value, carburant.value)"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Rechercher </button>
+    <form>
+        <div class="form-row">
+            <div class="col">
+                <label for="marque">Marque </label>
+                <select #marque class="custom-select" name="marque" id="marque">
+                    <option selected>Indifferent</option>
+                    <option value="Peugeot">Peugeot</option>
+                    <option value="Mercedes">Mercedes</option>
+                    <option value="Citroen">Citroen</option>
+                    <option value="Renault">Renault</option>
+                </select>
+            </div>
+            <div class="col">
+                <label for="modele">Modèle </label>
+                <select #modele class="custom-select" name="modele" id="modele">
+                    <option selected>Indifferent</option>
+                    <option value="SUV">SUV</option>
+                    <option value="Citadine">Citadine</option>
+                    <option value="4x4">4x4</option>
+                </select>
+            </div>
+            <div class="col">
+                <label for="carburant">Carburant</label>
+                <select #carburant class="custom-select"  name="carburant" id="carburant">
+                    <option selected>Indifferent</option>
+                    <option value="Diesel">Diesel</option>
+                    <option value="Essence">Essence</option>
+                    <option value="Gasual">Gasual</option>
+                </select>
+            </div>
+        </div><br/>
+    </form>
+    <button type="button" class="btn btn-primary" (click)="onSearch(modele.value, marque.value, carburant.value)"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Rechercher </button>
 </div><br/>
 
 <div class="row">
-  <div class="col-md-12 listing-block">
-      <div class="media" *ngFor="let voiture of pagedItems">
-<<<<<<< HEAD
-          <div class="fav-box">
-            <button class="btn-info btn-sm" type="button" data-toggle="modal" data-target="#detailAnnonce">Voir l'annonce</button>
-          </div>
-          <img class="d-flex align-self-start" src="{{voiture.photo}}" alt="Generic placeholder image">
-          <div class="media-body pl-3">
-            <div class="price">{{voiture.prixVente}}€<small>{{voiture.ville}}</small></div>
-            <div class="stats">
-=======
-            <img class="d-flex align-self-start" src="{{getImage(voiture.photo)}}" alt="Generic placeholder image">
+    <div class="col-md-12 listing-block">
+        <div class="media" *ngFor="let voiture of pagedItems">
+            <img class="d-flex align-self-start" src="{{voiture.photo}}" alt="Generic placeholder image">
             <div class="media-body pl-3">
-              <div class="price">{{voiture.prixVente}}€<small>{{voiture.ville}}</small></div>
-              <div class="stats">
->>>>>>> 3d76a926cb8bd101e859699fbad6a1fa8fa5fa93
-              <span>{{voiture.transmission}} {{voiture.moteur}}</span>
-               <span>{{voiture.marqueVoiture}} {{voiture.carburant}}</span>
+                <div class="price">{{voiture.prixVente}}€<small>{{voiture.ville}}</small></div>
+                <div class="stats">
+                    <span>{{voiture.transmission}} {{voiture.moteur}}</span>
+                    <span>{{voiture.marqueVoiture}} {{voiture.carburant}}</span>
+                </div>
+                <div class="address">{{voiture.finition}}</div>
             </div>
-            <div class="address">{{voiture.finition}}</div>
-          </div>
-          <!-- Modal -->
-          <div class="modal fade" id="detailAnnonce" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                  <div class="modal-content">
-                      <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                          </button>
-                      </div>
-                      <div class="modal-body">
-                          <p>{{voiture.prixVente}}</p>
-                      </div>
-                      <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                          <button type="button" class="btn btn-primary">Save changes</button>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-          <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+        </div>
+        <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
             <li [ngClass]="{disabled:pager.currentPage === 1}" class="page-item">
                 <a (click)="setPage(1)" class="page-link">First</a>
             </li>
@@ -94,5 +64,5 @@
                 <a (click)="setPage(pager.totalPages)" class="page-link">Last</a>
             </li>
         </ul>
-  </div>
+    </div>
 </div>

@@ -8,8 +8,8 @@ var AnnonceVente = {
     },
 
     createAnnonceVente: function(immatriculation, annonceVente, callback){
-        datePublication = annonceVente.datePublication ;
-        libelleAnnonceVente = new Date() ;
+        datePublication = new Date();
+        libelleAnnonceVente = annonceVente.libelleAnnonceVente;
         descriptifAnnonceVente = annonceVente.descriptifAnnonceVente ;
         prixVente = annonceVente.prixVente ;
         photo = annonceVente.photo ;

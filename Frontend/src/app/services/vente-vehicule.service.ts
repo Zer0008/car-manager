@@ -1,47 +1,47 @@
 import { Injectable } from '@angular/core';
+import {AcquisitionVoiture} from "../models/AcquisitionVoiture";
+import {Subject} from "rxjs";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {environment} from "../../environments/environment";
+import {User} from "../models/User";
+import {tap} from "rxjs/operators";
+
+const httpOptions = {
+    headers: new HttpHeaders({
+        'Content-Type': 'application/json' ,
+        'Access-Control-Allow-Origin': '*',
+    })
+};
 
 @Injectable({
   providedIn: 'root'
 })
 export class VenteVehiculeService {
+    private apiUrl = environment.apiUrl;
+    private acquisitions: AcquisitionVoiture[];
+    acquisitionSubject = new Subject<AcquisitionVoiture[]>();
 
-  acquisitions: [
-      {
-        id: 0,
-        infos: "",
-        price: "",
-        proprietaire: "",
-        justif: "",
-        vehicule: "",
-        date: ""
-      }
-      ];
-  constructor() { }
+    constructor(
+        private http: HttpClient
+    ){}
 
-  updateAcquisition(id: number, infos: string, price: string, email: string, justif: string, vehicule: string, date: string){
-    const acquisitionObject = {
-      id: 0,
-      infos: "",
-      price: "",
-      proprietaire: "",
-      justif: "",
-      vehicule: "",
-      date: ""
+    emitAcquisition(){
+        this.acquisitionSubject.next(this.acquisitions.slice());
     }
 
-    acquisitionObject.id = id;
-    acquisitionObject.infos = infos;
-    acquisitionObject.price = price;
-    acquisitionObject.proprietaire = email;
-    acquisitionObject.justif = justif;
-    acquisitionObject.vehicule = vehicule;
-    acquisitionObject.date = date;
+    doTransfert(acquisition: AcquisitionVoiture){
+        this.acquisitions.push(acquisition);
+        this.emitAcquisition();
+    }
 
-    this.acquisitions.push();
-  }
-
-  uploadFile(){
-
-  }
-
+    getUser(email: string): any{
+        console.log("Liste utilisateur");
+        return this.http.get<any>(this.apiUrl + "/api/user", httpOptions).pipe(
+            tap(( userlist: any[]) =>
+                {
+                    console.log('utilisateurs recus ' + userlist.length );
+                }
+            )
+        );
+    }
 }
