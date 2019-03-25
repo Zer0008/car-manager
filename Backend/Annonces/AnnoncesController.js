@@ -42,7 +42,7 @@ router.get('/vente',function(req,res){
 });
 
 router.post('/vente',function(req,res){
-    let immatriculation = req.params.immatriculation ;
+    let immatriculation = req.query.immatriculation ;
     AnnonceVente.createAnnonceVente(immatriculation, req.body, function(err, count){
         if (err){
             console.log(err);
