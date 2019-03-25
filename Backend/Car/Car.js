@@ -42,6 +42,12 @@ var Car = {
          ], callback);
     },
 
+    getTypePannes: function(callback){
+        var sql =  "call getTypePannes()";
+        console.log("requete " + sql + " Envoyée !!!");
+        return  db.query(sql, [], callback);
+    },
+
     createCar: function(email, voiture, callback){
         immatriculation = voiture.immatriculation ; 
         libelleVoiture = voiture.libelleVoiture ; 
