@@ -69,7 +69,7 @@ export class InscriptionComponent implements OnInit {
            if (createdUser.email != null ) {
             console.log(createdUser.nom + ' is connected');
             this.message = undefined ;
-            this.router.navigateByUrl('/home');
+            this.router.navigateByUrl('/connexion');
            } else {
              this.message = 'Il existe deja un utilisateur avec ce mail';
              window.scrollTo(0, 0);

@@ -24,6 +24,12 @@ var Car = {
        return db.query(sql, [immatriculation], callback);
     },
 
+    createPanneByUser: function(idTypePanne, idVehicule,callback){
+        var sql = "select createPanne(?,?,?)";
+        console.log("requete " + sql + " Envoyée !!! ");
+        return db.query(sql, [null, idTypePanne, idVehicule], callback);
+    },
+
     createIntervention : function(idGarage, idPanne, intervention, callback){
         libelleIntervetion = intervention.libelleIntervetion ;
         justificatifIntervention = intervention.justificatifIntervention ;
