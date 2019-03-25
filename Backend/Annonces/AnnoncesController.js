@@ -36,7 +36,13 @@ router.get('/vente',function(req,res){
         if (err) {
             res.status(404).json(err);
         } else {
-            res.json(rows[0]);
+            let vehicule = JSON.stringify(rows[0]);
+            vehicule = JSON.parse(vehicule);
+            if( vehicule[0].idVehicule != null ){
+                res.json(rows[0]);
+            } else {
+                res.json([]);
+            }
         }
     });
 });
