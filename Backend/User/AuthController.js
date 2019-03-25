@@ -3,7 +3,6 @@ var router = express.Router();
 var User = require('./User');
 
 router.post('/register', function (req,res) {
-    console.log(req.body);
     User.createUser(req.body,function(err,count){
         if (err) {
             res.status(404).json(err);
@@ -22,9 +21,7 @@ router.post('/register', function (req,res) {
 });
 
 router.post('/signin', function(req, res) {
-    console.log(req.body);
      User.getUserAuth(req.body.email, req.body.password, req.body.statut, function(err,result){
-         console.log(req.body.email);
          if(err){
              console.log(err);
             res.status(400).json(err);

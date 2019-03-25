@@ -1,3 +1,4 @@
+import { AnnonceVenteCreationComponent } from './annonce-vente-creation/annonce-vente-creation.component';
 import { CarViewComponent } from './car-view/car-view.component';
 import { CarSearchComponent } from './car-search/car-search.component';
 import { CarListComponent } from './car-list/car-list.component';
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path:  'vehicules', component: CarListComponent },
   { path: 'vehicules/new', component: CarCreationComponent},
   {path: 'vehicule/:id', component: CarViewComponent },
+  {path: 'annonces-vente/new', component: AnnonceVenteCreationComponent},
   {path: 'profile', component: ViewUserComponent} ,
   { path: 'vehicule/:id/interventions', component: CarInterventionsComponent},
   { path: 'vente-vehicule', component: VenteVehiculeComponent }

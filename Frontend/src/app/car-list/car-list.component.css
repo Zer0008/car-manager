@@ -8,3 +8,10 @@
     height: 3.8em;
     border-radius: 4px;
 }
+
+.load {
+    margin-top: 30vh; /* poussé de la moitié de hauteur de viewport */
+    margin-right: 50vh;
+  transform: translateY(-30%); /* tiré de la moitié de sa propre hauteur */
+  transform: translateX(50%);
+  }
