@@ -20,7 +20,7 @@ router.put('/transfertVehicule', function(req, res){
 let idAcheteur = Number(req.query.idAcheteur);
 let idVendeur = Number(req.query.idVendeur) ;
 let idVehicule = Number(req.query.idVehicule);
-    Car.transfertCar(idAcheteur, idVendeur, idVehicule, new Date(), function(err, count){
+    Car.transfertCar(idAcheteur, idVendeur, idVehicule, new Date(), req.body.justificatifVente, function(err, count){
         if (err){
             console.log(err);
             res.status(400).json(err);
@@ -29,7 +29,7 @@ let idVehicule = Number(req.query.idVehicule);
         key = Object.keys(count[0])[0];
         count = count[0][key];
         if(count === 1){
-            res.json({'response': idAcheteur});
+            res.json({'response': idAcheteur, 'justificatifVente': justificatifVente});
         } else {
             res.json({
                 "response": count
@@ -69,6 +69,38 @@ router.post('/cars',function(req,res){
             });
         }
     });
+});
+
+router.post('/cars/:idVehicule/panne', function(req, res){
+    let idVehicule = Number(req.params.idVehicule) ;
+    let idTypePanne = Number(req.query.idTypePanne) ;
+    Car.createPanneByUser(idTypePanne, idVehicule, function(err, count){
+        if (err){
+            console.log(err);
+            res.status(400).json(err);
+        }
+        count = JSON.parse(JSON.stringify(count));
+        row = JSON.parse(JSON.stringify(count));
+        key = Object.keys(count[0])[0];
+        count = count[0][key];
+        if(count != 0){
+            res.json({'idPanne': count});
+        } else {
+           res.status(404).json({'message': 'immpossible de creer une panne'});
+        }
+    });
+});
+
+router.get('/TypePanne', function(req,res){
+ Car.getTypePannes(function(err, rows){
+    if(err) {
+        res.status(400).json(err);
+    }
+    else
+    {
+        res.json(rows[0]);
+    }
+ });
 });
 
 

@@ -24,6 +24,12 @@ var Car = {
        return db.query(sql, [immatriculation], callback);
     },
 
+    createPanneByUser: function(idTypePanne, idVehicule,callback){
+        var sql = "select createPanne(?,?,?)";
+        console.log("requete " + sql + " Envoyée !!! ");
+        return db.query(sql, [null, idTypePanne, idVehicule], callback);
+    },
+
     createIntervention : function(idGarage, idPanne, intervention, callback){
         libelleIntervetion = intervention.libelleIntervetion ;
         justificatifIntervention = intervention.justificatifIntervention ;
@@ -34,6 +40,12 @@ var Car = {
         return db.query(sql, [idGarage, idPanne, libelleIntervention, justificatifIntervention, 
             dateDebutIntervention, dateFinIntervention
          ], callback);
+    },
+
+    getTypePannes: function(callback){
+        var sql =  "call getTypePannes()";
+        console.log("requete " + sql + " Envoyée !!!");
+        return  db.query(sql, [], callback);
     },
 
     createCar: function(email, voiture, callback){
@@ -71,11 +83,11 @@ var Car = {
             statut, visibilite, isActive],callback);
     },
 
-    transfertCar : function(idAcheteur, idReceveur, idVehicule, dateAcquisition, callback){
-        var sql = "select cessionVehicule(?,?,?,?)" ;
+    transfertCar : function(idAcheteur, idReceveur, idVehicule, dateAcquisition, justificatifVente, callback){
+        var sql = "select cessionVehicule(?,?,?,?,?)" ;
         console.log("vente de " + idAcheteur + " vers "+ idReceveur + " du vehicule "+ idVehicule);
        console.log("requete " + sql + " Envoyée !!! ");
-       return db.query(sql, [idAcheteur, idReceveur, idVehicule, dateAcquisition], callback);
+       return db.query(sql, [idAcheteur, idReceveur, idVehicule, dateAcquisition, justificatifVente], callback);
     }
     
 };

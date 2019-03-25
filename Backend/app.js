@@ -16,6 +16,7 @@ var cookieParser = require("cookie-parser");
 var  DIR = '/uploads/carte_grise';
 var DIR2 = '/uploads/photo';
 var DIR3 = '/uploads/intervention';
+var DIR4 = '/uploads/vente' ;
 
 app.use('/', express.static(__dirname + '/'));
 app.use(express.static(path.join(__dirname, "/dist/Frontend")));
@@ -59,6 +60,7 @@ app.use(
 let url;
 let url2;
 let url3;
+let url4;
 
 try {
   fs.statSync("./uploads/carte_grise");
@@ -66,6 +68,15 @@ try {
 } catch (err) {
   if (err.code === "ENOENT") {
     mkdirp("./uploads/carte_grise", function(err) {});
+  }
+}
+
+try {
+  fs.statSync("./uploads/vente");
+  console.log("Directory exists");
+} catch (err) {
+  if (err.code === "ENOENT") {
+    mkdirp("./uploads/vente", function(err) {});
   }
 }
 
@@ -87,7 +98,7 @@ try {
   }
 }
 
-var storage = multer.diskStorage({
+var storage_cartegrise = multer.diskStorage({
   destination: function(req, file, callback) {
     callback(null, DIR);
   },
@@ -95,10 +106,10 @@ var storage = multer.diskStorage({
     console.log(file);
     
     
-    const name = file.fieldname + '-' + Date.now() + path.extname(file.originalname);
-     url='./uploads/carte_grise/'+name
+    const nameCarteGrise = file.fieldname + '-' + Date.now() + path.extname(file.originalname);
+     url='./uploads/carte_grise/'+nameCarteGrise
     console.log(url)
-    callback(null,name )
+    callback(null,nameCarteGrise)
     }
   });
 
@@ -117,10 +128,57 @@ var storage = multer.diskStorage({
     }
   });
 
-let upload = multer({ storage: storage });
-let uploadphoto =multer({storage: storagephoto});
+  var storageIntervention = multer.diskStorage({
+    destination: function(req, file, callback) {
+    callback(null,DIR3 )
+    },
+    filename: function(req, file, callback) {
+    console.log(file);
+    
+   
+    const nameIntervention= file.fieldname + '-' + Date.now() + path.extname(file.originalname);
+     url2='./uploads/intervention/'+nameIntervention
+    console.log(url3)
+    callback(null,nameIntervention )
+    }
+  });
 
-app.post('/api/upload/justificatif',upload.single('photo'), function (req, res) {
+  var storageVente = multer.diskStorage({
+    destination: function(req, file, callback) {
+    callback(null,DIR4 )
+    },
+    filename: function(req, file, callback) {
+    console.log(file);
+    
+   
+    const namevente= file.fieldname + '-' + Date.now() + path.extname(file.originalname);
+     url2='./uploads/vente/'+namevente
+    console.log(url4)
+    callback(null,namevente )
+    }
+  });
+
+let upload = multer({ storage: storage_cartegrise });
+let uploadphoto =multer({storage: storagephoto});
+let uploadintervention = multer({ storage: storageIntervention});
+let uploadvente =multer({storage: storageVente});
+
+app.post('/api/upload/cart_grise',upload.single('cartegrise'), function (req, res) {
+  if (!req.file) {
+      console.log("No file received");
+      return res.send({
+        success: false
+      });
+
+    } else {
+      console.log('file received');
+      return res.json({
+       url
+      })
+    }
+});
+
+app.post('/api/upload/vente',uploadvente.single('vente'), function (req, res) {
   if (!req.file) {
       console.log("No file received");
       return res.send({
