@@ -14,8 +14,8 @@ router.get('/interventions', function(req, res){
 });
 
 router.post('/interventions', function(req,res){
-    let immatriculation = req.params.immatriculation ;
-    AnnonceIntervention.createAnnonceIntervention(immatriculation, req.body, function(err, count){
+    let idVehicule = Number(req.params.idVehicule) ;
+    AnnonceIntervention.createAnnonceIntervention(idVehicule, req.body, function(err, count){
         if (err){
             console.log(err);
             res.status(400).json(err);
@@ -48,8 +48,9 @@ router.get('/vente',function(req,res){
 });
 
 router.post('/vente',function(req,res){
-    let immatriculation = req.query.immatriculation ;
-    AnnonceVente.createAnnonceVente(immatriculation, req.body, function(err, count){
+    let idVehicule = Number(req.query.idVehicule) ;
+    console.log(idVehicule);
+    AnnonceVente.createAnnonceVente(idVehicule, req.body, function(err, count){
         if (err){
             console.log(err);
             res.status(400).json(err);

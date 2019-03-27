@@ -67,13 +67,14 @@ var User = {
     createNotification: function(idUser, Notification, callback){
         var d = new Date(Notification.dateNotification);
         idUserRecep = idUser;
+        detailNotification = Notification.detailNotification ;
         libelleNotification = Notification.libelleNotification ;
         dateNotification = d ;
         statut = Notification.statut ;
         nonLu =  Notification.nonLu ;
-        let req = 'select createNotification(?,?,?,?,?)';
+        let req = 'select createNotification(?,?,?,?,?,?)';
         console.log("requete " + req + " Envoyée !!!");
-        return db.query(req, [idUserRecep, libelleNotification, dateNotification, statut, nonLu], callback);
+        return db.query(req, [idUserRecep, libelleNotification, detailNotification, dateNotification, statut, nonLu], callback);
     }
 };
 

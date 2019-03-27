@@ -38,9 +38,9 @@ let idVehicule = Number(req.query.idVehicule);
     });
 });
 
-router.get('/car/:immatriculation',function (req,res) {
-    let immatriculation = req.params.immatriculation ;
-     Car.getVehicule(immatriculation, function (err,rows) {
+router.get('/car/:idVehicule',function (req,res) {
+    let idVehicule = Number(req.params.idVehicule) ;
+     Car.getVehicule(idVehicule, function (err,rows) {
          if(err) {
              res.status(400).json(err);
          }
@@ -65,7 +65,7 @@ router.post('/cars',function(req,res){
             res.json(req.body);
         } else {
             res.json({
-                "immatriculation":null
+                "idVehicule":null
             });
         }
     });
@@ -104,10 +104,10 @@ router.get('/TypePanne', function(req,res){
 });
 
 
-router.get('/car/:immatriculation/interventions',function (req,res) {
-    let immatriculation = req.params.immatriculation ;
+router.get('/car/:idVehicule/interventions',function (req,res) {
+    let idVehicule = Number(req.params.idVehicule) ;
     console.log('controller ' + immatriculation);
-     Car.getInterventions(immatriculation, function (err,rows) {
+     Car.getInterventions(idVehicule, function (err,rows) {
          if(err) {
              res.status(400).json(err);
          }
@@ -120,7 +120,7 @@ router.get('/car/:immatriculation/interventions',function (req,res) {
 
  router.post('/car/:idPanne/interventions',function (req,res) {
     let idPanne = Number(req.params.idPanne) ;
-    let idGarage = req.query.idGarage ;
+    let idGarage = Number(req.query.idGarage) ;
     console.log('controller ' + idPanne);
     if (idGarage == undefined){
         Car.createIntervention(null, idPanne, req.body, function (err,count) {

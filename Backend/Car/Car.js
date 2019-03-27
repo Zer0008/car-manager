@@ -12,16 +12,16 @@ var Car = {
         return db.query(sql,[email],callback);       
     },
 
-    getInterventions: function(immatriculation, callback){
+    getInterventions: function(idVehicule, callback){
         var sql = "CALL getListeInterventions(?)";
         console.log("requete " + sql + " Envoyée !!!");
-        return db.query(sql,[immatriculation],callback);  
+        return db.query(sql,[idVehicule],callback);  
     },
 
-    getVehicule: function(immatriculation, callback){
+    getVehicule: function(idVehicule, callback){
        var sql = "CALL getVehicule(?)" ;
        console.log("requete " + sql + " Envoyée !!! ");
-       return db.query(sql, [immatriculation], callback);
+       return db.query(sql, [idVehicule], callback);
     },
 
     createPanneByUser: function(idTypePanne, idVehicule,callback){
