@@ -13,10 +13,10 @@ const multer = require("multer");
 var fs = require("fs");
 var mkdirp = require("mkdirp");
 var cookieParser = require("cookie-parser");
-var  DIR = '/uploads/carte_grise';
-var DIR2 = '/uploads/photo';
-var DIR3 = '/uploads/intervention';
-var DIR4 = '/uploads/vente' ;
+var  DIR = './uploads/carte_grise';
+var DIR2 = './uploads/photo';
+var DIR3 = './uploads/intervention';
+var DIR4 = './uploads/vente' ;
 
 app.use('/', express.static(__dirname + '/'));
 app.use(express.static(path.join(__dirname, "/dist/Frontend")));
@@ -107,8 +107,8 @@ var storage_cartegrise = multer.diskStorage({
     
     
     const nameCarteGrise = file.fieldname + '-' + Date.now() + path.extname(file.originalname);
-     url='./uploads/carte_grise/'+nameCarteGrise
-    console.log(url)
+     urlcartegrise='/uploads/carte_grise/'+nameCarteGrise
+    console.log(urlcartegrise);
     callback(null,nameCarteGrise)
     }
   });
@@ -122,8 +122,8 @@ var storage_cartegrise = multer.diskStorage({
     
    
     const namephoto= file.fieldname + '-' + Date.now() + path.extname(file.originalname);
-     url2='./uploads/photo/'+namephoto
-    console.log(url2)
+     urlphoto='/uploads/photo/'+namephoto
+    console.log(urlphoto)
     callback(null,namephoto )
     }
   });
@@ -137,8 +137,8 @@ var storage_cartegrise = multer.diskStorage({
     
    
     const nameIntervention= file.fieldname + '-' + Date.now() + path.extname(file.originalname);
-     url2='./uploads/intervention/'+nameIntervention
-    console.log(url3)
+     urlintervention='/uploads/intervention/'+nameIntervention
+    console.log(urlintervention);
     callback(null,nameIntervention )
     }
   });
@@ -152,8 +152,8 @@ var storage_cartegrise = multer.diskStorage({
     
    
     const namevente= file.fieldname + '-' + Date.now() + path.extname(file.originalname);
-     url2='./uploads/vente/'+namevente
-    console.log(url4)
+     urlvente='/uploads/vente/'+namevente
+    console.log(urlvente)
     callback(null,namevente )
     }
   });
@@ -163,7 +163,7 @@ let uploadphoto =multer({storage: storagephoto});
 let uploadintervention = multer({ storage: storageIntervention});
 let uploadvente =multer({storage: storageVente});
 
-app.post('/api/upload/cart_grise',upload.single('cartegrise'), function (req, res) {
+app.post('/api/upload/carte_grise',upload.single('file'), function (req, res) {
   if (!req.file) {
       console.log("No file received");
       return res.send({
@@ -173,12 +173,12 @@ app.post('/api/upload/cart_grise',upload.single('cartegrise'), function (req, re
     } else {
       console.log('file received');
       return res.json({
-       url
+      url: urlcartegrise
       })
     }
 });
 
-app.post('/api/upload/vente',uploadvente.single('vente'), function (req, res) {
+app.post('/api/upload/vente',uploadvente.single('file'), function (req, res) {
   if (!req.file) {
       console.log("No file received");
       return res.send({
@@ -188,10 +188,25 @@ app.post('/api/upload/vente',uploadvente.single('vente'), function (req, res) {
     } else {
       console.log('file received');
       return res.json({
-       url
+       url: vente
       })
     }
 });
+
+app.post('/api/upload/intervention',uploadphoto.single('file'), function (req, res) {
+  if (!req.file) {
+      console.log("No file received");
+      return res.send({
+        success: false
+      });
+
+    } else {
+      console.log('file received');
+      return res.json({
+       url : urlintervention
+      })
+    }
+  });
 
 // root pour upload de photo
 app.post('/api/upload/photo',uploadphoto.single('photo'), function (req, res) {
@@ -204,7 +219,7 @@ app.post('/api/upload/photo',uploadphoto.single('photo'), function (req, res) {
     } else {
       console.log('file received');
       return res.json({
-       url2
+       url : urlphoto
       })
     }
 });

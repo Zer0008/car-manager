@@ -7,13 +7,15 @@ var AnnonceIntervention = {
         return db.query(sql, callback);
     },
     
-    createAnnonceIntervention: function(immatriculation, Intervention, callback){
-        datePublication = Intervention.datePublication ;
-        libelleAnnonce = Intervention.libelleAnnonce ;
-        libelleAnnonce = Intervention.descriptifAnnonce ;
-        var sql = "select createAnnoncePanne(?,?,?)";
+    createAnnonceIntervention: function(idVehicule, annonceIntervention, callback){
+        idVehicule = Number(idVehicule);
+        datePublication = annonceIntervention.datePublication ;
+        libelleAnnonce = annonceIntervention.libelleAnnonce ;
+        descriptifAnnonce = annonceIntervention.descriptifAnnonce ;
+        ville = annonceIntervention.ville ;
+        var sql = "select createAnnoncePanne(?,?,?,?)";
         console.log("requete " + sql + " Envoyée !!!");
-        return db.query(sql, [immatriculation, datePublication, libelleAnnonce, descriptifAnnonce], callback);
+        return db.query(sql, [idVehicule, datePublication, libelleAnnonce, descriptifAnnonce], callback);
     }
 }
 

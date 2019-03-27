@@ -14,7 +14,7 @@ router.get('/interventions', function(req, res){
 });
 
 router.post('/interventions', function(req,res){
-    let idVehicule = Number(req.params.idVehicule) ;
+    let idVehicule = Number(req.query.idVehicule) ;
     AnnonceIntervention.createAnnonceIntervention(idVehicule, req.body, function(err, count){
         if (err){
             console.log(err);
