@@ -1,4 +1,4 @@
-<h2>Annonces d'occasion</h2>
+<h2>Annonces d'intervention</h2>
 <p>Vous pouvez ici rechercher toutes les demandes d'intervention ent filtrant ou non les recherches
   Vous avez notamment la possibilité de consulter les coordonnées du propriétaire afin de lui proposer un devis</p><br/>
 <div id="filtre">
@@ -10,9 +10,9 @@
         <select #marque class="custom-select" name="marque" id="marque">
           <option selected>Indifferent</option>
           <option value="Peugeot">Peugeot</option>
-          <option value="Mercedes">Mercedes</option>
+          <option value="Volkswagen">Volkswagen</option>
           <option value="Citroen">Citroen</option>
-          <option value="Renault">Renault</option>
+          <option value="Nissan">Nissan</option>
         </select>
       </div>
       <div class="col">
@@ -23,9 +23,12 @@
         <label for="modele">Modèle </label>
         <select #modele class="custom-select" name="modele" id="modele">
           <option selected>Indifferent</option>
-          <option value="SUV">SUV</option>
-          <option value="Citadine">Citadine</option>
+          <option value="Tiguan">Golf V</option>
+            <option value="Micra">Micra</option>
+            <option value="207 ">207 </option>
           <option value="207 CC">207 CC</option>
+            <option value="C3">C3</option>
+
         </select>
       </div>
 
@@ -34,17 +37,18 @@
 
     </div><br/>
   </form>
-  <button type="button" class="btn btn-primary" (click)="onSearch(marque.value, modele.value)"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Rechercher </button>
+  <button type="button" class="btn btn-primary" (click)="onSearch(marque.value, modele.value, lieu.value)"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Rechercher </button>
 </div><br/>
 
 <div class="contenu" *ngFor="let pannes of Intervention">
   <div class="row">
 
     <div class="col-md-8 ">
-      <h4>{{ pannes.marqueVoiture }} {{pannes.modeleVoiture}} </h4>
-      <p>{{ pannes .finition }}</p>
-      <p>{{pannes.datePublication}}</p>
-      <h6>{{ pannes.ville }} ({{pannes.codePostale}})</h6>
+      <h4>{{pannes.libelleAnnonce}} </h4>
+        <b><p>{{ pannes .marqueVoiture }}{{pannes.modeleVoiture}}</p></b>
+        <p><i>{{ pannes .finition }}</i></p>
+      <p>{{pannes.datePublication.substring(0,10)}}</p>
+        <b><h6>{{ pannes.ville }}</h6></b>
     </div>
     <div class="col-md-4">
       <button type="button" class="btn btn-success btn-sm btn-block "  data-toggle="modal" data-target="myModal" [attr.data-target]="'#'+pannes.marqueVoiture">Voir la demande</button>
@@ -65,7 +69,7 @@
               <p> {{pannes.descriptifAnnonce}}</p>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Prendre en charge</button>
             </div>
           </div>
         </div>
