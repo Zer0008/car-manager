@@ -27,7 +27,7 @@ export class CarCreationComponent implements OnInit {
   voiture: any;
   url: any;
   url2: any;
-  private URLjust =  environment.apiUrl + '/api/upload/justificatif'  ;
+  private URLjust =  environment.apiUrl + '/api/upload/carte_grise'  ;
   private URLphoto =  environment.apiUrl + '/api/upload/photo'  ;
   constructor(private Carservice: CarSearchService, private dialog: MatDialog) { 
     this.user = JSON.parse(localStorage.getItem('user'));
@@ -35,7 +35,7 @@ export class CarCreationComponent implements OnInit {
 
  
   public uploader: FileUploader = new FileUploader({url: this.URLjust,
-    itemAlias: 'photo',
+    itemAlias: 'file',
     allowedMimeType: ['image/png', 'image/jpg', 'image/jpeg', 'image/gif'],
     maxFileSize: 50 * 1024 * 1024
    });
@@ -96,8 +96,8 @@ export class CarCreationComponent implements OnInit {
   this.uploaderphoto.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
        console.log('ImageUpload:uploaded:', item, status, response);
        this.url2 = JSON.parse(response);
-       console.log(this.url2.url2 );
-       this.voiture.photo = this.url2.url2;
+       console.log(this.url2.url );
+       this.voiture.photo = this.url2.url;
        //alert('File uploaded successfully');
    };
 }

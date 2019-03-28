@@ -1,6 +1,4 @@
-<h2>Annonces d'occasion</h2>
-<p>Vous pouvez ici rechercher toutes les demandes d'intervention ent filtrant ou non les recherches
-  Vous avez notamment la possibilité de consulter les coordonnées du propriétaire afin de lui proposer un devis</p><br/>
+<h2>Annonces d'intervention</h2><br/>
 <div id="filtre">
   <h4>Filtres</h4>
   <form>
@@ -10,49 +8,54 @@
         <select #marque class="custom-select" name="marque" id="marque">
           <option selected>Indifferent</option>
           <option value="Peugeot">Peugeot</option>
-          <option value="Mercedes">Mercedes</option>
+          <option value="Volkswagen">Volkswagen</option>
           <option value="Citroen">Citroen</option>
-          <option value="Renault">Renault</option>
+          <option value="Nissan">Nissan</option>
         </select>
       </div>
       <div class="col">
         <label for="lieu">Ou</label>
         <input #lieu type="text" class="form-control" id="lieu" name="lieu"  placeholder="Ville, code postal, ...">
       </div>
-      <div class="col">
+      <div class="col" >
         <label for="modele">Modèle </label>
         <select #modele class="custom-select" name="modele" id="modele">
           <option selected>Indifferent</option>
-          <option value="SUV">SUV</option>
-          <option value="Citadine">Citadine</option>
-          <option value="4x4">4x4</option>
+          <option value="Tiguan">Golf V</option>
+            <option value="Micra">Micra</option>
+            <option value="207 ">207 </option>
+          <option value="207 CC">207 CC</option>
+            <option value="C3">C3</option>
+
         </select>
       </div>
+
+
+
+
     </div><br/>
   </form>
-  <button type="button" class="btn btn-primary" (click)="onSearch(marque.value, modele.value,lieu.value)"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Rechercher </button>
+  <button type="button" class="btn btn-primary" (click)="onSearch(marque.value, modele.value, lieu.value)"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Rechercher </button>
 </div><br/>
 
 <div class="contenu" *ngFor="let pannes of Intervention">
   <div class="row">
 
     <div class="col-md-8 ">
-      <h4>{{ pannes.marqueVoiture }} {{ pannes.modeleVoiture }}</h4>
-      <p>{{ pannes .finition }}</p>
-      <p>{{pannes.datePublication}}</p>
-      <h6>{{ pannes.ville }} ({{pannes.codePostale}})</h6>
+      <h4>{{pannes.libelleAnnonce}} </h4>
+        <b><p>{{ pannes.marqueVoiture }}  {{pannes.modeleVoiture}} {{ pannes.ville }}</p></b>
+        <p><i>{{ pannes.finition }}</i></p>
     </div>
     <div class="col-md-4">
-      <button class="btn btn-primary btn-sm btn-block"  role="button">Consulter coordonnées</button><br/>
-      <button type="button" class="btn btn-success btn-sm btn-block "  data-toggle="modal" data-target="#myModal">Voir la demande</button>
-      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <button type="button" class="btn btn-success btn-sm btn-block "  data-toggle="modal" data-target="myModal" [attr.data-target]="'#'+pannes.marqueVoiture">Voir la demande</button>
+      <div class="modal fade" id={{pannes.marqueVoiture}} tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
               <div class="row">
                 <div class="col-md-12 ">
-                <h5 class="modal-title" id="exampleModalLongTitle">{{pannes.libelleAnnonce}}</h5>
-              </div>
+                  <h5 class="modal-title" id="exampleModalLongTitle">{{pannes.libelleAnnonce}}</h5>
+                </div>
               </div>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
@@ -60,9 +63,10 @@
             </div>
             <div class="modal-body">
               <p> {{pannes.descriptifAnnonce}}</p>
+              <p> {{pannes.datePublication}}</p>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Prendre en charge</button>
             </div>
           </div>
         </div>

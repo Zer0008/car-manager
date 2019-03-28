@@ -12,16 +12,16 @@ var Car = {
         return db.query(sql,[email],callback);       
     },
 
-    getInterventions: function(immatriculation, callback){
+    getInterventions: function(idVehicule, callback){
         var sql = "CALL getListeInterventions(?)";
         console.log("requete " + sql + " Envoyée !!!");
-        return db.query(sql,[immatriculation],callback);  
+        return db.query(sql,[idVehicule],callback);  
     },
 
-    getVehicule: function(immatriculation, callback){
+    getVehicule: function(idVehicule, callback){
        var sql = "CALL getVehicule(?)" ;
        console.log("requete " + sql + " Envoyée !!! ");
-       return db.query(sql, [immatriculation], callback);
+       return db.query(sql, [idVehicule], callback);
     },
 
     createPanneByUser: function(idTypePanne, idVehicule,callback){
@@ -40,6 +40,12 @@ var Car = {
         return db.query(sql, [idGarage, idPanne, libelleIntervention, justificatifIntervention, 
             dateDebutIntervention, dateFinIntervention
          ], callback);
+    },
+
+    deleteIntervention: function(idIntervention, callback){
+        var sql = "select delIntervention(?)";
+        console.log("requete " + sql + " Envoyée !!!");
+        return db.query(sql, [idIntervention], callback);
     },
 
     getTypePannes: function(callback){
@@ -81,6 +87,18 @@ var Car = {
             transmission_type, transmission_nbRapports, transmission_pneumatique, mesures_0a100, mesures_masseAVide,
             mesures_capaciteNomCoffre, mesures_capaciteMaxCoffre, consommation_urbaine,	consommation_extraUrbaine, 
             statut, visibilite, isActive],callback);
+    },
+
+    updateCar: function(idVehicule, carInfo, callback){
+           libelleVoiture = carInfo.libelleVoiture ;
+           justificatif = carInfo.justificatif ;
+           photo = carInfo.photo ;
+           statut = carInfo.statut ;
+           visibilite = carInfo.visibilite ;
+           isActive = carInfo.isActive ;
+           var sql = "select updateVehiculeProprietaire(?,?,?,?,?,?,?)" ;
+           console.log("requete " + sql + " Envoyée !!! ");
+           return db.query(sql, [idVehicule, libelleVoiture, justificatif, photo, statut, visibilite, isActive], callback);
     },
 
     transfertCar : function(idAcheteur, idReceveur, idVehicule, dateAcquisition, justificatifVente, callback){

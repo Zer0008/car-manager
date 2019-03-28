@@ -9,7 +9,9 @@ var AnnonceVente = {
 
     createAnnonceVente: function(immatriculation, annonceVente, callback){
         datePublication = new Date();
+    createAnnonceVente: function(idVehicule, annonceVente, callback){
         datePublication = new Date() ;
+        idVehicule = Number(idVehicule);
         libelleAnnonceVente = annonceVente.libelleAnnonceVente;
         descriptifAnnonceVente = annonceVente.descriptifAnnonceVente ;
         prixVente = annonceVente.prixVente ;
@@ -18,7 +20,7 @@ var AnnonceVente = {
         ville = annonceVente.ville ;
         var sql = "select createAnnonceVente(?,?,?,?,?,?,?,?)";
         console.log("requete " + sql + " Envoyée !!!");
-        return db.query(sql, [immatriculation, datePublication, libelleAnnonceVente, descriptifAnnonceVente,
+        return db.query(sql, [idVehicule, datePublication, libelleAnnonceVente, descriptifAnnonceVente,
         prixVente, photo, kilometrage, ville], callback);
     }
 }
