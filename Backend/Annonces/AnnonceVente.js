@@ -7,8 +7,6 @@ var AnnonceVente = {
         return db.query(sql, [], callback);
     },
 
-    createAnnonceVente: function(immatriculation, annonceVente, callback){
-        datePublication = new Date();
     createAnnonceVente: function(idVehicule, annonceVente, callback){
         datePublication = new Date() ;
         idVehicule = Number(idVehicule);

@@ -29,7 +29,7 @@ const routes: Routes = [
   {path: 'annonces-vente/new', component: AnnonceVenteCreationComponent},
   {path: 'profile', component: ViewUserComponent} ,
   { path: 'vehicule/:id/interventions', component: CarInterventionsComponent},
-  { path: 'vehicule/:idVehicule/vente-vehicule', component: VenteVehiculeComponent }
+  { path: 'vehicule/:idVehicule/vente-vehicule', component: VenteVehiculeComponent },
   { path: 'notification', component: NotificationComponent, canActivate: [AuthGuard] },
   { path:  'vehicules', component: CarListComponent, canActivate: [AuthGuard] },
   { path: 'vehicules/new', component: CarCreationComponent, canActivate: [AuthGuard]},
