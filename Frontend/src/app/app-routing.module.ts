@@ -1,3 +1,6 @@
+import { AnnonceInterventionCreationComponent } from './annonce-intervention-creation/annonce-intervention-creation.component';
+import { AuthGuard } from './guards/auth.guard';
+import { AnnonceVenteCreationComponent } from './annonce-vente-creation/annonce-vente-creation.component';
 import { CarViewComponent } from './car-view/car-view.component';
 import { CarSearchComponent } from './car-search/car-search.component';
 import { CarListComponent } from './car-list/car-list.component';
@@ -10,27 +13,23 @@ import { NotificationComponent } from './notification/notification.component';
 import { CarCreationComponent } from './car-creation/car-creation.component';
 import { CarInterventionsComponent } from './car-interventions/car-interventions.component';
 import { AnnoncesInterventionListComponent } from './annonces-intervention-list/annonces-intervention-list.component';
-import { ViewUserComponent} from './view-user/view-user.component';
-import { CarRequestInterventionsComponent } from './car-request-interventions/car-request-interventions.component';
-import { ParametreVenteComponent } from './parametre-vente/parametre-vente.component';
-import { VenteVehiculeComponent } from './vente-vehicule/vente-vehicule.component';
+import {ViewUserComponent} from './view-user/view-user.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: CarSearchComponent },
   { path: 'annonces-vente', component: AnnoncesVenteListComponent },
-  { path: 'annonces-intervention', component: AnnoncesInterventionListComponent},
+  { path: 'vehicule/:id/request-annonce-intervention', component: AnnonceInterventionCreationComponent},
+  { path: 'annonces-intervention', component: AnnoncesInterventionListComponent, canActivate: [AuthGuard]},
   { path: 'connexion', component: ConnexionComponent },
   { path: 'inscription', component: InscriptionComponent },
-  { path: 'notification', component: NotificationComponent },
-  { path: 'vehicules', component: CarListComponent },
-  { path: 'vehicules/new', component: CarCreationComponent},
-  { path: 'vehicule/:id', component: CarViewComponent },
-  { path: 'profile', component: ViewUserComponent},
-  { path: 'vehicule/:id/interventions', component: CarInterventionsComponent},
-  { path: 'vehicule/:id/requestInterventions', component: CarRequestInterventionsComponent},
-  { path: 'vehicule/:id/parametre-vente', component: ParametreVenteComponent},
-  { path: 'vehicule/:id/vente-vehicule', component: VenteVehiculeComponent}
+  { path: 'notification', component: NotificationComponent, canActivate: [AuthGuard] },
+  { path:  'vehicules', component: CarListComponent, canActivate: [AuthGuard] },
+  { path: 'vehicules/new', component: CarCreationComponent, canActivate: [AuthGuard]},
+  {path: 'vehicule/:id', component: CarViewComponent, canActivate: [AuthGuard] },
+  {path: 'vehicule/:id/request-annonce-vente', component: AnnonceVenteCreationComponent, canActivate: [AuthGuard]},
+  {path: 'profile', component: ViewUserComponent, canActivate: [AuthGuard]} ,
+  { path: 'vehicule/:id/interventions', component: CarInterventionsComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({

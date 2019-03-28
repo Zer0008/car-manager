@@ -1,25 +1,25 @@
 <br/>
 <div class="jumbotron">
-    <h2>Ajout voiture</h2>
+    <h2>Ajouter un véhicule</h2>
     <br/>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                   <div class="row">
-                        <div class="col-lg-4">
+                        <div class="col-lg-2">
                           <form [formGroup]="matriculeform" (ngSubmit)=" OnSearchbymatricule()" [ngClass]="{ 'is-invalid': submittedm && m.matricule.errors}">   
                                 <div class="form-group">
                                   <label>Immatriculation</label>
                                   <input placeholder="xx-yyy-zz" type="text" class="form-control" formControlName="matricule" [ngClass]="{ 'is-invalid': submittedm && m.matricule.errors  }"/>
                                 </div>
                                 <div class="form-group">
-                                    <button  class="btn btn-primary" data-toggle="modal" data-target="#ModalMatricule">Rechercher</button>
+                                    <button [disabled]="m.matricule.errors" class="btn btn-primary" data-toggle="modal" data-target="#ModalMatricule">Rechercher</button>
                                 </div>
                             </form>
 
                         </div>
 
-                         <div class="col-lg-6">  
+                         <div class="col-lg-4">  
                                 <label>Justificatif</label>
                                 <br/>
                                 <input type="file" name="photo" ng2FileSelect [uploader]="uploader" />
@@ -27,62 +27,59 @@
                               <button type="button" class="btn btn-primary btn-s" 
                                 (click)="uploader.uploadAll()" 
                                 [disabled]="!uploader.getNotUploadedItems().length" >
-                                    Telecharger l'image
+                                    Telecharger le justificatif
                               </button>
                         </div>
+
+                        <div class="col-lg-4">  
+                            <label>Photo</label>
+                            <br/>
+                            <input type="file" name="photo" ng2FileSelect [uploader]="uploaderphoto" />
+                            <br/> <br/>
+                          <button type="button" class="btn btn-primary btn-s" 
+                            (click)="uploaderphoto.uploadAll()" 
+                            [disabled]="!uploaderphoto.getNotUploadedItems().length" >
+                                Telecharger la photo du véhicule
+                          </button>
+                    </div>
                     </div>
                 </div>
                 <br/> <br/> <br/> 
                 <table class="table">
                         <thead class="thead-dark">
                           <tr>
-
                             <th scope="col">Caractéristique</th>
                             <th scope="col">Valeur</th>
                           </tr>
                         </thead>
                         <tbody >
+                            <tr>
+                                <th scope="row">marque</th>
+                                <td>{{voiture.marqueVoiture}}</td>
+                              </tr>
                           <tr>
-
                             <th scope="row">modèle</th>
-                            <td>{{voiture.modele}}</td>
+                            <td>{{voiture.modeleVoiture}}</td>
                           </tr>
                           <tr>
-
-                                <th scope="row">type</th>
-                                <td>{{voiture.Type}}</td>
-                              </tr>
+                              <th scope="row">annee</th>
+                              <td>{{voiture.anneeCirculation}}</td>
+                            </tr>
                            <tr>
-
                                 <th scope="row">Energie</th>
-                                <td>{{voiture.Energie}}</td>
+                                <td>{{voiture.carburant}}</td>
                             </tr>
-                            <tr>
-
-                                    <th scope="row">Puissance</th>
-                                    <td>{{voiture.Puissance}}</td>
-                            </tr>
-                            <tr>
-
+                             <tr>
                                     <th scope="row">Boite de vitesse</th>
-                                    <td>{{voiture.Boite_vitesse}}</td>
+                                    <td>{{voiture.boiteVitesse}}</td>
                             </tr>
-                            <tr>
-
-                                    <th scope="row">Vitesse maximale</th>
-                                    <td>{{voiture.Vitesse_maximale}}</td>
-                            </tr>
-                            <tr>                                   
-                                    <th scope="row">Cons_moyenne</th>
-                                    <td>{{voiture.Cons_moyenne}}</td>
-                            </tr>  
                             <tr>       
                                     <th scope="row">Moteur</th>
-                                    <td>{{voiture.Moteur}}</td>
+                                    <td>{{voiture.moteur_type}}</td>
                             </tr> 
                             <tr>    
                                     <th scope="row">Transmission</th>
-                                    <td >{{voiture.Transmission}}</td>
+                                    <td >{{voiture.transmission_type}}</td>
                             </tr>  
                         </tbody>
                  </table>
@@ -95,7 +92,7 @@
                           <input placeholder="Voiture de Joel" type="text" class="form-control" formControlName="libelle" />
                         </div>
                         <div class="form-group">
-                            <button type="button" class="btn btn-success btn-s" >Enregistrer</button>
+                            <button type="button" class="btn btn-success btn-s" type="submit">Enregistrer</button>
                         </div>
                  </form>
 

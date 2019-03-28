@@ -1,6 +1,12 @@
 <div id="logreg-forms">
   <form class="form-signin" [formGroup]="registerForm" *ngIf="state == true" (ngSubmit)="onSubmit(inputEmail.value, inputPassword.value, inputStatut.value)"  >
       <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Connexion - Espace client </h1>
+      <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="changePassword == true">
+            Le mot de passe a bien été modifié
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
       <input type="email" #inputEmail id="inputEmail" class="form-control" placeholder="addresse mail" formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
       <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
         <div *ngIf="f.email.errors.required">login requis</div>
@@ -14,7 +20,7 @@
               <option>Garage</option>
       </select>
       <div *ngIf="submitted && auth === false">
-        <div><span style="color: rgb(236, 112, 112)">Erreur login ou mot de passe</span></div>
+        <div><span style="color: rgb(236, 112, 112)">Erreur identifiants {{inputStatut.value}} </span></div>
       </div>
       <button class="btn btn-success btn-block" type="submit"><i class="fas fa-sign-in-alt"></i>Valider</button>
       <button class="btn btn-danger btn-block" (click)="changeState()"  type="button">Mot de passe oublié ?</button>
@@ -23,8 +29,13 @@
       <button class="btn btn-primary btn-block" (click)="gotoRegister()"  type="button" id="btn-signup"><i class="fas fa-user-plus"></i> Nouvel utilisateur ?</button>
   </form>
 
-  <form action="/reset-password" *ngIf= "state == false">
-      <input type="email" id="resetEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+  <form  (ngSubmit)="resetPassword(password.value, passwordReset.value, email.value)" *ngIf= "state == false">
+      <input type="text" id="email" #email class="form-control" placeholder="Email" required="Email" autofocus=""><br/>
+      <input type="password" id="password" #password class="form-control" placeholder="Mot de passe" required="password" autofocus=""><br/>
+      <input type="password" id="passwordConfirm" #passwordReset class="form-control" placeholder="Confirmer mot de passe" required="password" autofocus="">
+      <div *ngIf="submittedReset && confirm === false">
+          <div><span style="color: rgb(236, 112, 112)">Mot de passe different </span></div>
+        </div>
       <button class="btn btn-primary btn-block" type="submit">Reinitialiser le mot de passe</button>
       <a (click)="changeState()" ><i class="fas fa-angle-left"></i> Back</a>
   </form>

@@ -1,91 +1,74 @@
+import { AnnoncesService } from './../services/annonces.service';
+import { PagerService } from "./../services/pager.service";
 import { Component, OnInit } from "@angular/core";
 import * as _ from "lodash";
+import {environment} from "../../environments/environment";
+
 
 @Component({
-  selector: "app-annonces-intervention-list",
-  templateUrl: "./annonces-intervention-list.component.html",
-  styleUrls: ["./annonces-intervention-list.component.css"]
+    selector: "app-annonces-intervention-list",
+    templateUrl: "./annonces-intervention-list.component.html",
+    styleUrls: ["./annonces-intervention-list.component.css"]
 })
 export class AnnoncesInterventionListComponent implements OnInit {
-  Intervention: any[];
-  panne = [
-    {
-      idVehicule: "1",
-      marqueVoiture: "Peugeot",
-      modeleVoiture: "SUV",
-      finition: "1.6 HDi 110ch FAP Business Pack",
-      ville: "Limoges",
-      codePostale: 87000,
-      datePublication: "12-03-2018",
-      libelleAnnonce: "blocage du volant",
-      descriptifAnnonce:
-        "Lorsque je tourne le volant vers la droite il durcit et se bloque"
-    },
+    Intervention: any[];
+    user: any;
+    private allItems: any[];
 
-    {
-      idVehicule: "2",
-      marqueVoiture: "Mercedes",
-      modeleVoiture: "4x4",
-      finition: "1.6 HDi 110ch FAP Business Pack",
-      ville: "Argenteuil",
-      codePostale: 92500,
-      datePublication: "18-07-2016",
-      libelleAnnonce: "le levier de vitesse ",
-      descriptifAnnonce:
-        "J ai de la peine à passer en marche arrière quand je conduits"
-    },
-    {
-      idVehicule: "3",
-      marqueVoiture: "Citroen",
-      modeleVoiture: "Citadine",
-      finition: "1.6 HDi 110ch FAP Business Pack",
-      ville: "Levallois",
-      codePostale: 92300,
-      datePublication: "12-03-2018",
-      libelleAnnonce: "blocage du volant",
-      descriptifAnnonce:
-        "Lorsque je tourne le volant vers la droite il durcit et se bloque"
-    }
-  ];
+  currentAllItems: any[];
 
-  constructor() {
-    this.Intervention = this.panne;
-  }
+  // pager object
+  pager: any = {};
 
-  onSearch(marque: string, modele: string, lieu: string) {
-    lieu = lieu.replace(" ", "");
-    lieu = lieu.charAt(0).toUpperCase() + lieu.substring(1).toLowerCase();
-    if (marque === "Indifferent" || modele === "Indifferent" || lieu === "") {
-      this.Intervention = this.panne;
+  // paged items
+  pagedItems: any[];
+    constructor( private annoncesService: AnnoncesService,  private pagerService: PagerService) {
     }
 
-    if (marque !== "Indifferent") {
-      this.Intervention = _.filter(this.Intervention, [
-        "marqueVoiture",
-        marque
-      ]);
+    onSearch(marque: string, modele: string,lieu:string) {
+
+        if (marque === "Indifferent" || modele === "Indifferent"|| lieu==="" ) {
+            // this.Intervention = this.panne;
+            this.currentAllItems = this.allItems;
+        }
+
+        if (marque !== "Indifferent") {
+            this.currentAllItems = _.filter(this.currentAllItems, [
+                "marqueVoiture",
+                marque
+            ]);
+        }
+        if (modele !== "Indifferent") {
+            this.currentAllItems = _.filter(this.currentAllItems, [
+                "modeleVoiture",
+                modele
+            ]);
+        }
+        if (lieu !== "") {
+            this.currentAllItems = _.filter(this.currentAllItems, ["ville", lieu]);
+        }
+        this.setPage(1);
     }
-    if (modele !== "Indifferent") {
-      this.Intervention = _.filter(this.Intervention, [
-        "modeleVoiture",
-        modele
-      ]);
+
+    ngOnInit() {
+        this.user = JSON.parse(localStorage.getItem("user"));
+        this.annoncesService.getInterventions().subscribe(res => {
+            console.log(res);
+            this.allItems = res ;
+            this.currentAllItems = this.allItems;
+            this.setPage(1);
+        });
     }
-    if (lieu !== "") {
-      console.log(Number(lieu));
-      if (!isNaN(Number(lieu))) {
-        const lieunb = Number(lieu);
-        this.Intervention = _.filter(this.Intervention, [
-          "codePostale",
-          lieunb
-        ]);
-      } else {
-        this.Intervention = _.filter(this.Intervention, ["ville", lieu]);
+
+    setPage(page: number) {
+        // get pager object from service
+        this.pager = this.pagerService.getPager(this.currentAllItems.length, page);
+        console.log(this.pager);
+    
+        // get current page of items
+        this.pagedItems = this.currentAllItems.slice(
+          this.pager.startIndex,
+          this.pager.endIndex + 1
+        );
       }
-      console.log("la valeur de lieu1: " + lieu);
-    }
-    console.log(this.Intervention);
-  }
-
-  ngOnInit() {}
 }

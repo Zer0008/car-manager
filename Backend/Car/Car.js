@@ -12,6 +12,12 @@ var Car = {
         return db.query(sql,[email],callback);       
     },
 
+    getPannes: function(idVehicule, callback){
+        var sql = "CALL getPannes(?)";
+        console.log("requete " + sql + " Envoyée !!!");
+        return db.query(sql, [idVehicule], callback); 
+    },
+
     getInterventions: function(idVehicule, callback){
         var sql = "CALL getListeInterventions(?)";
         console.log("requete " + sql + " Envoyée !!!");
@@ -24,10 +30,17 @@ var Car = {
        return db.query(sql, [idVehicule], callback);
     },
 
-    createPanneByUser: function(idTypePanne, idVehicule,callback){
-        var sql = "select createPanne(?,?,?)";
+    deleteVehicule: function(idVehicule, callback){
+       var sql = "select delVehicule(?)" ;
+       console.log("requete " + sql + " Envoyée !!! ");
+       return db.query(sql, [idVehicule], callback);
+    },
+
+    createPanneByUser: function(idTypePanne, idVehicule, panne, callback){
+        let libellePanne  = panne.libellePanne;
+        var sql = "select createPanne(?,?,?,?)";
         console.log("requete " + sql + " Envoyée !!! ");
-        return db.query(sql, [null, idTypePanne, idVehicule], callback);
+        return db.query(sql, [null, idTypePanne, idVehicule, libellePanne], callback);
     },
 
     createIntervention : function(idGarage, idPanne, intervention, callback){
@@ -101,11 +114,13 @@ var Car = {
            return db.query(sql, [idVehicule, libelleVoiture, justificatif, photo, statut, visibilite, isActive], callback);
     },
 
-    transfertCar : function(idAcheteur, idReceveur, idVehicule, dateAcquisition, justificatifVente, callback){
+    transfertCar : function(idAcheteur, idReceveur, idVehicule, dateAcquisition, justificatif, callback){
+        let JustificatifVente = justificatif.justificatifVente ;
+        console.log(JustificatifVente);
         var sql = "select cessionVehicule(?,?,?,?,?)" ;
         console.log("vente de " + idAcheteur + " vers "+ idReceveur + " du vehicule "+ idVehicule);
        console.log("requete " + sql + " Envoyée !!! ");
-       return db.query(sql, [idAcheteur, idReceveur, idVehicule, dateAcquisition, justificatifVente], callback);
+       return db.query(sql, [idAcheteur, idReceveur, idVehicule, dateAcquisition, JustificatifVente], callback);
     }
     
 };

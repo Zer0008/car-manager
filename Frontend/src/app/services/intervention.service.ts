@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Intervention } from '../models/Intervention';
-import { Car } from '../models/Car';
-import { TypePanne } from '../models/TypePanne';
-import { interventions } from '../mock-intervention';
-import { AncienInterventions } from '../mock-intervention';
 import { Observable, Subject, of } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
+import {  tap } from 'rxjs/operators';
+import { TypePanne } from '../models/TypePanne';
+import { AnnonceIntervention } from '../models/AnnonceIntervention';
 import { environment } from '../../environments/environment';
+import { Panne } from './../models/Panne';
 
 const httpOptions = {
   headers: new HttpHeaders(
@@ -25,10 +24,9 @@ export class InterventionService {
   private apiUrl =  environment.apiUrl;
   constructor(private http: HttpClient) {}
 
-  /** GET: intervention in the server */
-  getInterventions(immatriculation: string): Observable<Intervention[]> {
+  getInterventions(idVehicule: number): any {
     return this.http
-      .get<Intervention[]>(this.apiUrl + '/api-car/car/' + immatriculation + '/interventions', httpOptions);
+      .get<Intervention[]>(this.apiUrl + '/api-car/car/' + idVehicule + '/interventions', httpOptions);
   }
 
   /** PUT: intervention in the server */
@@ -49,7 +47,7 @@ export class InterventionService {
       .delete<any>(this.apiUrl + '/api-car/car/?idIntervention=' + idIntervention, httpOptions);
 
   }
-
+  
   /** GET: typepanne in the server */
   getTypePanneInterventions(): Observable<TypePanne[]> {
     console.log('Je suis dans le service intervention pour type de panne ');
@@ -57,11 +55,18 @@ export class InterventionService {
       .get<TypePanne[]>(this.apiUrl + '/api-car/TypePanne', httpOptions);
   }
 
-  //Mock-server
-  getListIntervention(): Observable<Intervention[]> {
-    return of(interventions);
+  /** GET: panne in the server */
+  getPannes(): any {
+    console.log('Je suis dans le service intervention pour type de panne ');
+    return this.http
+      .get<Panne[]>(this.apiUrl + '/api-car/Pannes/' , httpOptions);
   }
-  /*getAncienListIntervention(): Observable<Intervention[]> {
-    return of(AncienInterventions);
-  }*/
+
+  /** POST: post panne in the server */
+  createPanne(idVehicule: number, idTypePanne: number, panne: Panne): any {
+  // tslint:disable-next-line:max-line-length
+  console.log("je suis dans panne");
+  return this.http.post(this.apiUrl + '/api-car/cars/' + idVehicule + '/panne?idTypePanne=' + idTypePanne , panne, httpOptions);
+}
+
 }

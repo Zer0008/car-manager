@@ -19,7 +19,7 @@ var AnnonceVente = {
         var sql = "select createAnnonceVente(?,?,?,?,?,?,?,?)";
         console.log("requete " + sql + " Envoyée !!!");
         return db.query(sql, [idVehicule, datePublication, libelleAnnonceVente, descriptifAnnonceVente,
-        prixVente, photo, kilometrage, ville], callback);
+        prixVente, ville, photo, kilometrage], callback);
     }
 }
 

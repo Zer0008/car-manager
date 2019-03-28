@@ -2,7 +2,6 @@ import { Car } from './../models/Car';
 import { Component, OnInit } from '@angular/core';
 import { CarService } from './../services/car.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NumberFormatStyle } from '@angular/common';
 
 @Component({
   selector: 'app-car-view',
@@ -16,7 +15,7 @@ export class CarViewComponent implements OnInit {
    // tslint:disable-next-line:no-inferrable-types
   justif: string;
   // tslint:disable-next-line:no-inferrable-types
-  justif2: string = '/assets/photo-1553339619324.jpg';
+
   constructor(private carService: CarService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
@@ -48,17 +47,5 @@ export class CarViewComponent implements OnInit {
     }
   }
 
-  requestInterventionCar(): void {
-    this.router.navigateByUrl('vehicule/' + this.idVehicule + '/requestInterventions');
-  }
-  interventionCar(): void {
-    this.router.navigateByUrl('vehicule/' + this.idVehicule + '/interventions');
-  }
-  venteCar(): void {
-    this.router.navigateByUrl('vehicule/' + this.idVehicule + '/vente-vehicule');
-  }
-  paramsVente(): void {
-    this.router.navigateByUrl('vehicule/' + this.idVehicule + '/parametre-vente');
-  }
 
 }

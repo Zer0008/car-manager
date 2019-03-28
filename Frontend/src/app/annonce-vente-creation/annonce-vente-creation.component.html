@@ -1,0 +1,119 @@
+<br>
+<h2>Paramètrage de l'annonce de vente </h2>
+<br>
+<div class="row">
+  <div class="col-md-9">
+    <h4>Libellé Voiture 1 - Toyota Yaris (AA-XXX-BB)</h4>
+    <!--<h4> {{vehicule.libelleVoiture}}&nbsp; - &nbsp; {{vehicule.marqueVoiture }} {{vehicule.modeleVoiture}} ( {{vehicule.immatriculation}} )</h4>-->
+  </div>
+  <br>
+  <div class="col-md-3">
+    <!--    <div>
+          <button type="button" class="btn btn-success">Valider Informations</button>
+        </div>
+        <br>-->
+    <div>
+      <button type="button" class="btn btn-danger" (click)="annuler()">Annuler</button>
+    </div>
+  </div>
+</div>
+
+<br>
+<div>
+  <form [formGroup]="formVente" (ngSubmit)="miseEnligne()">
+
+    <div class="form-group row">
+      <div class="mx-sm-3 mb-2">
+
+        <input type="file" formControlName="photo" name="photo" id="photo" class="btn-outline-info form-control" value="photo" ng2FileSelect [uploader]="uploaderphoto"/>
+        <br>
+        <button type="button" class="btn btn-primary btn-s"
+                (click)="uploaderphoto.uploadAll()"
+                [disabled]="!uploaderphoto.getNotUploadedItems().length" >
+          Télécharger l'image du véhicule
+        </button>
+
+        <!--        <input type="" (change)="onSelect()" id="photo" name="photo" ngModel>&emsp;
+                <button class="btn btn-primary btn-sm" type="button">Ajouter photo</button>-->
+      </div>
+    </div>
+    <br>
+    <div class="form-group row">
+      <label for="libelle" class="col-md-4 col-form-label">Libelle Annonce</label>
+      <div class="mx-sm-3 mb-2">
+        <input type="text" class="form-control" formControlName="libelle" id="libelle" placeholder="libelle" value="libelle">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="Infos" class="col-md-4" col-form-label>Texte de votre annonce</label>
+      <div class="col-md-8">
+        <textarea class="form-control" formControlName="infos" name="Infos" id="Infos" rows="3" ngModel></textarea>
+      </div>
+    </div>
+<!--
+    <div class="form-group row">
+      <label for="DiffusionAnnonce" class="col-md-4 col-form-label">Diffusion de votre annonce</label>
+      <div class="mx-sm-3 mb-2">
+        <select id="DiffusionAnnonce" formControlName="periode" class="form-control">
+          <optgroup label="Semaine">
+            <option>Pendant 1 semaines</option>
+            <option>Pendant 2 semaines</option>
+            <option>Pendant 3 semaines</option>
+          </optgroup>
+          <optgroup label="Mois">
+            <option>Pendant 1 mois</option>
+            <option>Pendant 2 mois</option>
+            <option>Pendant 3 mois</option>
+            <option>Pendant 4 mois</option>
+            <option>Pendant 5 mois</option>
+            <option>Pendant 6 mois</option>
+          </optgroup>
+        </select>
+      </div>
+    </div>-->
+    <div class="form-group row">
+      <label for="kilometrage" class="col-md-4 col-form-label">kilometrage</label>
+      <div class="mx-sm-3 mb-2">
+        <input type="text" class="form-control" formControlName="kilometrage" id="kilometrage" placeholder="kilometrage" value="kilometrage">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="price" class="col-md-4 col-form-label">Prix</label>
+      <div class="mx-sm-3 mb-2">
+        <input type="text" class="form-control" formControlName="prix" id="price" placeholder="price" name="price">
+        &nbsp;&nbsp;&nbsp;
+        <input type="checkbox" formControlName="negociation" id="negPrice">&nbsp; <label>Négociable</label>
+      </div>€
+      <!--<div class=" mx-sm- mb-2">
+        <input type="text" class="form-control" id="price" placeholder="price"> €
+      </div>-->
+    </div>
+    <div class="form-group row">
+      <label for="email" class="col-md-4 col-form-label">Email </label>
+      <div class="mx-sm-3 mb-2">
+        <input type="email" class="form-control" formControlName="emailProp" id="email" placeholder="mail" value="{{user.email}}">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="telephone" class="col-md-4 col-form-label">Téléphone </label>
+      <div class="mx-sm-3 mb-2">
+        <input type="tel" class="form-control" formControlName="telephoneProp" id="telephone" placeholder="telephone" value="{{user.telephone}}">
+      </div>
+    </div>
+<!--    <div class="form-group row">
+      <label for="ville" class="col-md-4 col-form-label">Ville </label>
+      <div class="mx-sm-3 mb-2">
+        <input type="text" class="form-control" formControlName="ville" id="ville" placeholder="ville" value="{{user.ville}}">
+      </div>
+    </div>-->
+
+    <div class="form-group row">
+      <div class="col-md-9"></div>
+      <div class="col-md-3">
+        <button type="button" class="btn btn-success" (click)="miseEnligne()">Mettre en vente</button>
+      </div>
+    </div>
+  </form>
+</div>

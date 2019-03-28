@@ -31,8 +31,7 @@ export class AuthentificationService {
         tap((newUser: User) =>
           { 
             if (newUser.email != null) {
-              console.log(`added hero w/ id=${newUser.idUser}`),
-              this.setUser(newUser);
+              console.log(`added User w/ id=${newUser.idUser}`)
             } else {
               console.log('utilisateur existant');
             }
