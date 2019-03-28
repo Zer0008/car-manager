@@ -20,6 +20,21 @@ router.post('/register', function (req,res) {
     });
 });
 
+router.get('/password/', function(req,res){
+    let email = req.query.email ;
+    User.getPassword(email, function(err, count){
+        if(err){
+            console.log(err);
+           res.status(400).json(err);
+        } else {
+            count = JSON.parse(JSON.stringify(count));
+            key = Object.keys(count[0])[0];
+            count = count[0][key];
+            res.json({'password': count});
+        }
+    });
+});
+
 router.post('/signin', function(req, res) {
      User.getUserAuth(req.body.email, req.body.password, req.body.statut, function(err,result){
          if(err){

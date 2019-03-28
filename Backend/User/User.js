@@ -64,6 +64,12 @@ var User = {
         return db.query(req, [], callback);
     },
 
+    getPassword: function(email, callback){
+        let req = 'select getPasswordUser(?)';
+        console.log("requete " + req + " Envoyée !!!");
+        return db.query(req, [email], callback);
+    },
+
     createNotification: function(idUser, Notification, callback){
         var d = new Date(Notification.dateNotification);
         idUserRecep = idUser;
