@@ -27,4 +27,9 @@ export class AnnoncesService {
         )
       );
   }
+
+  getInterventions(): any {
+    console.log('getInterventions');
+    return this.http.get(this.apiUrl + '/api-annonces/interventions', httpOptions)
+}
 }

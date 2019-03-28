@@ -51,6 +51,26 @@ router.get('/car/:idVehicule',function (req,res) {
      })
  });
 
+ router.put('/car/:idVehicule', function(req, res){
+    let idVehicule = Number(req.params.idVehicule) ;
+     Car.updateCar(idVehicule, req.body, function (err,rows) {
+        if (err){
+            console.log(err);
+            res.status(400).json(err);
+        }
+        count = JSON.parse(JSON.stringify(count));
+        key = Object.keys(count[0])[0];
+        count = count[0][key];
+        if(count !== 0){
+            res.json(req.body);
+        } else {
+            res.json({
+                "messsage": "la mise a jour n'a pas ete effectuee "
+            });
+        }
+     })
+ });
+
 router.post('/cars',function(req,res){
     let email = req.query.email;
     Car.createCar(email, req.body, function(err,count){
@@ -141,6 +161,25 @@ router.get('/car/:idVehicule/interventions',function (req,res) {
          })
     }
  });
+
+ router.delete('/car/interventions/:idIntervention',function (req,res) {
+    let idIntervention = Number(req.params.idIntervention) ;
+    Car.deleteIntervention(idIntervention, function(err, count){
+        if (err){
+            console.log(err);
+            res.status(400).json(err);
+        }
+        count = JSON.parse(JSON.stringify(count));
+        key = Object.keys(count[0])[0];
+        count = count[0][key];
+        if(count != 0){
+            res.json({'idIntervention': idIntervention});
+        } else {
+            res.status(404).json({'message': 'erreur rencontrée lors de la suppression'});
+        }
+    });
+ });
+
 
  
 
