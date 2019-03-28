@@ -1,7 +1,6 @@
 import { environment } from './../../environments/environment';
 import { PagerService } from "./../services/pager.service";
 import { AnnoncesService } from "./../services/annonces.service";
-import { Vehicule } from "./../models/Voiture";
 import { Component, OnInit } from "@angular/core";
 import * as _ from "lodash";
 

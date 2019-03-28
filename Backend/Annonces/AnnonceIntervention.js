@@ -15,7 +15,7 @@ var AnnonceIntervention = {
         ville = annonceIntervention.ville ;
         var sql = "select createAnnoncePanne(?,?,?,?)";
         console.log("requete " + sql + " Envoyée !!!");
-        return db.query(sql, [idVehicule, datePublication, libelleAnnonce, descriptifAnnonce], callback);
+        return db.query(sql, [idVehicule, datePublication, libelleAnnonce, descriptifAnnonce, ville], callback);
     }
 }
 

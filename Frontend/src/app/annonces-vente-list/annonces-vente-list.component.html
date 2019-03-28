@@ -33,11 +33,14 @@
     </form>
     <button type="button" class="btn btn-primary" (click)="onSearch(modele.value, marque.value, carburant.value)"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Rechercher </button>
 </div><br/>
-
 <div class="row">
     <div class="col-md-12 listing-block">
         <div class="media" *ngFor="let voiture of pagedItems">
             <img class="d-flex align-self-start" src="{{voiture.photo}}" alt="Generic placeholder image">
+        <div class="row" *ngIf="pagedItems" >
+            <div class="col-md-12 listing-block">
+                <div class="media" *ngFor="let voiture of pagedItems">
+            <img class="d-flex align-self-start" src="{{getImage(voiture.photo)}}" alt="Generic placeholder image">
             <div class="media-body pl-3">
                 <div class="price">{{voiture.prixVente}}€<small>{{voiture.ville}}</small></div>
                 <div class="stats">
@@ -65,4 +68,8 @@
             </li>
         </ul>
     </div>
+</div>
+</div>
+<div *ngIf="!pagedItems" class='load'>
+  <mat-spinner [diameter]="48" ></mat-spinner>
 </div>

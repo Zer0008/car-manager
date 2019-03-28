@@ -1,4 +1,4 @@
-export class Vehicule {
+export class Car {
   immatriculation: string;
   libelleVoiture: string;
   marqueVoiture: string;

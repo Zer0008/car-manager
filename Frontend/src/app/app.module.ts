@@ -13,7 +13,6 @@ import { InscriptionComponent } from './inscription/inscription.component';
 import { NotificationComponent } from './notification/notification.component';
 import { AnnoncesInterventionListComponent } from './annonces-intervention-list/annonces-intervention-list.component';
 import { CarSearchComponent } from './car-search/car-search.component';
-import { TechnicalSetViewComponent } from './technical-set-view/technical-set-view.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { CarInterventionsComponent } from './car-interventions/car-interventions.component';
 import { CarListComponent } from './car-list/car-list.component';
@@ -26,6 +25,7 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { VenteVehiculeComponent } from './vente-vehicule/vente-vehicule.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { AnnonceVenteCreationComponent } from './annonce-vente-creation/annonce-vente-creation.component';
+import { AnnonceInterventionCreationComponent } from './annonce-intervention-creation/annonce-intervention-creation.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +37,6 @@ import { AnnonceVenteCreationComponent } from './annonce-vente-creation/annonce-
     NotificationComponent,
     AnnoncesInterventionListComponent,
     CarSearchComponent,
-    TechnicalSetViewComponent,
     NavbarComponent,
     CarInterventionsComponent,
     CarListComponent,
@@ -47,6 +46,7 @@ import { AnnonceVenteCreationComponent } from './annonce-vente-creation/annonce-
     ViewUserComponent,
     VenteVehiculeComponent,
     AnnonceVenteCreationComponent,
+    AnnonceInterventionCreationComponent,
   ],
   imports: [
     BrowserModule,

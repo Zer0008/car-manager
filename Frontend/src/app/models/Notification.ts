@@ -4,5 +4,6 @@ export class Notification {
     nonLu: number;
     dateNotification: Date;
     libelleNotification: string;
+    detailNotification: string;
     statut: string;
 }
