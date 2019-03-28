@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {  FileUploader, FileSelectDirective } from 'ng2-file-upload/ng2-file-upload';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CarSearchService} from '../services/car-search.service';
-import {vehicule}   from '../models/Voiture';
+import { Vehicule}   from '../models/Voiture';
 import {MatDialog} from '@angular/material';
 import { environment } from '../../environments/environment';
 
