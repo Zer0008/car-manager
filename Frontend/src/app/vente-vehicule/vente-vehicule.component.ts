@@ -1,8 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, NgForm} from "@angular/forms";
+import {FormBuilder, FormGroup, NgForm, Validators} from "@angular/forms";
 import {VenteVehiculeService} from "../services/vente-vehicule.service";
-import {Route, Router} from "@angular/router";
+import {ActivatedRoute, Route, Router} from "@angular/router";
 import {AcquisitionVoiture} from "../models/AcquisitionVoiture";
+import {User} from "../models/User";
+import * as _ from "lodash";
+import {any} from "codelyzer/util/function";
+import {CarSearchService} from "../services/car-search.service";
+import {FileUploader} from "ng2-file-upload";
+import {environment} from "../../environments/environment";
+import {MatDialog} from '@angular/material';
 
 @Component({
   selector: 'app-vente-vehicule',
@@ -12,19 +19,42 @@ import {AcquisitionVoiture} from "../models/AcquisitionVoiture";
 export class VenteVehiculeComponent implements OnInit {
 
   acquisitionForm: FormGroup;
-  userList: any;
+  userList: User[];
+  dateAcquisition: Date;
   user: any;
-  id: number;
+  url: any;
+  justificatif: any;
+  private URLjust =  environment.apiUrl + '/api/upload/vente';
+  idVehicule: any = this.route.snapshot.paramMap.get("idVehicule");
 
   constructor(private formBuilder: FormBuilder,
               private venteVehiculeService: VenteVehiculeService,
-              private router: Router) {
-    this.user = JSON.parse(localStorage.getItem("user"));
-    console.log(this.user.idUser);
+              private router: Router,
+              private route: ActivatedRoute,
+              private dialog: MatDialog) {
   }
+
+  public uploader: FileUploader = new FileUploader({url: this.URLjust,
+    itemAlias: 'photo',
+    allowedMimeType: ['image/png', 'image/jpg', 'image/jpeg', 'image/gif'],
+    maxFileSize: 50 * 1024 * 1024
+  });
 
   ngOnInit() {
     this.initFormAcquisition();
+
+    this.venteVehiculeService.getUser().subscribe(listeUser => {
+      this.userList = listeUser;
+    });
+
+    this.uploader.onAfterAddingFile = (file) => { file.withCredentials = false; };
+    this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
+      console.log('ImageUpload:uploaded:', item, status, response);
+      this.url = response;
+      this.justificatif = this.url.url2;
+      console.log("Justificatif: "+this.justificatif);
+      //alert('File uploaded successfully');
+    };
   }
 
   initFormAcquisition(){
@@ -39,52 +69,39 @@ export class VenteVehiculeComponent implements OnInit {
   }
 
   onSubmitAcquisition(){
-    //const formValue = this.acquisitionForm.value;
     this.user = JSON.parse(localStorage.getItem("user"));
-    const newAcquisition = new AcquisitionVoiture(
-        this.user.idUser,
-        this.getUserId(this.f.emailNewProp.value),
-        1,
-        new Date()
+    const email = this.f.emailNewProp.value;
+    let idReceveur;
+    this.dateAcquisition = new Date();
+
+    console.log(this.userList);
+
+    for (let i in this.userList){
+      if (this.userList[i].email == email){
+        if (email !== this.user.email){
+          console.log("idReceveur: "+this.userList[i].idUser);
+          idReceveur = this.userList[i].idUser;
+        }
+        else{
+        }
+      }else{
+        console.log("Erreur");
+      }
+    }
+
+    this.venteVehiculeService.putTransfert(this.user.idUser, idReceveur, this.idVehicule, this.dateAcquisition, this.justificatif).subscribe(
+        () => {
+          console.log("Transfert effectué");
+        }
     );
 
-    console.log("Email: "+this.f.emailNewProp.value);
-    console.log("Id de l'utilisateur connecté: "+newAcquisition.idAcheteur);
-    console.log("Id du receveur: "+newAcquisition.idReceveur);
-    console.log("Id véhicule: "+newAcquisition.idVehicule);
-    console.log("Utilisateur: "+this.venteVehiculeService.getUser(this.f.emailNewProp.value));
-    //console.log("Date d'acquisition: "+newAcquisition.dateAcquisition);
-    //console.log("Justificatif: "+formValue['justifVente']);
-    //this.id = this.getUserId();
-    //this.venteVehiculeService.doTransfert(newAcquisition);
     //this.router.navigate(['/vehicules']);
   }
 
-  getUserId(email: string): number{
-    this.userList = this.venteVehiculeService.getUser(email);
-
-    for (let user of this.userList){
-      if (user.email == email){
-        console.log("L'utilisateur existe: "+user.email);
-        return user.idUser;
-      }else{
-        console.log("Introuvable")
-        return 0;
-      }
-    }
+  getUserObject(){
+    //const email = this.f.emailNewProp.value;
+    this.venteVehiculeService.getUser().subscribe((response) => {
+      this.userList = response;
+    });
   }
-
-  //saveAppareilsToServer() {
-  //  this.httpClient
-  //      .post('https://httpclient-demo.firebaseio.com/appareils.json', this.appareils)
-   //     .subscribe(
-    //        () => {
-      //        console.log('Enregistrement terminé !');
-        //    },
-          //  (error) => {
-            //  console.log('Erreur ! : ' + error);
-            //}
-        //);
-  //}
-
 }

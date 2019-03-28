@@ -28,7 +28,7 @@ const routes: Routes = [
   {path: 'annonces-vente/new', component: AnnonceVenteCreationComponent},
   {path: 'profile', component: ViewUserComponent} ,
   { path: 'vehicule/:id/interventions', component: CarInterventionsComponent},
-  { path: 'vente-vehicule', component: VenteVehiculeComponent }
+  { path: 'vehicule/:idVehicule/vente-vehicule', component: VenteVehiculeComponent }
 ];
 
 @NgModule({

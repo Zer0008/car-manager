@@ -8,11 +8,8 @@ var AnnonceVente = {
     },
 
     createAnnonceVente: function(immatriculation, annonceVente, callback){
-<<<<<<< HEAD
         datePublication = new Date();
-=======
         datePublication = new Date() ;
->>>>>>> 7f1f69a684979fe0df585942dac23a058508f599
         libelleAnnonceVente = annonceVente.libelleAnnonceVente;
         descriptifAnnonceVente = annonceVente.descriptifAnnonceVente ;
         prixVente = annonceVente.prixVente ;

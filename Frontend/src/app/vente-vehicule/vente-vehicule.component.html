@@ -18,7 +18,13 @@
     <div class="form-group row">
       <label for="justificatifVente" class="col-md-4 col-form-label">Justificatif de vente</label>
       <div class="col-md-8">
-        <input type="file" id="justificatifVente" class="form-control" formControlName="justifVente">&emsp;
+        <input type="file" id="justificatifVente" class="form-control" formControlName="justifVente" ng2FileSelect [uploader]="uploader">&emsp;
+        <br>
+        <button type="button" class="btn btn-primary btn-s"
+                (click)="uploader.uploadAll()"
+                [disabled]="!uploader.getNotUploadedItems().length" >
+          Telecharger le justificatif
+        </button>
       </div>
     </div>
     <br>
