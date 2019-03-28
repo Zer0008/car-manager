@@ -1,9 +1,11 @@
 .pub{
     position: relative;
+    background-attachment: scroll;
+    bottom: auto;
     width: 100%;
     height: 60vh;
     width: 100%;
-    height: 85vh;
+    height: 55vh;
     marging-left: auto;
     margin-right: auto;
     border: #232323 solid 1px;

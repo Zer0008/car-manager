@@ -26,6 +26,8 @@ export class VenteVehiculeComponent implements OnInit {
   idReceveur: any;
   url: any;
   justificatif: any;
+
+  testEmailString: string;
   private URLjust =  environment.apiUrl + '/api/upload/vente';
   idVehicule: any = this.route.snapshot.paramMap.get("idVehicule");
 
@@ -61,8 +63,8 @@ export class VenteVehiculeComponent implements OnInit {
 
   initFormAcquisition(){
     this.acquisitionForm = this.formBuilder.group({
-      emailNewProp: '',
-      justifVente: ''
+      emailNewProp: ['', [Validators.required, Validators.email]],
+      justifVente: ['', Validators.required]
     });
   }
 
@@ -77,31 +79,41 @@ export class VenteVehiculeComponent implements OnInit {
 
     console.log(this.userList);
 
+    //this.testEmailString = this.testEmail(email, email);
+
     for (let i in this.userList){
       if (this.userList[i].email == email){
         if (email !== this.user.email){
           console.log("idReceveur: "+this.userList[i].idUser);
           this.idReceveur = this.userList[i].idUser;
 
-          this.venteVehiculeService.putTransfert(this.user.idUser, this.idReceveur, this.idVehicule, this.dateAcquisition, this.justificatif).subscribe(
+          this.venteVehiculeService.putTransfert(this.idReceveur, this.user.idUser, this.idVehicule, this.dateAcquisition, this.justificatif).subscribe(
               () => {
                 console.log("Transfert effectué");
+                this.testEmailString = "success";
+                this.router.navigate(['/vehicules']);
               },
               (error) => {
                 console.log("Rec: "+this.idReceveur);
                 console.log("just: "+this.justificatif);
                 console.log(error);
-          }
+              }
           );
         }
         else{
+            this.testEmailString = "identique";
         }
       }else{
+        this.testEmailString = "not exist";
         console.log("Erreur");
       }
     }
 
     //this.router.navigate(['/vehicules']);
+  }
+
+  getRetour(){
+    this.router.navigate(['/vehicule/:id']);
   }
 
   getUserObject(){

@@ -6,9 +6,18 @@
     <h4>Libellé Voiture 1 - Toyota Yaris (AA-XXX-BB)</h4>
   </div>
 </div>
-<hr><br>
+<hr>
 <div>
   <form [formGroup]="acquisitionForm" (ngSubmit)="onSubmitAcquisition()">
+    <div class="alert alert-danger" role="alert" *ngIf="testEmailString === 'identique'">
+      Vous ne pouvez pas vous céder un véhicule
+    </div>
+    <div class="alert alert-danger" role="alert" *ngIf="testEmailString === 'not exist'">
+      Votre acheteur n'existe pas
+    </div>
+    <div class="alert alert-success" role="alert" *ngIf="testEmailString === 'sucess'">
+      Transfert effectué avec succès!!
+    </div>
     <div class="form-group row">
       <label for="emailNewProp" class="col-md-4 col-form-label">Email du noueau propriétaire</label>
       <div class="col-md-8">
@@ -29,8 +38,8 @@
     </div>
     <br>
     <div class="form-group row">
-      <button type="submit" class="btn btn-success" style="margin-left: 15px;">Valider la vente</button>
-      <button type="button" class="btn btn-danger" style="margin-left: 10px;">Annuler</button>
+      <button type="submit" class="btn btn-success" style="margin-left: 15px;" [disabled]="acquisitionForm.invalid">Valider la vente</button>
+      <button type="button" class="btn btn-danger" style="margin-left: 10px;" (click)="getRetour()">Annuler</button>
     </div>
   </form>
 </div>
