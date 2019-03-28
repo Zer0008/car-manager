@@ -74,7 +74,7 @@ export class CarSearchComponent implements OnInit {
       isActive: true
     }
     this.matriculeform = new FormGroup({
-      matricule: new FormControl('', [Validators.required, Validators.minLength(9), Validators.maxLength(9)]),
+      matricule: new FormControl('', [Validators.required, Validators.minLength(7), Validators.maxLength(9)]),
     });
 
     this.carform = new FormGroup({

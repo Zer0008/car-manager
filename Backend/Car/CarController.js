@@ -123,6 +123,19 @@ router.get('/TypePanne', function(req,res){
  });
 });
 
+router.get('/Pannes', function(req, res){
+    let idVehicule = Number(req.query.idVehicule) ;
+ Car.getPannes(idVehicule, function(err, rows){
+    if(err) {
+        res.status(400).json(err);
+    }
+    else
+    {
+        res.json(rows[0]);
+    }
+ })
+});
+
 
 router.get('/car/:idVehicule/interventions',function (req,res) {
     let idVehicule = Number(req.params.idVehicule) ;

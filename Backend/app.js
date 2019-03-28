@@ -27,7 +27,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header("Access-Control-Allow-Headers", "*");
   next();
 });
 app.use(passport.initialize());
@@ -36,8 +36,9 @@ app.use("/auth", AuthController);
 app.use("/api-mock", mockController);
 app.use("/api-car", CarController);
 app.use("/api-annonces", AnnnonceController);
-app.get("/uploads/:folder/:file", function(req,res){
+app.get("/uploads/:folder/:file", cors(), function(req,res){
   path = '/uploads' + '/' + req.params.folder + '/' + req.params.file ;
+  console.log("get "+ path);
     res.sendFile(path, function(err){
       if(err){
         res.status(404).json(err);
@@ -57,10 +58,10 @@ app.use(
   })
 );
 
-let url;
-let url2;
-let url3;
-let url4;
+let urlcartegrise;
+let urlintervention;
+let urlphoto;
+let urlvente;
 
 try {
   fs.statSync("./uploads/carte_grise");
@@ -188,7 +189,7 @@ app.post('/api/upload/vente',uploadvente.single('file'), function (req, res) {
     } else {
       console.log('file received');
       return res.json({
-       url: vente
+       url: urlvente
       })
     }
 });

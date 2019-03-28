@@ -12,6 +12,12 @@ var Car = {
         return db.query(sql,[email],callback);       
     },
 
+    getPannes: function(idVehicule, callback){
+        var sql = "CALL getPannes(?)";
+        console.log("requete " + sql + " Envoyée !!!");
+        return db.query(sql, [idVehicule], callback); 
+    },
+
     getInterventions: function(idVehicule, callback){
         var sql = "CALL getListeInterventions(?)";
         console.log("requete " + sql + " Envoyée !!!");

@@ -1,16 +1,14 @@
+import { User } from "./../models/User";
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { environment } from "../../environments/environment";
 import { tap } from "rxjs/operators";
-import {Observable} from "rxjs";
-import {Intervention} from "../models/Intervention";
-// import { Voiture } from "../models/Voiture";
-
+import { Observable } from 'rxjs';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type': 'application/json' ,
-    'Access-Control-Allow-Origin': '*',
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*"
   })
 };
 
@@ -20,9 +18,7 @@ const httpOptions = {
 export class UserService {
   private apiUrl = environment.apiUrl;
 
-  constructor(
-    private http: HttpClient,
-  ) {}
+  constructor(private http: HttpClient) {}
 
   updateUser(email: string, user: any): any {
     console.log("service maj appele");
@@ -40,23 +36,30 @@ export class UserService {
   }
 
   getCar(email: string, statut: any): any {
-      console.log("GET");
-      return this.http.get(this.apiUrl + "/api-car/cars?email=" + email + "&statut=" + statut, httpOptions)
+    console.log("GET");
+    return this.http.get(
+      this.apiUrl + "/api-car/cars?email=" + email + "&statut=" + statut,
+      httpOptions
+    );
   }
 
-  removeCar(): any {
-
+  getAllUsers(): Observable<User[]> {
+    return this.http.get<User[]>(this.apiUrl + "/api/user");
   }
+
+  removeCar(): any {}
 
   setPasswordUser(email: string, password: string): any {
     return this.http
-      .put<any>(this.apiUrl + '/api/user/resetPassword?email=' + email, {'password': password}, httpOptions)
+      .put<any>(
+        this.apiUrl + "/api/user/resetPassword?email=" + email,
+        { password: password },
+        httpOptions
+      )
       .pipe(
         tap(() => {
-         console.log('updated user email = ' + email);
+          console.log("updated user email = " + email);
         })
       );
   }
-
-
 }

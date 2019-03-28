@@ -75,7 +75,7 @@ export class CarCreationComponent implements OnInit {
 
   }
   this.matriculeform = new FormGroup({
-    matricule: new FormControl('', [Validators.required, Validators.minLength(9), Validators.maxLength(9)]),
+    matricule: new FormControl('', [Validators.required, Validators.minLength(7), Validators.maxLength(9)]),
   });
 
   this.libelleform = new FormGroup({

@@ -1,3 +1,4 @@
+import { CarService } from "./../services/car.service";
 import { AnnoncesService } from "./../services/annonces.service";
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
@@ -6,6 +7,7 @@ import { ActivatedRoute } from "@angular/router";
 import { AnnonceVente } from "../models/annonceVente";
 import { FileUploader } from "ng2-file-upload";
 import { environment } from "../../environments/environment";
+import { Car } from "../models/Car";
 
 @Component({
   selector: "app-annonce-vente-creation",
@@ -14,7 +16,7 @@ import { environment } from "../../environments/environment";
 })
 export class AnnonceVenteCreationComponent implements OnInit {
   user: any;
-  vehicules: any[];
+  vehicule: Car;
   formVente: FormGroup;
   idVehicule: number;
   datePublication: any;
@@ -26,7 +28,8 @@ export class AnnonceVenteCreationComponent implements OnInit {
     private formAnnonceVente: FormBuilder,
     private route: Router,
     private routeA: ActivatedRoute,
-    private annoncesservice: AnnoncesService
+    private annoncesservice: AnnoncesService,
+    private carservice: CarService
   ) {
     this.user = JSON.parse(localStorage.getItem("user"));
     this.idVehicule = Number(this.routeA.snapshot.paramMap.get("id"));
@@ -49,6 +52,13 @@ export class AnnonceVenteCreationComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.carservice
+      .getInfosCar(this.idVehicule)
+      .subscribe( 
+        (car) => {
+          this.vehicule = car[0] ;
+        }
+      );
     this.formVente = this.formAnnonceVente.group({
       photo: "",
       libelle: "",
@@ -72,28 +82,29 @@ export class AnnonceVenteCreationComponent implements OnInit {
     ) => {
       console.log("ImageUpload:uploaded:", item, status, response);
       this.url = JSON.parse(response);
-      console.log(this.url.url2);
+      console.log(this.url.url);
     };
   }
-  get f(){
+  get f() {
     return this.formVente.controls;
   }
 
-  miseEnligne(){
-
+  miseEnligne() {
     const annonce = new AnnonceVente(
-        new Date(),
-        this.f.libelle.value,
-        this.f.infos.value,
-        this.f.prix.value,
-        this.url.url2,
-        this.f.kilometrage.value,
-        this.f.ville.value,
+      new Date(),
+      this.f.libelle.value,
+      this.f.infos.value,
+      this.f.prix.value,
+      this.url.url,
+      this.f.kilometrage.value,
+      this.f.ville.value
     );
 
-    this.annoncesservice.createAnnonceVente(this.idVehicule, annonce).subscribe(res => {
-      console.log(res);
-      this.route.navigateByUrl("/annonce-vente");
-    });
+    this.annoncesservice
+      .createAnnonceVente(this.idVehicule, annonce)
+      .subscribe(res => {
+        console.log(res);
+        this.route.navigateByUrl("/annonces-vente");
+      });
   }
 }

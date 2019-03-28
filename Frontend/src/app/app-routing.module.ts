@@ -1,3 +1,4 @@
+import { VenteVehiculeComponent } from './vente-vehicule/vente-vehicule.component';
 import { AnnonceInterventionCreationComponent } from './annonce-intervention-creation/annonce-intervention-creation.component';
 import { AuthGuard } from './guards/auth.guard';
 import { AnnonceVenteCreationComponent } from './annonce-vente-creation/annonce-vente-creation.component';
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path:  'vehicules', component: CarListComponent, canActivate: [AuthGuard] },
   { path: 'vehicules/new', component: CarCreationComponent, canActivate: [AuthGuard]},
   {path: 'vehicule/:id', component: CarViewComponent, canActivate: [AuthGuard] },
+  {path: 'vehicule/:id/vente', component: VenteVehiculeComponent, canActivate: [AuthGuard] },
   {path: 'vehicule/:id/request-annonce-vente', component: AnnonceVenteCreationComponent, canActivate: [AuthGuard]},
   {path: 'profile', component: ViewUserComponent, canActivate: [AuthGuard]} ,
   { path: 'vehicule/:id/interventions', component: CarInterventionsComponent, canActivate: [AuthGuard]}

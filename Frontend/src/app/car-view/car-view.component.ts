@@ -2,6 +2,7 @@ import { Car } from './../models/Car';
 import { Component, OnInit } from '@angular/core';
 import { CarService } from './../services/car.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { environment } from "./../../environments/environment";
 
 @Component({
   selector: 'app-car-view',
@@ -27,7 +28,7 @@ export class CarViewComponent implements OnInit {
     this.carService.getInfosCar(idVehicule)
       .subscribe(
         (res) => {
-          this.car = res;
+          this.car = res[0];
           this.justif = res[0].justificatif;
           console.log(this.justif);
          } 
@@ -44,6 +45,14 @@ export class CarViewComponent implements OnInit {
       };
 
       reader.readAsArrayBuffer($img.files[0]);
+    }
+  }
+
+  getfile(file: string): string {
+    if (file !== '') {
+      return environment.apiUrl + file;
+    } else {
+      return environment.apiUrl + '/uploads/photo/inconnu.jpg';
     }
   }
 

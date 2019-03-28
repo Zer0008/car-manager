@@ -1,0 +1,45 @@
+<br>
+<h2>Vente d'un véhicule</h2>
+<br>
+<div class="row" *ngIf="vehicule" >
+  <div class="col-md-9">
+    <h4>{{vehicule.libelleVoiture}}&nbsp; - &nbsp; {{vehicule.marqueVoiture }} {{vehicule.modeleVoiture}} ( {{vehicule.immatriculation}} )</h4>
+  </div>
+</div>
+<hr>
+<div *ngIf="vehicule" >
+  <form [formGroup]="acquisitionForm" (ngSubmit)="onSubmitAcquisition()">
+    <div class="alert alert-danger" role="alert" *ngIf="testEmailString === 'identique'">
+      Vous ne pouvez pas vous céder un véhicule
+    </div>
+    <div class="alert alert-danger" role="alert" *ngIf="testEmailString === 'not exist'">
+      Votre acheteur n'existe pas
+    </div>
+    <div class="alert alert-success" role="alert" *ngIf="testEmailString === 'sucess'">
+      Transfert effectué avec succès!!
+    </div>
+    <div class="form-group row">
+      <label for="emailNewProp" class="col-md-4 col-form-label">Email du noueau propriétaire</label>
+      <div class="col-md-8">
+        <input type="email" id="emailNewProp" class="form-control" formControlName="emailNewProp">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="justificatifVente" class="col-md-4 col-form-label">Justificatif de vente</label>
+      <div class="col-md-8">
+        <input type="file" id="justificatifVente" class="form-control" formControlName="justifVente" ng2FileSelect [uploader]="uploader">&emsp;
+        <br>
+        <button type="button" class="btn btn-primary btn-s"
+                (click)="uploader.uploadAll()"
+                [disabled]="!uploader.getNotUploadedItems().length" >
+          Telecharger le justificatif
+        </button>
+      </div>
+    </div>
+    <br>
+    <div class="form-group row">
+      <button type="submit" class="btn btn-success" style="margin-left: 15px;" [disabled]="acquisitionForm.invalid">Valider la vente</button>
+      <button type="button" class="btn btn-danger" style="margin-left: 10px;" (click)="getRetour()">Annuler</button>
+    </div>
+  </form>
+</div>

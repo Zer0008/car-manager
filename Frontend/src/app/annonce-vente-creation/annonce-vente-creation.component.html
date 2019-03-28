@@ -1,10 +1,9 @@
 <br>
 <h2>Paramètrage de l'annonce de vente </h2>
 <br>
-<div class="row">
+<div class="row" *ngIf="vehicule" >
   <div class="col-md-9">
-    <h4>Libellé Voiture 1 - Toyota Yaris (AA-XXX-BB)</h4>
-    <!--<h4> {{vehicule.libelleVoiture}}&nbsp; - &nbsp; {{vehicule.marqueVoiture }} {{vehicule.modeleVoiture}} ( {{vehicule.immatriculation}} )</h4>-->
+  <h4>{{vehicule.libelleVoiture}} &nbsp; - &nbsp; {{vehicule.marqueVoiture }} {{vehicule.modeleVoiture}} ( {{vehicule.immatriculation}} )</h4>
   </div>
   <br>
   <div class="col-md-3">
@@ -19,7 +18,8 @@
 </div>
 
 <br>
-<div>
+<div *ngIf="vehicule" >
+    <div class="jumbotron">
   <form [formGroup]="formVente" (ngSubmit)="miseEnligne()">
 
     <div class="form-group row">
@@ -51,27 +51,7 @@
         <textarea class="form-control" formControlName="infos" name="Infos" id="Infos" rows="3" ngModel></textarea>
       </div>
     </div>
-<!--
-    <div class="form-group row">
-      <label for="DiffusionAnnonce" class="col-md-4 col-form-label">Diffusion de votre annonce</label>
-      <div class="mx-sm-3 mb-2">
-        <select id="DiffusionAnnonce" formControlName="periode" class="form-control">
-          <optgroup label="Semaine">
-            <option>Pendant 1 semaines</option>
-            <option>Pendant 2 semaines</option>
-            <option>Pendant 3 semaines</option>
-          </optgroup>
-          <optgroup label="Mois">
-            <option>Pendant 1 mois</option>
-            <option>Pendant 2 mois</option>
-            <option>Pendant 3 mois</option>
-            <option>Pendant 4 mois</option>
-            <option>Pendant 5 mois</option>
-            <option>Pendant 6 mois</option>
-          </optgroup>
-        </select>
-      </div>
-    </div>-->
+
     <div class="form-group row">
       <label for="kilometrage" class="col-md-4 col-form-label">kilometrage</label>
       <div class="mx-sm-3 mb-2">
@@ -84,7 +64,6 @@
       <div class="mx-sm-3 mb-2">
         <input type="text" class="form-control" formControlName="prix" id="price" placeholder="price" name="price">
         &nbsp;&nbsp;&nbsp;
-        <input type="checkbox" formControlName="negociation" id="negPrice">&nbsp; <label>Négociable</label>
       </div>€
       <!--<div class=" mx-sm- mb-2">
         <input type="text" class="form-control" id="price" placeholder="price"> €
@@ -116,4 +95,5 @@
       </div>
     </div>
   </form>
+  </div>
 </div>

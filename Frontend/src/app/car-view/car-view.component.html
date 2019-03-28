@@ -16,12 +16,12 @@
       </div>
   </div>
 </nav>
-<div class="jumbotron">
-<h4 *ngFor="let c of car">{{c.libelleVoiture}} </h4> 
+<div class="jumbotron" *ngIf="car" >
+  <h4>{{car.libelleVoiture}}&nbsp; - &nbsp; {{car.marqueVoiture }} {{car.modeleVoiture}} ( {{car.immatriculation}} )</h4>
 <div class="container">
   <div class="row justify-content-start">
     <div class="col">
-        <h5>Immatriculation: <b *ngFor="let ca of car">{{ca.immatriculation}}</b></h5><button class="btn btn-primary btn-s" data-toggle="modal" data-target="#JustificatifCenter">Consulter carte grise</button>
+        <button class="btn btn-primary btn-s" data-toggle="modal" data-target="#JustificatifCenter">Consulter carte grise</button>
     </div>
     <div class="col">
     </div>
@@ -37,51 +37,51 @@
                         <th scope="col">Valeur</th>
                       </tr>
                     </thead>
-                    <tbody *ngFor="let c of car">
+                    <tbody>
                         <tr>
                             <th scope="row">Marque</th>
-                            <td>{{c.marqueVoiture}}</td>
+                            <td>{{car.marqueVoiture}}</td>
                           </tr>
                       <tr>
                         <th scope="row">Modèle</th>
-                        <td>{{c.modeleVoiture}}</td>
+                        <td>{{car.modeleVoiture}}</td>
                       </tr>
                       <tr>
 
                             <th scope="row">Type</th>
-                            <td>{{c.moteur_type}}</td>
+                            <td>{{car.moteur_type}}</td>
                           </tr>
                        <tr>
 
                             <th scope="row">Année de circulation</th>
-                            <td>{{c.anneeCirculation}}</td>
+                            <td>{{car.anneeCirculation}}</td>
                         </tr>
                         <tr>
 
                                 <th scope="row">Carburant</th>
-                                <td>{{c.carburant}}</td>
+                                <td>{{car.carburant}}</td>
                         </tr>
                         <tr>
 
                                 <th scope="row">Boite de vitesse</th>
-                                <td>{{c.boiteVitesse}}</td>
+                                <td>{{car.boiteVitesse}}</td>
                         </tr>
                         <tr>
 
                                 <th scope="row">Mesure à vide</th>
-                                <td>{{c.mesures_masseAVide}}</td>
+                                <td>{{car.mesures_masseAVide}}</td>
                         </tr>
                         <tr>                                   
                                 <th scope="row">Cons_moyenne</th>
-                                <td>{{c.consommation_urbaine}}</td>
+                                <td>{{car.consommation_urbaine}}</td>
                         </tr>  
                         <tr>       
                                 <th scope="row">Moteur</th>
-                                <td>{{c.moteur_type}}</td>
+                                <td>{{car.moteur_type}}</td>
                         </tr> 
                         <tr>    
                                 <th scope="row">Transmission</th>
-                                <td >{{c.transmission_type}}</td>
+                                <td >{{car.transmission_type}}</td>
                         </tr>  
                     </tbody>
              </table>
@@ -99,7 +99,7 @@
         </button>
       </div>
       <div class="modal-body">
-          <pdf-viewer [src]="justif" [render-text]="true" style="display: block;"></pdf-viewer>
+          <image-viewer imageUrl="{{getfile(justif)}}"></image-viewer>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
