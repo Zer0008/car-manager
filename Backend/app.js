@@ -178,7 +178,7 @@ app.post('/api/upload/carte_grise',upload.single('file'), function (req, res) {
     }
 });
 
-app.post('/api/upload/vente',uploadvente.single('file'), function (req, res) {
+app.post('/api/upload/vente',uploadvente.single('photo'), function (req, res) {
   if (!req.file) {
       console.log("No file received");
       return res.send({
@@ -188,12 +188,12 @@ app.post('/api/upload/vente',uploadvente.single('file'), function (req, res) {
     } else {
       console.log('file received');
       return res.json({
-       url: vente
+       url: urlvente
       })
     }
 });
 
-app.post('/api/upload/intervention',uploadphoto.single('photo'), function (req, res) {
+app.post('/api/upload/intervention',uploadphoto.single('file'), function (req, res) {
   if (!req.file) {
       console.log("No file received");
       return res.send({

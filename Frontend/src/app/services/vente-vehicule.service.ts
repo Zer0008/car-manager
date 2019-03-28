@@ -31,7 +31,7 @@ export class VenteVehiculeService {
 
     putTransfert(idAcheteur: number, idReceveur: number, idVehicule: number, dateAcquisition: Date, justificatif: any): any{
         console.log("Service maj acquisition appelé");
-        return this.httpClient.put<any>(this.apiUrl+"/api-car/transfertVehicule?idAcheteur="+idAcheteur+"&idReceveur="+idReceveur+"&idVehicule="+idVehicule+"&dateAcquisition="+dateAcquisition, {'justificatifVene': justificatif}).pipe(
+        return this.httpClient.put<any>(this.apiUrl+"/api-car/transfertVehicule?idAcheteur="+idAcheteur+"&idReceveur="+idReceveur+"&idVehicule="+idVehicule+"&dateAcquisition="+dateAcquisition, {'justificatifVente': justificatif}).pipe(
             tap((state: number) => {
                 if (state !== 0) {
                     console.log(`Update acquisition`);
@@ -39,6 +39,6 @@ export class VenteVehiculeService {
                     console.log("impossible de faire la mise a jour");
                 }
             })
-        );;
+        );
     }
 }

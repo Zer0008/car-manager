@@ -10,6 +10,7 @@ import {CarSearchService} from "../services/car-search.service";
 import {FileUploader} from "ng2-file-upload";
 import {environment} from "../../environments/environment";
 import {MatDialog} from '@angular/material';
+import {error} from "@angular/compiler/src/util";
 
 @Component({
   selector: 'app-vente-vehicule',
@@ -22,6 +23,7 @@ export class VenteVehiculeComponent implements OnInit {
   userList: User[];
   dateAcquisition: Date;
   user: any;
+  idReceveur: any;
   url: any;
   justificatif: any;
   private URLjust =  environment.apiUrl + '/api/upload/vente';
@@ -50,10 +52,10 @@ export class VenteVehiculeComponent implements OnInit {
     this.uploader.onAfterAddingFile = (file) => { file.withCredentials = false; };
     this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
       console.log('ImageUpload:uploaded:', item, status, response);
-      this.url = response;
-      this.justificatif = this.url.url2;
+      this.url = JSON.parse(response);
+      this.justificatif = this.url.url;
       console.log("Justificatif: "+this.justificatif);
-      //alert('File uploaded successfully');
+      alert('File uploaded successfully');
     };
   }
 
@@ -71,7 +73,6 @@ export class VenteVehiculeComponent implements OnInit {
   onSubmitAcquisition(){
     this.user = JSON.parse(localStorage.getItem("user"));
     const email = this.f.emailNewProp.value;
-    let idReceveur;
     this.dateAcquisition = new Date();
 
     console.log(this.userList);
@@ -80,7 +81,18 @@ export class VenteVehiculeComponent implements OnInit {
       if (this.userList[i].email == email){
         if (email !== this.user.email){
           console.log("idReceveur: "+this.userList[i].idUser);
-          idReceveur = this.userList[i].idUser;
+          this.idReceveur = this.userList[i].idUser;
+
+          this.venteVehiculeService.putTransfert(this.user.idUser, this.idReceveur, this.idVehicule, this.dateAcquisition, this.justificatif).subscribe(
+              () => {
+                console.log("Transfert effectué");
+              },
+              (error) => {
+                console.log("Rec: "+this.idReceveur);
+                console.log("just: "+this.justificatif);
+                console.log(error);
+          }
+          );
         }
         else{
         }
@@ -88,12 +100,6 @@ export class VenteVehiculeComponent implements OnInit {
         console.log("Erreur");
       }
     }
-
-    this.venteVehiculeService.putTransfert(this.user.idUser, idReceveur, this.idVehicule, this.dateAcquisition, this.justificatif).subscribe(
-        () => {
-          console.log("Transfert effectué");
-        }
-    );
 
     //this.router.navigate(['/vehicules']);
   }
