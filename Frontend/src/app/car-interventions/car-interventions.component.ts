@@ -8,7 +8,8 @@ import { environment } from '../../environments/environment';
 import { FileUploader, FileSelectDirective } from 'ng2-file-upload/ng2-file-upload';
 import { CarService } from '../services/car.service';
 import { Car } from '../models/Car';
-import { NgForm, FormGroup, FormControl } from '@angular/forms';
+import { TypePanne } from '../models/TypePanne';
+import { NgForm, FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-car-interventions',
@@ -17,14 +18,18 @@ import { NgForm, FormGroup, FormControl } from '@angular/forms';
 })
 export class CarInterventionsComponent implements OnInit {
   private URL =  environment.apiUrl + '/api/upload';
-  interventionform: FormGroup;
-  car: Car[];
+  interventionForm: FormGroup;
+  submitted = false;
+  car: Car;
+  panne: TypePanne[];
   inter: Intervention[];
+  idVehicule: number;
   immatriculation: string;
 
   // tslint:disable-next-line:no-inferrable-types
   pdfSrc: string = '/assets/RIB.pdf';
-  constructor(private interventionService: InterventionService, private carService: CarService, private route: ActivatedRoute) { }
+  constructor(private interventionService: InterventionService, 
+              private carService: CarService, private route: ActivatedRoute, private formBuilder: FormBuilder) { }
 
   public uploader: FileUploader = new FileUploader({url: this.URL,
     itemAlias: 'photo',
@@ -33,15 +38,11 @@ export class CarInterventionsComponent implements OnInit {
    });
 
   ngOnInit() {
-    /*this.getAncienListIntervention();
-    this.getListIntervention();*/
-    this.immatriculation = this.route.snapshot.paramMap.get('id');
+    this.idVehicule = Number(this.route.snapshot.paramMap.get('id'));
     this.getInterventions(this.immatriculation);
-    this.getInfosCar(this.immatriculation);
-    this.interventionform = new FormGroup({
-      nomIntervention: new FormControl(''),
-      dateDebut: new FormControl(''),
-      dateFin: new FormControl('')
+    this.getInfosCar(this.idVehicule);
+    this.interventionForm = this.formBuilder.group({
+      nameIntervention: ['', Validators.required],
     });
     this.uploader.onAfterAddingFile = (file) => { file.withCredentials = false; };
     this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
@@ -49,7 +50,9 @@ export class CarInterventionsComponent implements OnInit {
        alert('File uploaded successfully');
    };
   }
-
+  get f() {
+    return this.interventionForm.controls;
+  }
   getInterventions(immatriculation: string): void {
     this.interventionService.getInterventions(immatriculation)
       .subscribe(
@@ -59,8 +62,19 @@ export class CarInterventionsComponent implements OnInit {
          }
       );
   }
-  getInfosCar(immatriculation: string): void {
-    this.carService.getInfosCar(immatriculation)
+
+  getTypePanneInterventions(): void {
+    this.interventionService.getTypePanneInterventions()
+      .subscribe(
+        (panne) => {
+          this.panne = panne;
+          console.log(panne);
+         }
+      );
+  }
+
+  getInfosCar(idVehicule: number, ): void {
+    this.carService.getInfosCar(idVehicule)
       .subscribe(
         (car) => {
           this.car = car ;
@@ -68,15 +82,6 @@ export class CarInterventionsComponent implements OnInit {
          }
       );
   }
-
- /* getListIntervention(): void {
-    this.interventionService.getListIntervention()
-      .subscribe(inter => this.inter = inter);
-  }
-  getAncienListIntervention(): void {
-    this.interventionService.getAncienListIntervention()
-      .subscribe(AncienInter => this.AncienInter = AncienInter);
-  }*/
 
   onSubmit(form: NgForm){
 

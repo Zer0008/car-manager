@@ -22,9 +22,8 @@ export class CarService {
   constructor(private http: HttpClient) {}
 
   /** GET: infos car in the server */
-  getInfosCar(immatriculation: string): Observable<Car[]> {
-    console.log('Je suis dans le service car et l\'immatriculation c\'est ' + immatriculation);
-    return this.http.get<Car[]>(this.apiUrl + '/api-car/car/' + immatriculation , httpOptions);
+  getInfosCar(idVehicule: number): any {
+    return this.http.get<Car[]>(this.apiUrl + '/api-car/car/' + idVehicule , httpOptions);
   }
 
 }

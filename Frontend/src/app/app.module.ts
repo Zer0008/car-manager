@@ -23,6 +23,7 @@ import { CarViewComponent } from './car-view/car-view.component';
 import { FileSelectDirective } from 'ng2-file-upload';
 import { ViewUserComponent } from './view-user/view-user.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { ImageViewerModule } from 'ng-image-viewer';
 import { CarRequestInterventionsComponent } from './car-request-interventions/car-request-interventions.component';
 import { ParametreVenteComponent } from './parametre-vente/parametre-vente.component';
 import { VenteVehiculeComponent } from './vente-vehicule/vente-vehicule.component';
@@ -60,6 +61,7 @@ import { VenteVehiculeComponent } from './vente-vehicule/vente-vehicule.componen
     MatDialogModule,
     MatRadioModule,
     PdfViewerModule,
+    ImageViewerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

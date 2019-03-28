@@ -1,5 +1,4 @@
 export class Car {
-    idVehicule: string;
 	immatriculation: string;
 	libelleVoiture: string;
 	marqueVoiture: string;
