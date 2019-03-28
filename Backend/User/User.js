@@ -1,4 +1,8 @@
 var db = require('../config/db');
+var crypto = require('crypto');
+
+var algorithm = 'aes256';
+var password = 'l5JmP+G0/1zB%;r8B8?2?2pcqGcL^3';
 
 var User = {
     getUserAuth: function (email, mdp, statut, callback) {
@@ -15,7 +19,12 @@ var User = {
     createUser: function (user,callback) {
         idUser = user.idUser ;
         email = user.email ;
-        password = user.password;
+
+        var cipher = crypto.createCipher(algorithm,password);
+        var crypted = cipher.update(user.password,'utf8','hex');
+        crypted += cipher.final('hex');
+
+        password = crypted;
         telephone = user.telephone;
         numeroRue = user.numeroRue;
         libelleRue = user.libelleRue;

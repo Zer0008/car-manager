@@ -30,10 +30,17 @@ var Car = {
        return db.query(sql, [idVehicule], callback);
     },
 
-    createPanneByUser: function(idTypePanne, idVehicule,callback){
-        var sql = "select createPanne(?,?,?)";
+    deleteVehicule: function(idVehicule, callback){
+       var sql = "select delVehicule(?)" ;
+       console.log("requete " + sql + " Envoyée !!! ");
+       return db.query(sql, [idVehicule], callback);
+    },
+
+    createPanneByUser: function(idTypePanne, idVehicule, panne, callback){
+        let libellePanne  = panne.libellePanne;
+        var sql = "select createPanne(?,?,?,?)";
         console.log("requete " + sql + " Envoyée !!! ");
-        return db.query(sql, [null, idTypePanne, idVehicule], callback);
+        return db.query(sql, [null, idTypePanne, idVehicule, libellePanne], callback);
     },
 
     createIntervention : function(idGarage, idPanne, intervention, callback){

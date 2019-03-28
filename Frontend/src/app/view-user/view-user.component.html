@@ -32,7 +32,7 @@
           <br>
           <label>Mot de passe </label>
           <div class="form-group mx-sm-3 mb-2">
-            <input type="password" class="form-control" id="password" placeholder="Mot de passe" value="Test@12345"    [disabled]="disabled">
+            <input type="password" class="form-control" id="password" placeholder="Mot de passe" value="{{user.password}}" [(ngModel)]="user.password"    [disabled]="disabled">
           </div>
           <br>
           <label>Numéro de téléphone </label>

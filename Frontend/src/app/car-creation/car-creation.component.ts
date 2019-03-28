@@ -4,7 +4,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CarSearchService} from '../services/car-search.service';
 import {MatDialog} from '@angular/material';
 import { environment } from '../../environments/environment';
-
+import { Router } from "@angular/router";
 
 
 @Component({
@@ -28,7 +28,11 @@ export class CarCreationComponent implements OnInit {
   url2: any;
   private URLjust =  environment.apiUrl + '/api/upload/carte_grise'  ;
   private URLphoto =  environment.apiUrl + '/api/upload/photo'  ;
-  constructor(private Carservice: CarSearchService, private dialog: MatDialog) { 
+  constructor(
+    private Carservice: CarSearchService,
+     private dialog: MatDialog,
+     private route: Router,
+     ) { 
     this.user = JSON.parse(localStorage.getItem('user'));
   }
 
@@ -132,6 +136,10 @@ this.Carservice.getcarview(this.matriculeform.value.matricule, this.fini).subscr
  this.voiture.transmission_type = res.transmission_type;
 
 });
+}
+
+Onredirect():void{
+  this.route.navigateByUrl("/vehicules");
 }
 
 Onregister() {

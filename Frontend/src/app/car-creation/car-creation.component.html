@@ -26,7 +26,9 @@
                                 <br/> <br/>
                               <button type="button" class="btn btn-primary btn-s" 
                                 (click)="uploader.uploadAll()" 
-                                [disabled]="!uploader.getNotUploadedItems().length" >
+                                [disabled]="!uploader.getNotUploadedItems().length"
+                                data-toggle="modal" data-target="#Modalsucessjust"
+                                >
                                     Telecharger le justificatif
                               </button>
                         </div>
@@ -38,7 +40,9 @@
                             <br/> <br/>
                           <button type="button" class="btn btn-primary btn-s" 
                             (click)="uploaderphoto.uploadAll()" 
-                            [disabled]="!uploaderphoto.getNotUploadedItems().length" >
+                            [disabled]="!uploaderphoto.getNotUploadedItems().length"
+                            data-toggle="modal" data-target="#Modalsucessphoto"
+                            >
                                 Telecharger la photo du véhicule
                           </button>
                     </div>
@@ -92,7 +96,7 @@
                           <input placeholder="Voiture de Joel" type="text" class="form-control" formControlName="libelle" />
                         </div>
                         <div class="form-group">
-                            <button type="button" class="btn btn-success btn-s" type="submit">Enregistrer</button>
+                            <button type="button" class="btn btn-success btn-s" type="submit" data-toggle="modal" data-target="#Modalsucess" >Enregistrer</button>
                         </div>
                  </form>
 
@@ -128,3 +132,68 @@
           </div>
         </div>
       </div> 
+
+
+      <div class="modal fade" id="Modalsucessjust" tabindex="-1" role="dialog" aria-labelledby="ModalMatriculeTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="ModifierCenterTitle">Info</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                  <mat-dialog-content class="mat-typography">
+                      <h3>justificatif téléchargé</h3>
+                    </mat-dialog-content>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade" id="Modalsucessphoto" tabindex="-1" role="dialog" aria-labelledby="ModalMatriculeTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="ModifierCenterTitle">Info</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <mat-dialog-content class="mat-typography">
+                        <h3>photo téléchargé</h3>
+                      </mat-dialog-content>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="modal fade" id="Modalsucess" tabindex="-1" role="dialog" aria-labelledby="ModalMatriculeTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="ModifierCenterTitle">{{modele}}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                      <mat-dialog-content class="mat-typography">
+                          <h3>véhicule enregistré avec succès!</h3>
+                        </mat-dialog-content>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"  (click)="Onredirect()" >Fermer</button>
+                  </div>
+                </div>
+              </div>
+            </div>

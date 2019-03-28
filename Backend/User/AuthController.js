@@ -1,6 +1,9 @@
 var express = require('express');
 var router = express.Router();
 var User = require('./User');
+var crypto = require('crypto');
+var algorithm = 'aes256';
+var password = 'l5JmP+G0/1zB%;r8B8?2?2pcqGcL^3';
 
 router.post('/register', function (req,res) {
     User.createUser(req.body,function(err,count){
@@ -36,7 +39,12 @@ router.get('/password/', function(req,res){
 });
 
 router.post('/signin', function(req, res) {
-     User.getUserAuth(req.body.email, req.body.password, req.body.statut, function(err,result){
+
+    var cipher = crypto.createCipher(algorithm,password);
+    var crypted = cipher.update(req.body.password,'utf8','hex');
+    crypted += cipher.final('hex');
+
+     User.getUserAuth(req.body.email, crypted, req.body.statut, function(err,result){
          if(err){
              console.log(err);
             res.status(400).json(err);
@@ -44,10 +52,14 @@ router.post('/signin', function(req, res) {
          else{
              console.log('else');
               if (req.body.statut == 'Particulier'){
+                var decipher = crypto.createDecipher(algorithm,password);
+                var dec = decipher.update(result[0][0].password,'hex','utf8');
+                dec += decipher.final('utf8');
                 return res.json(
                     {
                         "idUser": result[0][0].idUser,
                         "email": result[0][0].email,
+                        "password": dec ,
                         "telephone":  result[0][0].telephone,
                         "numeroRue": result[0][0].numeroRue,
                         "libelleRue": result[0][0].libelleRue,
@@ -58,10 +70,14 @@ router.post('/signin', function(req, res) {
                     } 
                 );
               } else if (req.body.statut == 'Garage') {
+                var decipher = crypto.createDecipher(algorithm,password);
+                var dec = decipher.update(result[0][0].password,'hex','utf8');
+                dec += decipher.final('utf8');
                 return res.json(
                     {
                         "email": result[0][0].email,
                         "nom": result[0][0].nom,
+                        "password": dec,
                         "telephone":  result[0][0].telephone,
                         "numeroRue": result[0][0].numeroRue,
                         "libelleRue": result[0][0].libelleRue,

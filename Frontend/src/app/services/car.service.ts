@@ -27,6 +27,13 @@ export class CarService {
     );
   }
 
+  deleteCar(idVehicule: number): any {
+    return this.http.delete<any>(
+       this.apiUrl + "/api-car/cars/" + idVehicule,
+       httpOptions
+    );
+  }
+
   putTransfert(
     idAcheteur: number,
     idVendeur: number,

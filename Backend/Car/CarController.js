@@ -91,10 +91,29 @@ router.post('/cars',function(req,res){
     });
 });
 
+router.delete('/cars/:idVehicule',function(req,res){
+   let idVehicule = Number(req.params.idVehicule);
+   Car.deleteVehicule(idVehicule, function(err, count){
+    if (err){
+        console.log(err);
+        res.status(400).json(err);
+    }
+    count = JSON.parse(JSON.stringify(count));
+    row = JSON.parse(JSON.stringify(count));
+    key = Object.keys(count[0])[0];
+    count = count[0][key];
+    if(count != 0){
+        res.json({'statut': count});
+    } else {
+       res.status(404).json({'message': 'immpossible de supprimer ce vehicule'});
+    }
+   })
+});
+
 router.post('/cars/:idVehicule/panne', function(req, res){
     let idVehicule = Number(req.params.idVehicule) ;
     let idTypePanne = Number(req.query.idTypePanne) ;
-    Car.createPanneByUser(idTypePanne, idVehicule, function(err, count){
+    Car.createPanneByUser(idTypePanne, idVehicule, req.body, function(err, count){
         if (err){
             console.log(err);
             res.status(400).json(err);
