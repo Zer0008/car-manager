@@ -1,3 +1,104 @@
-<p>
-  notification works!
-</p>
+<br/>
+<div *ngFor="let item of notifications" >
+  <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="item.statut == 'Important'">
+      <div class="row">
+          <div class="col-lg-7">
+              {{item.libelleNotification}} 
+          </div>
+          <div class="col-lg-3">
+              {{toDate(item.dateNotification)}}
+            </div>
+
+          <div class=" row">
+
+                  <div>
+                      <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" [attr.data-target]="'#' + item.idNotification">
+                          Visualiser
+                      </button>
+                      <!-- Modal -->
+                      <div class="modal fade" id={{item.idNotification}} tabindex="-1" role="dialog" aria-labelledby="VisualiserModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="alertdialog">
+                              <div class="modal-content">
+                                  <div class="modal-header">
+                                      <h5 class="modal-title" id="VisualiserModalLabel">Visualiser la notification {{item.idNotification}}</h5>
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                          <span aria-hidden="true">&times;</span>
+                                      </button>
+                                  </div>
+                                  <div class="modal-body">
+                                      {{item.libelleNotification}} du {{toDate(item.dateNotification)}}
+                                  </div>
+                                  <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                                      <button type="button" class="btn btn-danger" (click)="deletenotif(item)" data-dismiss="modal" >Supprimer</button>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+
+                  </div>
+              &nbsp;
+                  <div>
+                      <button type="button" class="btn btn-primary btn-sm" (click)="deletenotif(item)">
+                          Supprimer
+                      </button>
+                  </div>
+          </div>
+
+        </div>
+  </div>
+  <div class="alert alert-warning alert-dismissible fade show" role="alert" *ngIf="item.statut == 'Warning'">
+    <div class="row">
+      <div class="col-lg-7">
+          {{item.libelleNotification}} 
+      </div>
+      <div class="col-lg-3">
+          {{toDate(item.dateNotification)}}
+        </div>
+
+        <div class=" row">
+
+            <div>
+                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" [attr.data-target]="'#' + this.notifications.indexOf(item)   item.libelleNotification">
+                    Visualiser
+                </button>
+                <!-- Modal -->
+                <div class="modal fade" id={{item.libelleNotification}} tabindex="-1" role="dialog" aria-labelledby="VisualiserModalLabelW" aria-hidden="true">
+                    <div class="modal-dialog" role="alertdialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="VisualiserModalLabelW">Visualiser la notification {{item.idNotification}}</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                {{item.libelleNotification}} du {{toDate(item.dateNotification)}}
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                                <button type="button" class="btn btn-danger" (click)="deletenotif(item)" data-dismiss="modal" >Supprimer</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            &nbsp;
+            <div>
+                <button type="button" class="btn btn-primary btn-sm" (click)="deletenotif(item)">
+                    Supprimer
+                </button>
+            </div>
+        </div>
+<!--        <div class="col-lg-1 offset-lg-1">
+            <button type="button" class="btn btn-primary btn-sm">
+                supprimer
+              </button>
+        </div>-->
+    </div>
+  </div>
+  <div *ngIf="notifications.length <=0" >
+    <h4>Aucune notification !</h4>
+  </div>
+</div>

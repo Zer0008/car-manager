@@ -1,3 +1,4 @@
+import { AnnonceVenteCreationComponent } from './annonce-vente-creation/annonce-vente-creation.component';
 import { CarViewComponent } from './car-view/car-view.component';
 import { CarSearchComponent } from './car-search/car-search.component';
 import { CarListComponent } from './car-list/car-list.component';
@@ -11,6 +12,7 @@ import { CarCreationComponent } from './car-creation/car-creation.component';
 import { CarInterventionsComponent } from './car-interventions/car-interventions.component';
 import { AnnoncesInterventionListComponent } from './annonces-intervention-list/annonces-intervention-list.component';
 import {ViewUserComponent} from './view-user/view-user.component';
+import {ParametreVenteComponent} from "./parametre-vente/parametre-vente.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -23,7 +25,11 @@ const routes: Routes = [
   { path:  'vehicules', component: CarListComponent },
   { path: 'vehicules/new', component: CarCreationComponent},
   {path: 'vehicule/:id', component: CarViewComponent },
+  {path: 'annonces-vente/new', component: AnnonceVenteCreationComponent},
   {path: 'profile', component: ViewUserComponent} ,
+
+  {path: 'vehicule/:id/parametre-vente', component: ParametreVenteComponent },
+
   { path: 'vehicule/:id/interventions', component: CarInterventionsComponent}
 ];
 

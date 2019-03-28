@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { environment } from "../../environments/environment";
 import { tap } from "rxjs/operators";
 import { User } from "../models/User";
-import {vehicule} from "../models/Voiture";
+import {Vehicule} from "../models/Voiture";
 import {Observable} from "rxjs";
 import {Intervention} from "../models/Intervention";
 // import { Voiture } from "../models/Voiture";
@@ -46,8 +46,19 @@ export class UserService {
       return this.http.get(this.apiUrl + "/api-car/cars?email=" + email + "&statut=" + statut, httpOptions)
   }
 
-  removeCar(): any{
+  removeCar(): any {
 
   }
+
+  setPasswordUser(email: string, password: string): any {
+    return this.http
+      .put<any>(this.apiUrl + '/api/user/resetPassword?email=' + email, {'password': password}, httpOptions)
+      .pipe(
+        tap(() => {
+         console.log('updated user email = ' + email);
+        })
+      );
+  }
+
 
 }

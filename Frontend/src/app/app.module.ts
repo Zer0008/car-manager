@@ -23,6 +23,9 @@ import { CarViewComponent } from './car-view/car-view.component';
 import { FileSelectDirective } from 'ng2-file-upload';
 import { ViewUserComponent } from './view-user/view-user.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { AnnonceVenteCreationComponent } from './annonce-vente-creation/annonce-vente-creation.component';
+import { ParametreVenteComponent } from './parametre-vente/parametre-vente.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +45,8 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
     CarViewComponent,
     FileSelectDirective,
     ViewUserComponent,
+    AnnonceVenteCreationComponent,
+    ParametreVenteComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,6 +59,7 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
     MatDialogModule,
     MatRadioModule,
     PdfViewerModule,
+    MatProgressSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

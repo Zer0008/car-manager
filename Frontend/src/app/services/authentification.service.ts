@@ -45,7 +45,7 @@ export class AuthentificationService {
     console.log(emailValue);
     const userConnection = { 'email': emailValue, 'password': passwordValue, 'statut': statutValue };
     console.log(userConnection);
-    return this.http.post<any>(this.apiUrl +'/auth/signin', userConnection, httpOptions).pipe(
+    return this.http.post<any>(this.apiUrl + '/auth/signin', userConnection, httpOptions).pipe(
       tap(
         (registerUser: any) => {
           if (registerUser.email == null) {
