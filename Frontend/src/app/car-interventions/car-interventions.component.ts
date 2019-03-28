@@ -1,8 +1,6 @@
 import { Intervention } from './../models/Intervention';
 import { Component, OnInit } from '@angular/core';
 import { InterventionService } from './../services/intervention.service';
-import { interventions } from '../mock-intervention';
-import { AncienInterventions } from '../mock-intervention';
 import { ActivatedRoute} from '@angular/router';
 
 @Component({
@@ -21,30 +19,20 @@ export class CarInterventionsComponent implements OnInit {
   constructor(private interventionService: InterventionService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.getAncienListIntervention();
-    this.getListIntervention();
-   /* this.immatriculation = this.route.snapshot.paramMap.get('id');
-    this.getInterventions(this.immatriculation);*/
+    let idVehicule = Number(this.route.snapshot.paramMap.get('id'));
+    this.getInterventions(idVehicule);
   }
 
- /* getInterventions(immatriculation: string): void {
-    this.interventionService.getInterventions(immatriculation)
+  getInterventions(idVehicule: number): void {
+    this.interventionService.getInterventions(idVehicule)
       .subscribe(
         (inter) => {
           this.inter = inter ;
           console.log(inter);
          }
       );
-  }*/
+  }
 
-  getListIntervention(): void {
-    this.interventionService.getListIntervention()
-      .subscribe(inter => this.inter = inter);
-  }
-  getAncienListIntervention(): void {
-    this.interventionService.getAncienListIntervention()
-      .subscribe(AncienInter => this.AncienInter = AncienInter);
-  }
 
   addIntervention(): void {
       this.inter.push({idIntervention: 4,

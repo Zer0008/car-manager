@@ -20,7 +20,7 @@ router.put('/transfertVehicule', function(req, res){
 let idAcheteur = Number(req.query.idAcheteur);
 let idVendeur = Number(req.query.idVendeur) ;
 let idVehicule = Number(req.query.idVehicule);
-    Car.transfertCar(idAcheteur, idVendeur, idVehicule, new Date(), req.body.justificatifVente, function(err, count){
+    Car.transfertCar(idAcheteur, idVendeur, idVehicule, new Date(), req.body, function(err, count){
         if (err){
             console.log(err);
             res.status(400).json(err);
@@ -29,7 +29,7 @@ let idVehicule = Number(req.query.idVehicule);
         key = Object.keys(count[0])[0];
         count = count[0][key];
         if(count === 1){
-            res.json({'response': idAcheteur, 'justificatifVente': justificatifVente});
+            res.json({'response': idAcheteur});
         } else {
             res.json({
                 "response": count
@@ -126,7 +126,7 @@ router.get('/TypePanne', function(req,res){
 
 router.get('/car/:idVehicule/interventions',function (req,res) {
     let idVehicule = Number(req.params.idVehicule) ;
-    console.log('controller ' + immatriculation);
+    console.log('controller ' + idVehicule);
      Car.getInterventions(idVehicule, function (err,rows) {
          if(err) {
              res.status(400).json(err);

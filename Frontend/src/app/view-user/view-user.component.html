@@ -30,12 +30,16 @@
             <input type="email" class="form-control" id="email" placeholder="email" value="{{user.email}}" [(ngModel)]="user.email"   [disabled]="disabled">
           </div>
           <br>
+          <label>Mot de passe </label>
+          <div class="form-group mx-sm-3 mb-2">
+            <input type="password" class="form-control" id="password" placeholder="Mot de passe" value="Test@12345"    [disabled]="disabled">
+          </div>
+          <br>
           <label>Numéro de téléphone </label>
           <div class="form-group mx-sm-3 mb-2">
             <input type="tel" class="form-control" id="telephone" placeholder="telephone" value="{{user.telephone}}" [(ngModel)]="user.telephone"  [disabled]="disabled">
           </div>
           <br>
-          <label>Adresse </label>
           <form>
             <div class="row">
               <div class="col-5 mx-sm-auto mb-2">

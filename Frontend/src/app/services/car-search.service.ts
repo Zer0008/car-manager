@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from "@angular/common/http";
 import { environment } from '../../environments/environment';
-import { EmailValidator } from '@angular/forms';
-import {Vehicule} from '../models/Voiture';
+import { Car} from '../models/Car';
 import { catchError, tap, map } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 
@@ -50,7 +49,7 @@ getcarviewmarque(marque: string, modele: string, annee: string, finition: string
     return this.http.get(this.apiUrl + '/api-mock?marque='
      + marque + '&modele=' + modele + '&annee=' + annee + '&finition=' + finition, httpOptions);
 }
-savecar(email: string, voiture: Vehicule) {
+savecar(email: string, voiture: Car) {
   console.log('ho', email);
   return  this.http.post(this.apiUrl + '/api-car/cars?email=' + email, voiture, httpOptions).pipe(
     catchError(this.handleError)

@@ -101,11 +101,13 @@ var Car = {
            return db.query(sql, [idVehicule, libelleVoiture, justificatif, photo, statut, visibilite, isActive], callback);
     },
 
-    transfertCar : function(idAcheteur, idReceveur, idVehicule, dateAcquisition, justificatifVente, callback){
+    transfertCar : function(idAcheteur, idReceveur, idVehicule, dateAcquisition, justificatif, callback){
+        let JustificatifVente = justificatif.justificatifVente ;
+        console.log(JustificatifVente);
         var sql = "select cessionVehicule(?,?,?,?,?)" ;
         console.log("vente de " + idAcheteur + " vers "+ idReceveur + " du vehicule "+ idVehicule);
        console.log("requete " + sql + " Envoyée !!! ");
-       return db.query(sql, [idAcheteur, idReceveur, idVehicule, dateAcquisition, justificatifVente], callback);
+       return db.query(sql, [idAcheteur, idReceveur, idVehicule, dateAcquisition, JustificatifVente], callback);
     }
     
 };

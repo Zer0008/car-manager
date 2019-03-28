@@ -20,7 +20,7 @@
               <option>Garage</option>
       </select>
       <div *ngIf="submitted && auth === false">
-        <div><span style="color: rgb(236, 112, 112)">Erreur login ou mot de passe</span></div>
+        <div><span style="color: rgb(236, 112, 112)">Erreur identifiants {{inputStatut.value}} </span></div>
       </div>
       <button class="btn btn-success btn-block" type="submit"><i class="fas fa-sign-in-alt"></i>Valider</button>
       <button class="btn btn-danger btn-block" (click)="changeState()"  type="button">Mot de passe oublié ?</button>

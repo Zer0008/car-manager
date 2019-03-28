@@ -1,9 +1,7 @@
 import { environment } from "./../../environments/environment";
-import { AuthentificationService } from "./../services/authentification.service";
 import { Router } from "@angular/router";
 import { Component, OnInit } from "@angular/core";
 import { UserService } from "../services/user.service";
-import { Vehicule } from "../models/Voiture";
 
 @Component({
   selector: "app-car-list",
@@ -19,7 +17,6 @@ export class CarListComponent implements OnInit {
   constructor(
     private route: Router,
     private userservice: UserService,
-    private authentificationService: AuthentificationService
   ) {
     this.user = JSON.parse(localStorage.getItem("user"));
   }
@@ -48,4 +45,5 @@ export class CarListComponent implements OnInit {
       return environment.apiUrl + '/uploads/photo/inconnu.jpg';
     }
   }
+
 }

@@ -2,8 +2,6 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { environment } from "../../environments/environment";
 import { tap } from "rxjs/operators";
-import { User } from "../models/User";
-import {Vehicule} from "../models/Voiture";
 import {Observable} from "rxjs";
 import {Intervention} from "../models/Intervention";
 // import { Voiture } from "../models/Voiture";

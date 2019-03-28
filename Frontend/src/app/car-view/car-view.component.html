@@ -1,3 +1,110 @@
-<p>
-  car-view works!
-</p>
+<nav class="navber navbar-dark bg-secondary">
+  <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-2 ">
+          <button  class="btn btn-info"  routerLink="/vehicule/{{idVehicule}}/request-annonce-intervention">Demander intervention</button>
+        </div>
+        <div class="col-lg-2 offset-lg-1">
+          <button  class="btn btn-info" routerLink="/vehicule/{{idVehicule}}/interventions">Gestion Entretiens</button>
+        </div>
+        <div class="col-lg-2 offset-lg-1">
+          <button  class="btn btn-info" routerLink="/vehicule/{{idVehicule}}/request-annonce-vente">Mettre en vente</button>
+        </div>
+        <div class="col-lg-2 offset-lg-1">
+          <button  class="btn btn-info"  routerLink="/vehicule/{{idVehicule}}/vente">Vente véhicule</button>
+        </div>
+      </div>
+  </div>
+</nav>
+<div class="jumbotron">
+<h4 *ngFor="let c of car">{{c.libelleVoiture}} </h4> 
+<div class="container">
+  <div class="row justify-content-start">
+    <div class="col">
+        <h5>Immatriculation: <b *ngFor="let ca of car">{{ca.immatriculation}}</b></h5><button class="btn btn-primary btn-s" data-toggle="modal" data-target="#JustificatifCenter">Consulter carte grise</button>
+    </div>
+    <div class="col">
+    </div>
+  </div>
+</div>
+<br/>
+<div class="container">
+    <div class="row">  
+            <table class="table">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col">Caractéristique</th>
+                        <th scope="col">Valeur</th>
+                      </tr>
+                    </thead>
+                    <tbody *ngFor="let c of car">
+                        <tr>
+                            <th scope="row">Marque</th>
+                            <td>{{c.marqueVoiture}}</td>
+                          </tr>
+                      <tr>
+                        <th scope="row">Modèle</th>
+                        <td>{{c.modeleVoiture}}</td>
+                      </tr>
+                      <tr>
+
+                            <th scope="row">Type</th>
+                            <td>{{c.moteur_type}}</td>
+                          </tr>
+                       <tr>
+
+                            <th scope="row">Année de circulation</th>
+                            <td>{{c.anneeCirculation}}</td>
+                        </tr>
+                        <tr>
+
+                                <th scope="row">Carburant</th>
+                                <td>{{c.carburant}}</td>
+                        </tr>
+                        <tr>
+
+                                <th scope="row">Boite de vitesse</th>
+                                <td>{{c.boiteVitesse}}</td>
+                        </tr>
+                        <tr>
+
+                                <th scope="row">Mesure à vide</th>
+                                <td>{{c.mesures_masseAVide}}</td>
+                        </tr>
+                        <tr>                                   
+                                <th scope="row">Cons_moyenne</th>
+                                <td>{{c.consommation_urbaine}}</td>
+                        </tr>  
+                        <tr>       
+                                <th scope="row">Moteur</th>
+                                <td>{{c.moteur_type}}</td>
+                        </tr> 
+                        <tr>    
+                                <th scope="row">Transmission</th>
+                                <td >{{c.transmission_type}}</td>
+                        </tr>  
+                    </tbody>
+             </table>
+     </div>
+</div>
+
+<!-- Modal justificatif -->
+<div class="modal fade" id="JustificatifCenter" tabindex="-1" role="dialog" aria-labelledby="JustificatifCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="ModifierCenterTitle">Carte grise</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <pdf-viewer [src]="justif" [render-text]="true" style="display: block;"></pdf-viewer>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

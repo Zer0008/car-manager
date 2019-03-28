@@ -19,10 +19,9 @@ export class CarSearchComponent implements OnInit {
     'Ferari',
   ];
   modeles: string[] = [
-    'modèleA',
-    'modèleB',
-    'modèleC',
-    'modèleD',
+    'SUV',
+    'Citadine',
+    '4X4'
   ];
   annee: string[] = [
     '2010',
