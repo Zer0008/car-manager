@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import * as _ from "lodash";
 
+
 @Component({
   selector: "app-annonces-intervention-list",
   templateUrl: "./annonces-intervention-list.component.html",
@@ -87,5 +88,6 @@ export class AnnoncesInterventionListComponent implements OnInit {
     console.log(this.Intervention);
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 }

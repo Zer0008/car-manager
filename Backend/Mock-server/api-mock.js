@@ -37,24 +37,20 @@ router.get('/', function(req, res, next) {
     }
     if((matricule!==undefined ) && finition!==undefined){
         let fiche = {
-            
-            "immatriculation":matricule,
-            "modele":"TOYOTA yaris berline 2009",
-            "marqueVoiture": "TOYOTA",
-            "modeleVoiture": "Yaris berline",
-            "anneeCirculation":2009,
-            "finition":finition,
-            "carburant": "Diesel",
-            "moteur_type": "4 cylindres",
+           "modele": "TOYOTA yaris berline 2009",
+           "Hauteur":1.53,
+            "Largeur": 1.695,
+            "Longueur":3.785,
+            "Type": "Berline",
+            "Energie": "Diesel",
             "Puissance": "66KW(90)",
-            "boitevitesse": "Boite manuelle",
-            "transmission_type":"Traction avant",
+            "Boite_vitesse": "Boite manuelle",
             "Portes_Places": "5 portes / 5 places",
             "Vitesse_maximale": "175Km/h",
             "Cons_moyenne": "4.1 litre /100km",
             "Emission_CO2": "109g/km",
-            
-            
+            "Moteur": "4 cylindres /1364 cm/ 109g/km",
+            "Transmission":"Traction avant /185/60 R15"
                 
         };
         res.json(fiche);
@@ -65,22 +61,19 @@ router.get('/', function(req, res, next) {
     if( (modele!==undefined && marque!==undefined && annee!==undefined) && finition!==undefined){
         let fiche = {
 
-            
-            "immatriculation":matricule,
-            "modele":"TOYOTA yaris berline 2009",
-            "marqueVoiture": marque,
-            "modeleVoiture": modele,
-            "anneeCirculation":annee,
-            "finition":finition,
-            "carburant": "Diesel",
-            "moteur_type": "4 cylindres",
-            "Puissance": "66KW(90)",
-            "boitevitesse": "Boite manuelle",
-            "Transmission_type":"Traction avant",
-            "Portes_Places": "5 portes / 5 places",
-            "Vitesse_maximale": "175Km/h",
-            "Cons_moyenne": "4.1 litre /100km",
-            "Emission_CO2": "109g/km",
+            "Hauteur":1.53,
+             "Largeur": 1.695,
+             "Longueur":3.785,
+             "Type": "Berline",
+             "Energie": "Diesel",
+             "Puissance": "66KW(90)",
+             "Boite_vitesse": "Boite manuelle",
+             "Portes_Places": "5 portes / 5 places",
+             "Vitesse_maximale": "175Km/h",
+             "Cons_moyenne": "4.1 litre /100km",
+             "Emission_CO2": "109g/km",
+             "Moteur": "4 cylindres /1364 cm/ 109g/km",
+             "Transmission":"Traction avant /185/60 R15"
          };
          res.json(fiche);
     

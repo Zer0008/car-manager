@@ -1,7 +1,14 @@
-var db = require('../config/db');
+let  mysql  = require('mysql');
+let db = mysql.createConnection({
+    host     : 'm7nj9dclezfq7ax1.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
+    user     : 'h24pj654fy4uazyi',
+    password : 'gz689gazfr1vpk4q',
+    database : 'no98uoi677luebin'
+});
 
 var Car = {
     getCarByMail: function (email, statut, callback) {
+        console.log('niveau get ' + email + ' ' + statut);
         var sql;
         if(statut === 'Particulier'){
             sql = "call getListeVehiculeProprietaire(?)" ;
@@ -11,44 +18,30 @@ var Car = {
         console.log("requete " + sql + " Envoyée !!!");
         return db.query(sql,[email],callback);       
     },
-
-    getInterventions: function(idVehicule, callback){
+    getInterventions: function(immatriculation,callback){
+        console.log(immatriculation);
         var sql = "CALL getListeInterventions(?)";
         console.log("requete " + sql + " Envoyée !!!");
-        return db.query(sql,[idVehicule],callback);  
-    },
-
-    getVehicule: function(idVehicule, callback){
-       var sql = "CALL getVehicule(?)" ;
-       console.log("requete " + sql + " Envoyée !!! ");
-       return db.query(sql, [idVehicule], callback);
-    },
-
-    createPanneByUser: function(idTypePanne, idVehicule,callback){
-        var sql = "select createPanne(?,?,?)";
-        console.log("requete " + sql + " Envoyée !!! ");
-        return db.query(sql, [null, idTypePanne, idVehicule], callback);
+        return db.query(sql,[immatriculation],callback);  
     },
 
     createIntervention : function(idGarage, idPanne, intervention, callback){
+        console.log(intervention);
+        console.log(idGarage + " " + idPanne);
         libelleIntervetion = intervention.libelleIntervetion ;
         justificatifIntervention = intervention.justificatifIntervention ;
         dateDebutIntervention = intervention.dateDebutIntervention ;
         dateFinIntervention = intervention.dateFinIntervention ;
-        var sql = "select createInterventionIdGarage(?,?,?,?,?,?)" ;
+        var sql = "select createIntervention(?,?,?,?)" ;
         console.log("requete " + sql + " Envoyée !!!");
-        return db.query(sql, [idGarage, idPanne, libelleIntervention, justificatifIntervention, 
+        return db.query(sql, [idGarage, idPanne, libelleIntervetion, justificatifIntervention, 
             dateDebutIntervention, dateFinIntervention
          ], callback);
     },
 
-    getTypePannes: function(callback){
-        var sql =  "call getTypePannes()";
-        console.log("requete " + sql + " Envoyée !!!");
-        return  db.query(sql, [], callback);
-    },
-
     createCar: function(email, voiture, callback){
+        console.log(email);
+        console.log(voiture);
         immatriculation = voiture.immatriculation ; 
         libelleVoiture = voiture.libelleVoiture ; 
         marqueVoiture = voiture.marqueVoiture ; 
@@ -81,13 +74,6 @@ var Car = {
             transmission_type, transmission_nbRapports, transmission_pneumatique, mesures_0a100, mesures_masseAVide,
             mesures_capaciteNomCoffre, mesures_capaciteMaxCoffre, consommation_urbaine,	consommation_extraUrbaine, 
             statut, visibilite, isActive],callback);
-    },
-
-    transfertCar : function(idAcheteur, idReceveur, idVehicule, dateAcquisition, justificatifVente, callback){
-        var sql = "select cessionVehicule(?,?,?,?,?)" ;
-        console.log("vente de " + idAcheteur + " vers "+ idReceveur + " du vehicule "+ idVehicule);
-       console.log("requete " + sql + " Envoyée !!! ");
-       return db.query(sql, [idAcheteur, idReceveur, idVehicule, dateAcquisition, justificatifVente], callback);
     }
     
 };

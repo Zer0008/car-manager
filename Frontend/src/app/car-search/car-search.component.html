@@ -80,7 +80,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-            <button type="button" class="btn btn-primary" (click)="Onsavematricule()" data-dismiss="modal" data-toggle="modal" data-target="#Modalcar">Enregistrer</button>
+            <button type="button" class="btn btn-primary" (click)="Onsavematricule()" data-dismiss="modal">Enregistrer</button>
           </div>
         </div>
       </div>
@@ -111,70 +111,12 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-            <button type="button" class="btn btn-primary" (click)="Onsavemarque()" data-dismiss="modal" data-toggle="modal" data-target="#Modalcar">Enregistrer</button>
+            <button type="button" class="btn btn-primary" (click)="Onsavemarque()" data-dismiss="modal">Enregistrer</button>
           </div>
         </div>
        </div>
       </div>
-      
-        <!-- Modal car -->
-  <div class="modal fade" id="Modalcar" tabindex="-1" role="dialog" aria-labelledby="ModalMarqueTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="ModifierCenterTitle">{{modele}}</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-              <table class="table">
-                  <thead class="thead-dark">
-                    <tr>
-                      <th scope="col">Caractéristique</th>
-                      <th scope="col">Valeur</th>
-                    </tr>
-                  </thead>
-                  <tbody >
-                      <tr>
-                          <th scope="row">marque</th>
-                          <td>{{voiture.marqueVoiture}}</td>
-                        </tr>
-                    <tr>
-                      <th scope="row">modèle</th>
-                      <td>{{voiture.modeleVoiture}}</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">annee</th>
-                        <td>{{voiture.anneeCirculation}}</td>
-                      </tr>
-                     <tr>
-                          <th scope="row">Energie</th>
-                          <td>{{voiture.carburant}}</td>
-                      </tr>
-                       <tr>
-                              <th scope="row">Boite de vitesse</th>
-                              <td>{{voiture.boiteVitesse}}</td>
-                      </tr>
-                      <tr>       
-                              <th scope="row">Moteur</th>
-                              <td>{{voiture.moteur_type}}</td>
-                      </tr> 
-                      <tr>    
-                              <th scope="row">Transmission</th>
-                              <td >{{voiture.transmission_type}}</td>
-                      </tr>  
-                  </tbody>
-           </table>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-           
-          </div>
-        </div>
-       </div>
-      </div>
-      
+                
      </div>
     </div>
   

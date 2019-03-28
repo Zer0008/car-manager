@@ -23,8 +23,6 @@ import { CarViewComponent } from './car-view/car-view.component';
 import { FileSelectDirective } from 'ng2-file-upload';
 import { ViewUserComponent } from './view-user/view-user.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import { AnnonceVenteCreationComponent } from './annonce-vente-creation/annonce-vente-creation.component';
 import { ParametreVenteComponent } from './parametre-vente/parametre-vente.component';
 
 @NgModule({
@@ -45,7 +43,6 @@ import { ParametreVenteComponent } from './parametre-vente/parametre-vente.compo
     CarViewComponent,
     FileSelectDirective,
     ViewUserComponent,
-    AnnonceVenteCreationComponent,
     ParametreVenteComponent,
   ],
   imports: [
@@ -59,7 +56,6 @@ import { ParametreVenteComponent } from './parametre-vente/parametre-vente.compo
     MatDialogModule,
     MatRadioModule,
     PdfViewerModule,
-    MatProgressSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
