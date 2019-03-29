@@ -26,7 +26,6 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { AnnonceVenteCreationComponent } from './annonce-vente-creation/annonce-vente-creation.component';
 import { AnnonceInterventionCreationComponent } from './annonce-intervention-creation/annonce-intervention-creation.component';
 import { VenteVehiculeComponent } from './vente-vehicule/vente-vehicule.component';
-import { ImageViewerModule } from 'ng-image-viewer';
 
 
 @NgModule({
@@ -47,8 +46,7 @@ import { ImageViewerModule } from 'ng-image-viewer';
     ViewUserComponent,
     AnnonceVenteCreationComponent,
     AnnonceInterventionCreationComponent,
-    VenteVehiculeComponent,
-    ImageViewerModule
+    VenteVehiculeComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +60,6 @@ import { ImageViewerModule } from 'ng-image-viewer';
     MatRadioModule,
     PdfViewerModule,
     MatProgressSpinnerModule,
-    ImageViewerModule,
     FileUploadModule
   ],
   providers: [],
