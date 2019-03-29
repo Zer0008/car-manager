@@ -1,4 +1,3 @@
-import { ImageViewerModule } from 'ng-image-viewer';
 import { MatListModule } from '@angular/material/list';
 import { MatDialogModule, MatRadioModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
@@ -48,7 +47,6 @@ import { VenteVehiculeComponent } from './vente-vehicule/vente-vehicule.componen
     AnnonceVenteCreationComponent,
     AnnonceInterventionCreationComponent,
     VenteVehiculeComponent,
-    ImageViewerModule
   ],
   imports: [
     BrowserModule,
@@ -63,7 +61,6 @@ import { VenteVehiculeComponent } from './vente-vehicule/vente-vehicule.componen
     PdfViewerModule,
     MatProgressSpinnerModule,
     FileUploadModule,
-    ImageViewerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
