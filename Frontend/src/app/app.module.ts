@@ -19,14 +19,12 @@ import { CarListComponent } from './car-list/car-list.component';
 import { CarCreationComponent } from './car-creation/car-creation.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { CarViewComponent } from './car-view/car-view.component';
-import { FileSelectDirective } from 'ng2-file-upload';
 import { ViewUserComponent } from './view-user/view-user.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { AnnonceVenteCreationComponent } from './annonce-vente-creation/annonce-vente-creation.component';
 import { AnnonceInterventionCreationComponent } from './annonce-intervention-creation/annonce-intervention-creation.component';
 import { VenteVehiculeComponent } from './vente-vehicule/vente-vehicule.component';
-import { ImageViewerModule } from 'ng-image-viewer';
 
 @NgModule({
   declarations: [
@@ -43,7 +41,6 @@ import { ImageViewerModule } from 'ng-image-viewer';
     CarListComponent,
     CarCreationComponent,
     CarViewComponent,
-    FileSelectDirective,
     ViewUserComponent,
     AnnonceVenteCreationComponent,
     AnnonceInterventionCreationComponent,
