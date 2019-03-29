@@ -47,7 +47,8 @@ import { VenteVehiculeComponent } from './vente-vehicule/vente-vehicule.componen
     ViewUserComponent,
     AnnonceVenteCreationComponent,
     AnnonceInterventionCreationComponent,
-    VenteVehiculeComponent
+    VenteVehiculeComponent,
+    ImageViewerModule
   ],
   imports: [
     BrowserModule,
