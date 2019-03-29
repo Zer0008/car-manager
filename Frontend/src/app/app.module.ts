@@ -1,4 +1,4 @@
-import { ImageViewerModule } from 'ng2-image-viewer';
+import { ImageViewerModule } from 'ng-image-viewer';
 import { MatListModule } from '@angular/material/list';
 import { MatDialogModule, MatRadioModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
