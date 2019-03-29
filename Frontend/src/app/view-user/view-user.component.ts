@@ -12,7 +12,7 @@ export class ViewUserComponent implements OnInit {
   oldEmail: string;
   private $scope: any;
   disabled = true;
-  private actif = false;
+   actif = false;
   /*  registerForm: FormGroup;
   currentUser: User;
   submitted = false;*/
