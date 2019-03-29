@@ -61,7 +61,6 @@ import { ImageViewerModule } from 'ng-image-viewer';
     MatRadioModule,
     PdfViewerModule,
     MatProgressSpinnerModule,
-    ImageViewerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

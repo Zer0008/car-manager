@@ -4,7 +4,7 @@ import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { FormBuilder, FormGroup, NgForm } from "@angular/forms";
 import { ActivatedRoute } from "@angular/router";
-import { AnnonceVente } from "../models/annonceVente";
+import { AnnonceVente } from '../models/AnnonceVente';
 import { FileUploader } from "ng2-file-upload";
 import { environment } from "../../environments/environment";
 import { Car } from "../models/Car";
