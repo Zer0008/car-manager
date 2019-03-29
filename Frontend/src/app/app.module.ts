@@ -1,3 +1,4 @@
+import { ImageViewerModule } from 'ng2-image-viewer';
 import { MatListModule } from '@angular/material/list';
 import { MatDialogModule, MatRadioModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
@@ -60,7 +61,8 @@ import { VenteVehiculeComponent } from './vente-vehicule/vente-vehicule.componen
     MatRadioModule,
     PdfViewerModule,
     MatProgressSpinnerModule,
-    FileUploadModule
+    FileUploadModule,
+    ImageViewerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
