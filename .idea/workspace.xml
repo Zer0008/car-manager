@@ -1,51 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b3dcf47c-a89f-4395-a4aa-f492c9935fad" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Backend/Annonces/AnnonceVente.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/Annonces/AnnonceVente.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/User/AuthController.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/User/AuthController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/User/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/User/User.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/User/UserController.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/User/UserController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/uploads/carte_grise/RIB.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/uploads/carte_grise/file-1553700854586.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/uploads/carte_grise/file-1553700952051.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/uploads/carte_grise/file-1553701437562.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/uploads/carte_grise/file-1553806765238.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/uploads/carte_grise/file-1553806977298.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/uploads/carte_grise/file-1553807548854.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/uploads/carte_grise/file-1553807644361.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/uploads/carte_grise/file-1553807843883.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/uploads/carte_grise/file-1553807991131.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/uploads/photo/BMW-Serie-6-F12-F13-F06-1.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/uploads/photo/peugeot_3008_galerie-8-1.68703.19.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/uploads/photo/photo-1553701453060.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/uploads/photo/photo-1553701527573.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/uploads/photo/photo-1553701656979.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/uploads/photo/photo-1553794579843.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/uploads/photo/photo-1553794689887.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/uploads/photo/photo-1553806997448.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/uploads/photo/photo-1553807557025.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/uploads/photo/photo-1553807655093.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/uploads/photo/photo-1553807853268.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/uploads/photo/photo-1553807999320.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/uploads/vente/file-1553796451815.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/uploads/vente/file-1553796564708.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/uploads/vente/file-1553796681633.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/app/annonce-intervention-creation/annonce-intervention-creation.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/app/annonce-intervention-creation/annonce-intervention-creation.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/app/annonce-vente-creation/annonce-vente-creation.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/app/annonce-vente-creation/annonce-vente-creation.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/app/car-interventions/car-interventions.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/app/car-interventions/car-interventions.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/app/car-interventions/car-interventions.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/app/car-interventions/car-interventions.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/app/car-list/car-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/app/car-list/car-list.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/app/car-list/car-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/app/car-list/car-list.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/app/car-view/car-view.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/app/car-view/car-view.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/app/car-view/car-view.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/app/car-view/car-view.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/app/notification/notification.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/app/notification/notification.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/app/notification/notification.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/app/notification/notification.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/app/services/intervention.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/app/services/intervention.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/app/vente-vehicule/vente-vehicule.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/app/vente-vehicule/vente-vehicule.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/app/view-user/view-user.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/app/view-user/view-user.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-    </list>
+    <list default="true" id="b3dcf47c-a89f-4395-a4aa-f492c9935fad" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -140,7 +96,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -152,6 +107,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -218,23 +174,23 @@
       <workItem from="1552295827433" duration="3000" />
       <workItem from="1552896847845" duration="36000" />
       <workItem from="1553825267500" duration="28000" />
+      <workItem from="1553828534926" duration="4000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="48076000" />
+    <option name="totallyTimeSpent" value="48080000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="735" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.28097165" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.28582996" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="npm" order="3" side_tool="true" />
       <window_info id="Project Explorer" order="4" />
       <window_info id="DB Browser" order="5" />
       <window_info id="Job Explorer" order="6" />
-      <window_info anchor="bottom" id="Python Console" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.3283582" />
@@ -250,11 +206,12 @@
       <window_info anchor="bottom" id="Console" order="12" />
       <window_info anchor="bottom" id="DB Execution Console" order="13" />
       <window_info anchor="bottom" id="Database Changes" order="14" />
-      <window_info anchor="right" id="SciView" />
+      <window_info anchor="bottom" id="Python Console" order="15" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="right" id="SciView" order="4" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
