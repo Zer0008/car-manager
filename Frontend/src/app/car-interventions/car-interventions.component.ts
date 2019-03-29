@@ -1,4 +1,4 @@
-    
+import { Panne } from './../models/Panne';
 import { Intervention } from './../models/Intervention';
 import { AnnoncesService } from "./../services/annonces.service";
 import { Component, OnInit } from '@angular/core';
