@@ -1,4 +1,21 @@
-<h3>Demande d'intervention</h3>
+<nav class="navber navbar-dark bg-secondary">
+    <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-2 ">
+            <button  class="btn btn-success"  routerLink="/vehicule/{{idVehicule}}/request-annonce-intervention">Demander intervention</button>
+          </div>
+          <div class="col-lg-2 offset-lg-1">
+            <button  class="btn btn-info" routerLink="/vehicule/{{idVehicule}}/interventions">Gestion Entretiens</button>
+          </div>
+          <div class="col-lg-2 offset-lg-1">
+            <button  class="btn btn-info" routerLink="/vehicule/{{idVehicule}}/request-annonce-vente">Mettre en vente</button>
+          </div>
+          <div class="col-lg-2 offset-lg-1">
+            <button  class="btn btn-info"  routerLink="/vehicule/{{idVehicule}}/vente">Vente véhicule</button>
+          </div>
+        </div>
+    </div>
+  </nav><br/>
 <div class="jumbotron">
   <h4 *ngFor="let c of car"> {{c.libelleVoiture}} </h4> 
   <h5>Immatriculation: <b *ngFor="let c of car">{{c.immatriculation}}</b></h5><br/>

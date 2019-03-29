@@ -1,6 +1,21 @@
-<br>
-<h2>Paramètrage de l'annonce de vente </h2>
-<br>
+<nav class="navber navbar-dark bg-secondary">
+    <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-2 ">
+            <button  class="btn btn-info"  routerLink="/vehicule/{{idVehicule}}/request-annonce-intervention">Demander intervention</button>
+          </div>
+          <div class="col-lg-2 offset-lg-1">
+            <button  class="btn btn-info" routerLink="/vehicule/{{idVehicule}}/interventions">Gestion Entretiens</button>
+          </div>
+          <div class="col-lg-2 offset-lg-1">
+            <button  class="btn btn-success" routerLink="/vehicule/{{idVehicule}}/request-annonce-vente">Mettre en vente</button>
+          </div>
+          <div class="col-lg-2 offset-lg-1">
+            <button  class="btn btn-info"  routerLink="/vehicule/{{idVehicule}}/vente">Vente véhicule</button>
+          </div>
+        </div>
+    </div>
+  </nav><br/>
 <div class="row" *ngIf="vehicule" >
   <div class="col-md-9">
   <h4>{{vehicule.libelleVoiture}} &nbsp; - &nbsp; {{vehicule.marqueVoiture }} {{vehicule.modeleVoiture}} ( {{vehicule.immatriculation}} )</h4>
@@ -65,9 +80,6 @@
         <input type="text" class="form-control" formControlName="prix" id="price" placeholder="price" name="price">
         &nbsp;&nbsp;&nbsp;
       </div>€
-      <!--<div class=" mx-sm- mb-2">
-        <input type="text" class="form-control" id="price" placeholder="price"> €
-      </div>-->
     </div>
     <div class="form-group row">
       <label for="email" class="col-md-4 col-form-label">Email </label>
@@ -81,12 +93,12 @@
         <input type="tel" class="form-control" formControlName="telephoneProp" id="telephone" placeholder="telephone" value="{{user.telephone}}">
       </div>
     </div>
-<!--    <div class="form-group row">
+ <div class="form-group row">
       <label for="ville" class="col-md-4 col-form-label">Ville </label>
       <div class="mx-sm-3 mb-2">
         <input type="text" class="form-control" formControlName="ville" id="ville" placeholder="ville" value="{{user.ville}}">
       </div>
-    </div>-->
+    
 
     <div class="form-group row">
       <div class="col-md-9"></div>
@@ -94,6 +106,6 @@
         <button type="button" class="btn btn-success" (click)="miseEnligne()">Mettre en vente</button>
       </div>
     </div>
-  </form>
   </div>
+</form>
 </div>

@@ -1,6 +1,21 @@
-<br>
-<h2>Vente d'un véhicule</h2>
-<br>
+<nav class="navber navbar-dark bg-secondary">
+    <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-2 ">
+            <button  class="btn btn-info"  routerLink="/vehicule/{{idVehicule}}/request-annonce-intervention">Demander intervention</button>
+          </div>
+          <div class="col-lg-2 offset-lg-1">
+            <button  class="btn btn-info" routerLink="/vehicule/{{idVehicule}}/interventions">Gestion Entretiens</button>
+          </div>
+          <div class="col-lg-2 offset-lg-1">
+            <button  class="btn btn-info" routerLink="/vehicule/{{idVehicule}}/request-annonce-vente">Mettre en vente</button>
+          </div>
+          <div class="col-lg-2 offset-lg-1">
+            <button  class="btn btn-success"  routerLink="/vehicule/{{idVehicule}}/vente">Vente véhicule</button>
+          </div>
+        </div>
+    </div>
+  </nav><br/>
 <div class="row" *ngIf="vehicule" >
   <div class="col-md-9">
     <h4>{{vehicule.libelleVoiture}}&nbsp; - &nbsp; {{vehicule.marqueVoiture }} {{vehicule.modeleVoiture}} ( {{vehicule.immatriculation}} )</h4>

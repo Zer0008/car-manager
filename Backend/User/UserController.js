@@ -50,7 +50,7 @@ router.get('/:idUser/Notifications', function(req, res){
         if (err){
             res.status(404).json(err);
         } else {
-            res.json(rows[0]);
+                res.json(rows[0]);  
         }
     });
 });

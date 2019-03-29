@@ -52,14 +52,10 @@ router.post('/signin', function(req, res) {
          else{
              console.log('else');
               if (req.body.statut == 'Particulier'){
-                var decipher = crypto.createDecipher(algorithm,password);
-                var dec = decipher.update(result[0][0].password,'hex','utf8');
-                dec += decipher.final('utf8');
                 return res.json(
                     {
                         "idUser": result[0][0].idUser,
                         "email": result[0][0].email,
-                        "password": dec ,
                         "telephone":  result[0][0].telephone,
                         "numeroRue": result[0][0].numeroRue,
                         "libelleRue": result[0][0].libelleRue,
@@ -70,14 +66,10 @@ router.post('/signin', function(req, res) {
                     } 
                 );
               } else if (req.body.statut == 'Garage') {
-                var decipher = crypto.createDecipher(algorithm,password);
-                var dec = decipher.update(result[0][0].password,'hex','utf8');
-                dec += decipher.final('utf8');
                 return res.json(
                     {
                         "email": result[0][0].email,
                         "nom": result[0][0].nom,
-                        "password": dec,
                         "telephone":  result[0][0].telephone,
                         "numeroRue": result[0][0].numeroRue,
                         "libelleRue": result[0][0].libelleRue,

@@ -13,6 +13,8 @@ export class CarViewComponent implements OnInit {
   car: Car;
   result: any;
   idVehicule: number;
+  width:number = 430;
+  height:number = 538;
    // tslint:disable-next-line:no-inferrable-types
   justif: string;
   // tslint:disable-next-line:no-inferrable-types

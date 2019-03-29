@@ -46,13 +46,12 @@ var User = {
         numeroRue = user.numeroRue;
         libelleRue = user.libelleRue;
         codePostal = user.codePostal;
-        password = "Test@12345" ;
         ville = user.ville;
         nom = user.nom;
         let req = '';
-        req = "select updateUser(?,?,?,?,?,?,?,?,?)";
+        req = "select updateUser(?,?,?,?,?,?,?,?)";
         console.log("requete " + req + " Envoyée !!!");
-        return db.query(req,[email, new_email, password, nom, telephone, numeroRue, libelleRue, codePostal, ville],callback);
+        return db.query(req,[email, new_email, nom, telephone, numeroRue, libelleRue, codePostal, ville],callback);
     },
 
     setPasswordUser: function(email, password, callback){

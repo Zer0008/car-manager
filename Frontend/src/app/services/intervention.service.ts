@@ -1,3 +1,4 @@
+import { Panne } from './../models/Panne';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Intervention } from '../models/Intervention';
@@ -6,6 +7,7 @@ import {  tap } from 'rxjs/operators';
 import { TypePanne } from '../models/TypePanne';
 import { AnnonceIntervention } from '../models/AnnonceIntervention';
 import { environment } from '../../environments/environment';
+
 
 const httpOptions = {
   headers: new HttpHeaders(
@@ -53,6 +55,19 @@ export class InterventionService {
     return this.http
       .get<TypePanne[]>(this.apiUrl + '/api-car/TypePanne', httpOptions);
   }
+
+  getPannes(idVehicule: number): any {
+    console.log('Je suis dans le service intervention pour type de panne ');
+    return this.http
+      .get<Panne[]>(this.apiUrl + '/api-car/Pannes/?idVehicule=' + idVehicule , httpOptions);
+  }
+
+  /** POST: post panne in the server */
+  createPanne(idVehicule: number, idTypePanne: number, panne: Panne): any {
+  // tslint:disable-next-line:max-line-length
+  console.log("je suis dans panne");
+  return this.http.post(this.apiUrl + '/api-car/cars/' + idVehicule + '/panne?idTypePanne=' + idTypePanne , panne, httpOptions);
+}
 
 
 }

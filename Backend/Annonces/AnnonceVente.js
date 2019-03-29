@@ -12,9 +12,9 @@ var AnnonceVente = {
         idVehicule = Number(idVehicule);
         libelleAnnonceVente = annonceVente.libelleAnnonceVente;
         descriptifAnnonceVente = annonceVente.descriptifAnnonceVente ;
-        prixVente = annonceVente.prixVente ;
+        prixVente = Number(annonceVente.prixVente) ;
         photo = annonceVente.photo ;
-        kilometrage = annonceVente.kilometrage;
+        kilometrage = Number(annonceVente.kilometrage);
         ville = annonceVente.ville ;
         var sql = "select createAnnonceVente(?,?,?,?,?,?,?,?)";
         console.log("requete " + sql + " Envoyée !!!");

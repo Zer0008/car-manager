@@ -14,6 +14,7 @@ export class CarListComponent implements OnInit {
   user: any;
   stateAlert: number ;
   messageAlert: string;
+  resultdel: any;
 
   private router: any;
   private statut: any;
@@ -31,7 +32,11 @@ export class CarListComponent implements OnInit {
       .getCar(this.user.email, this.user.statut)
       .subscribe(res => {
         console.log(res);
-        this.vehicules = res;
+        if (res[0].immatriculation != null) {
+          this.vehicules = res;
+        } else {
+          this.vehicules = [];
+        }
       });
   }
 
@@ -41,17 +46,22 @@ export class CarListComponent implements OnInit {
 
   deleteCar(vehicule: any): void {
     this.carservice.deleteCar(vehicule.idVehicule).subscribe(
-      (statut) => {
-        if (statut === 1) {
-          this.vehicules.splice(this.vehicules.indexOf(vehicule), 1);
-          this.stateAlert = 1 ;
-          this.messageAlert = 'Votre vehicule a bien ete supprime' ;
-        } else {
-          this.stateAlert = 2 ;
-          this.messageAlert = 'Une erreur est survenue lors de la suppression';
-        }
-      }
+      (res: any) => this.resultdel = res.statut,
+      err => console.log(err),
+      () => this.changeState(this.resultdel, vehicule)
     );
+  }
+
+  changeState(statut: any, vehicule: any): void {
+    console.log(statut);
+    if (statut === 1) {
+      this.vehicules.splice(this.vehicules.indexOf(vehicule), 1);
+      this.stateAlert = 1 ;
+      this.messageAlert = 'Votre vehicule a bien ete supprime' ;
+    } else {
+      this.stateAlert = 2 ;
+      this.messageAlert = 'Une erreur est survenue lors de la suppression';
+    }
   }
 
   reset(): void {
