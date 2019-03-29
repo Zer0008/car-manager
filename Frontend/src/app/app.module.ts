@@ -28,6 +28,7 @@ import { AnnonceInterventionCreationComponent } from './annonce-intervention-cre
 import { VenteVehiculeComponent } from './vente-vehicule/vente-vehicule.component';
 import { ImageViewerModule } from 'ng-image-viewer';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,6 +48,7 @@ import { ImageViewerModule } from 'ng-image-viewer';
     AnnonceVenteCreationComponent,
     AnnonceInterventionCreationComponent,
     VenteVehiculeComponent,
+    ImageViewerModule
   ],
   imports: [
     BrowserModule,
