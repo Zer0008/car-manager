@@ -7,10 +7,10 @@
             <div class="col-md-12">
                   <div class="row">
                         <div class="col-lg-2">
-                          <form [formGroup]="matriculeform" (ngSubmit)=" OnSearchbymatricule()" [ngClass]="{ 'is-invalid':  m.matricule.errors}">   
+                          <form [formGroup]="matriculeform" (ngSubmit)=" OnSearchbymatricule()" [ngClass]="{ 'is-invalid': submitted && m.matricule.errors}">   
                                 <div class="form-group">
                                   <label>Immatriculation</label>
-                                  <input placeholder="xx-yyy-zz" type="text" class="form-control" formControlName="matricule" [ngClass]="{ 'is-invalid':  m.matricule.errors  }"/>
+                                  <input placeholder="xx-yyy-zz" type="text" class="form-control" formControlName="matricule" [ngClass]="{ 'is-invalid': submitted && m.matricule.errors  }"/>
                                 </div>
                                 <div class="form-group">
                                     <button [disabled]="m.matricule.errors" class="btn btn-primary" data-toggle="modal" data-target="#ModalMatricule">Rechercher</button>
@@ -90,7 +90,7 @@
                  <br/> 
                  <br/>
                  <br/>
-                 <form [formGroup]="libelleform" (ngSubmit)=" Onregister()" [ngClass]="{ 'is-invalid': && m.matricule.errors}"> 
+                 <form [formGroup]="libelleform" (ngSubmit)=" Onregister()" [ngClass]="{ 'is-invalid': submittedm && m.matricule.errors}"> 
                         <div class="form-group">
                           <label>Libellé</label>
                           <input placeholder="Voiture de Joel" type="text" class="form-control" formControlName="libelle" />

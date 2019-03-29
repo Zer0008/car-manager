@@ -14,7 +14,8 @@ import { Router } from "@angular/router";
 })
 export class CarCreationComponent implements OnInit {
 
-  
+  submittedm = false;
+  submitted = false ;
   matriculeform: FormGroup;
   libelleform: FormGroup;
   car: any;
@@ -108,6 +109,7 @@ export class CarCreationComponent implements OnInit {
 }
 get m() { return this.matriculeform.controls; }
 OnSearchbymatricule() {
+  this.submitted = true ;
 if (this.matriculeform.invalid) {
    return;
   }
@@ -143,6 +145,7 @@ Onredirect():void{
 }
 
 Onregister() {
+  this.submittedm = true;
 this.voiture.libelleVoiture = this.libelleform.value.libelle;
 console.log(this.voiture);
 this.Carservice.savecar(this.user.email, this.voiture).subscribe(res =>{
