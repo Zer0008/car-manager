@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'home', component: CarSearchComponent },
   { path: 'annonces-vente', component: AnnoncesVenteListComponent },
   { path: 'vehicule/:id/request-annonce-intervention', component: AnnonceInterventionCreationComponent},
-  { path: 'annonces-intervention', component: AnnoncesInterventionListComponent, canActivate: [AuthGuard]},
+  { path: 'annonces-intervention', component: AnnoncesInterventionListComponent},
   { path: 'connexion', component: ConnexionComponent },
   { path: 'inscription', component: InscriptionComponent },
   { path: 'notification', component: NotificationComponent, canActivate: [AuthGuard] },
