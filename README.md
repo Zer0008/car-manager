@@ -1,4 +1,4 @@
-# Car-Life
+# Car-Manager
 
 ## first of all install dependencies with " npm install "
 
