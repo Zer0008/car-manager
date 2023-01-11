@@ -37,7 +37,7 @@
     "express-list-endpoints": "^4.0.0",
     "express-session": "^1.15.6",
     "jquery": "^3.3.1",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "lodash": "^4.17.11",
     "mkdirp": "^0.5.1",
     "multer": "^1.4.1",
